@@ -1,0 +1,35 @@
+<h3>Utstyr</h3>
+<p>Sjekk om dere har alt av nødvendig utstyr</p>
+
+<div class="row">
+  <div class="span12">
+    <strong>Alle turdeltakere</strong>
+    <ul class="inline">
+      <li ng-repeat="item in utstyr.liste.alleTurDeltakere">
+        <label class="checkbox"><input type="checkbox" ng-model="item.model"> {{item.title}}</label>
+      </li>
+    </ul>
+  </div>
+</div>
+
+<div class="row">
+  <div class="span12">
+    <strong>Tilleggsutstyr</strong>
+    <ul class="inline">
+      <li ng-repeat="item in utstyr.liste.tilleggsUtstyr">
+        <label class="checkbox"><input type="checkbox" ng-model="item.model"> {{item.title}}</label>
+      </li>
+    </ul>
+  </div>
+</div>
+
+<div class="row">
+  <div class="span12">
+    <strong>Annet</strong>
+    <ul class="inline">
+      <li ng-repeat="item in utstyr.liste.annet">
+        <label class="checkbox"><input type="checkbox" ng-model="item.model"> {{item.title}}</label>
+      </li>
+    </ul>
+  </div>
+</div>

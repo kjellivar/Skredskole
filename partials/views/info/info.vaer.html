@@ -1,0 +1,41 @@
+<h3>Vær</h3>
+<p>Skredvarselet inneholder også viktig informasjon om værsituasjonen og 
+hvordan den påvirker skredfaren.</p>
+<p>Link til værvarsel for området: <a ng-href="{{vaerLink}}">Yr.no</a></p>
+
+<div class="row">
+  <div class="span6">
+    <strong>Nedbør</strong>
+    <ul class="unstyled">
+      <li ng-repeat="item in nedborLabels">
+        <label class="checkbox"><input type="checkbox" ng-model="info.vaer.svar[item.key]"> {{item.title}}</label>
+      </li>
+    </ul>
+  </div>
+  <div class="span6">
+    <strong>Sikt</strong>
+    <ul class="unstyled">
+      <li ng-repeat="item in siktLabels">
+        <label class="checkbox"><input type="checkbox" ng-model="info.vaer.svar[item.key]"> {{item.title}}</label>
+      </li>
+    </ul>
+  </div>
+</div>
+
+<div class="row">
+  <div class="span6">
+    <strong>Vind</strong>
+    <ul class="unstyled">
+      <li ng-repeat="item in vindLabels">
+        <label class="checkbox"><input type="checkbox" ng-model="info.vaer.svar[item.key]"> {{item.title}}</label>
+      </li>
+    </ul>
+  </div>
+  <div class="span6">
+    <strong>Temperatur</strong>
+    <label>Temperatur 1000 moh: <input type="number" ng-model="info.vaer.svar.temperatur">°C</label>
+    <label>Nullisoterm: <input type="number" ng-model="info.vaer.svar.nullisoterm">m</label>
+  
+    
+  </div>
+</div>

@@ -1,0 +1,63 @@
+<!DOCTYPE html>
+<html ng-app="myapp">
+
+<head>
+  <meta charset="UTF-8">
+  <title>Skredskolen</title>
+  <link href="//cdnjs.cloudflare.com/ajax/libs/twitter-bootstrap/2.3.2/css/bootstrap.min.css" rel="stylesheet">
+</head>
+
+<body>
+  <div class="container">
+    <div class="navbar">
+      <div class="navbar-inner">
+        <a class="brand" ui-sref="start">Skredskolen</a>
+        <ul class="nav">
+          <li ui-sref-active="active"><a ui-sref="info.skredvarsel">1. Informasjon <i class="icon-ok" ng-show="info.skredvarselCleared && info.vaerCleared && info.alpineFarerCleared"></i></a></li>
+          <li ui-sref-active="active"><a ui-sref="utstyr.list">2. Utstyr</a></li>
+          <li ui-sref-active="active"><a ui-sref="rute.rutevalg">3. Rute</a></li>
+          <li ui-sref-active="active"><a ui-sref="kritiske-omrader.egenskaper">4. Kritiske områder</a></li>
+          <li ui-sref-active="active"><a ui-sref="planleggingsskjema">5. Planleggingsskjema</a></li>
+        </ul>
+      </div>
+    </div>
+  
+    <div class="row">
+      <div class="span12" ui-view></div>
+    </div> 
+    
+    <ul class="pager" ng-hide="hidePageControls()">
+      <li class="previous" ng-class="{disabled: !forrige}">
+        <a ng-href="#/{{forrige}}">&larr; Forrige</a>
+      </li>
+      <li class="next" ng-class="{disabled: !neste}">
+        <a ng-href="#/{{neste}}">Neste &rarr;</a>
+      </li>
+    </ul>
+  </div>
+  
+ 
+
+  <script src="libs/angular.js"></script>
+  <script src="libs/angular-ui-router.js"></script>
+  <script src="app.js"></script>
+  
+  <!-- Controllers -->
+  <script src="controllers/start.controller.js"></script>
+  <script src="controllers/info/info.skredvarsel.controller.js"></script>
+  <script src="controllers/info/info.vaer.controller.js"></script>
+  <script src="controllers/info/info.alpine.farer.controller.js"></script>
+  <script src="controllers/utstyr/utstyr.list.controller.js"></script>
+  <script src="controllers/utstyr/utstyr.deltakere.controller.js"></script>
+  <script src="controllers/rute/rute.rutevalg.controller.js"></script>
+  <script src="controllers/rute/rute.distanse.controller.js"></script>
+  <script src="controllers/rute/rute.tidsplan.controller.js"></script>
+  <script src="controllers/kritiske-omrader/kritiske.omrader.egenskaper.controller.js"></script>
+  
+  <!-- Directives -->
+  <script src="directives/nveCanvas.js"></script>
+  <script src="directives/nveDraggable.js"></script>
+  <script src="directives/nveSubMenuItem.js"></script>
+</body>
+
+</html>

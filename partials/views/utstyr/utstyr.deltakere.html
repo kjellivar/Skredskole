@@ -1,0 +1,26 @@
+<h3>Deltakere</h3>
+
+<div class="row">
+  <div class="span12">
+    <strong>Hvor stor er gruppa som skal på tur?</strong>
+    <label><input type="number" ng-model="utstyr.deltakere.gruppeStorrelse"> Personer</label>
+  </div>
+</div>
+
+<div class="row">
+  <div class="span12">
+    <strong>Hvor mye erfaring har dere i å gå på topptur?</strong>
+    <label class="radio"><input type="radio" ng-model="utstyr.deltakere.erfaring" value="1"> Lite erfaring (0 - 10 turer)</label>
+    <label class="radio"><input type="radio" ng-model="utstyr.deltakere.erfaring" value="2"> Noe erfaring (10 - 30 turer)</label>
+    <label class="radio"><input type="radio" ng-model="utstyr.deltakere.erfaring" value="3"> Erfarne (over 30 turer)</label>
+  </div>
+</div>
+
+<div class="row">
+  <div class="span12">
+    <strong>Hvordan er motivasjonen i gruppa før turen?</strong>
+    <label class="radio"><input type="radio" ng-model="utstyr.deltakere.motivasjon" value="1"> Tilbakeholden</label>
+    <label class="radio"><input type="radio" ng-model="utstyr.deltakere.motivasjon" value="2"> Behersket / realistisk</label>
+    <label class="radio"><input type="radio" ng-model="utstyr.deltakere.motivasjon" value="3"> Ambisiøs</label>
+  </div>
+</div>

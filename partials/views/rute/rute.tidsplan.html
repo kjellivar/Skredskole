@@ -1,0 +1,64 @@
+<h3>Tidsplan</h3>
+<p>Bruk følgende opplysninger for å beregne den totale turtiden for {{turTittel}} ({{hoydeMeter}} høydemeter).</p>
+
+<div class="row">
+  <div class="span4">
+    <label><strong>Oppstigning:</strong>
+      300 hm per time
+      <input type="number" min="0" ng-model="rute.tidsplan.oppstigning">
+    </label>
+  </div>
+  <div class="span4">
+    <label><strong>Nedfart:</strong>
+      1/3 av tiden opp
+      <input type="number" step="0.5" min="0" ng-model="rute.tidsplan.nedfart">
+    </label>
+  </div>
+  <div class="span4">
+    <label><strong>Pause:</strong>
+      Beregn minst en halvtime.
+      <input type="number" min="0" step="0.25" ng-model="rute.tidsplan.pause">
+    </label>
+  </div>
+</div>
+
+<div class="row">
+  <div class="span4"></div>
+  <div class="span4">
+    <strong>Total tid:</strong>
+    {{rute.tidsplan.oppstigning + rute.tidsplan.nedfart + rute.tidsplan.pause}} timer
+  </div>
+  <div class="span4"></div>
+</div>
+
+<hr>
+
+<div class="row">
+  <div class="span8">
+    <strong>Krever situasjonen at man starter turen på et 
+    spesielt tidspunkt (f.eks. tidlig morgen?)</strong>
+  </div>
+  <div class="span4">
+    <ul class="inline">
+    <li><label class="radio"><input type="radio" ng-model="rute.tidsplan.spesifikkStart" value="true"> Ja</label></li>
+    <li><label class="radio"><input type="radio" ng-model="rute.tidsplan.spesifikkStart" value="false"> Nei</label></li>
+    </ul>
+  </div>
+</div>
+
+<div class="row">
+  <div class="span6" ng-show="rute.tidsplan.spesifikkStart">
+    <p>På grunn av oppvarming bør turen avsluttes før kl. 12</p>
+    <p>Når vil dere starte? Skriv en starttid (0-24).</p>
+    <input type="number" ng-model="rute.tidsplan.startTid" max="24" min="0">
+  </div>
+  <div class="span6" ng-show="rute.tidsplan.spesifikkStart == 'false'">
+    <p>Når vil dere starte? Skriv en starttid (0-24).</p>
+    <input type="number" ng-model="rute.tidsplan.startTid" max="24" min="0">
+  </div>
+  
+</div>
+
+
+
+
