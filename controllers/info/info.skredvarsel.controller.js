@@ -1,12 +1,6 @@
 myapp.controller("infoSkredvarselCtrl", function($scope, $rootScope){
 
-  if($scope.info.skredvarsel.antallFasitSvar === undefined){
-    $scope.info.skredvarsel.antallFasitSvar = 0.0;
-    angular.forEach($scope.info.skredvarsel.fasit, function () {
-      $scope.info.skredvarsel.antallFasitSvar = $rootScope.info.skredvarsel.antallFasitSvar + 1;
-    });
 
-  }
   
   $scope.himmelRetningerLabels = 
       [{title: "N", key: "n"}, {title: "NØ", key: "no"}, {title: "Ø", key: "o"}, {title: "SØ", key: "so"}, 
@@ -32,45 +26,10 @@ myapp.controller("infoSkredvarselCtrl", function($scope, $rootScope){
                     {grad: 3, class: 'btn-primary'},
                     {grad: 4, class: 'btn-primary'},
                     {grad: 5, class: 'btn-primary'}];
+
   
-  
-  $scope.progressbarStyle = {width: '0%'}
-  $scope.barClass = "";
-  
-  var sjekkFasit = function(answerObject) {
-    var totaltRiktigeSvar = $scope.info.skredvarsel.antallFasitSvar;
-    var antallRiktigeSvar = 0.0;
-    $scope.barClass = "";
-    
-    if(angular.isObject(answerObject)){
-      angular.forEach(answerObject, function(val, key){
-        if(val == $scope.info.skredvarsel.fasit[key]){
-          antallRiktigeSvar = antallRiktigeSvar + 1;
-        } else if(val !== false) {
-          antallRiktigeSvar = antallRiktigeSvar > 0 ? antallRiktigeSvar - 1 : 0;
-          $scope.barClass = "bar-warning";
-        }
-      });
-    }
-    
-    var width = (antallRiktigeSvar / totaltRiktigeSvar) * 100;
-    $scope.progressbarStyle.width = width + '%';
-    
-    if(antallRiktigeSvar === totaltRiktigeSvar){
-      $scope.barClass = "bar-success";
-      if($scope.info.skredvarsel.item.cleared !== true){
-        $scope.info.skredvarsel.item.cleared = true;
-      }
-    } else {
-      if($scope.info.skredvarsel.item.cleared !== false){
-        $scope.info.skredvarsel.item.cleared = false;
-      }
-    }
-    
-  }
-  
-  $scope.$watchCollection('info.skredvarsel.svar', function(newAnswers, oldAnswers) {
-    sjekkFasit(newAnswers);
+  $scope.$watchCollection('info.skredvarsel.svar', function(newAnswers) {
+    $scope.sjekkFasit(newAnswers, $scope.info.skredvarsel);
   });
   
   $rootScope.forrige = false;

@@ -1,11 +1,10 @@
 myapp.controller("infoAlpineFarerCtrl", function($scope, $rootScope){
-  
-  if($rootScope.info.alpineFarer === undefined){
-    $scope.info.alpineFarer = {};
-  }
-  
+
+    $scope.$watchCollection('info.alpineFarer.svar', function(newAnswers) {
+        $scope.sjekkFasit(newAnswers, $scope.info.alpineFarer);
+    });
  
-  $rootScope.forrige = "info/vaer";
-   $rootScope.neste = "utstyr/list";
+    $rootScope.forrige = "info/vaer";
+    $rootScope.neste = "utstyr/list";
   
 });
