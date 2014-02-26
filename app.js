@@ -1,6 +1,6 @@
 var myapp = angular.module('myapp', ["ui.router"]);
 
-myapp.run(function($rootScope) {
+myapp.run(function($rootScope, $state) {
   
     var MenuItem = function(navn, link, fasit){
         return {
@@ -21,7 +21,7 @@ myapp.run(function($rootScope) {
             //bratteHeng: true,
             //veldigBratteHeng: true,
             //ekstremtBratteHeng: true,
-            //omraderNaerRygger: true,
+            omraderNaerRygger: true,
             //terrengFeller: true,
             //overgangFraLiteTilMyeSno: true,
             nySno: true,
@@ -56,8 +56,8 @@ myapp.run(function($rootScope) {
     $rootScope.utstyr = {cleared: false};
 
     $rootScope.rute = {
-    cleared:false,
-    tidsplan: new MenuItem("Tidsplan", ".tidsplan", {oppstigning: 3, nedfart: 1, pause: 0.5})
+        cleared:false,
+        tidsplan: new MenuItem("Tidsplan", ".tidsplan", {oppstigning: 3, nedfart: 1, pause: 0.5})
     };
 
     $rootScope.kritiskeOmrader = {cleared: false};
@@ -109,6 +109,14 @@ myapp.run(function($rootScope) {
         }
 
     }
+
+    $rootScope.hidePageControls = function() {
+        if($state.current.name === 'start') {
+            return true;
+        } else {
+            return false;
+        }
+    };
   
 });
 

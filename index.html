@@ -4,7 +4,8 @@
 <head>
   <meta charset="UTF-8">
   <title>Skredskolen</title>
-  <link href="//cdnjs.cloudflare.com/ajax/libs/twitter-bootstrap/2.3.2/css/bootstrap.min.css" rel="stylesheet">
+  <link href="css/bootstrap.min.css" rel="stylesheet">
+  <link href="css/animate.css" rel="stylesheet">
 </head>
 
 <body>
@@ -22,24 +23,19 @@
       </div>
     </div>
   
-    <div class="row">
-      <div class="span12" ui-view></div>
-    </div> 
+    <div class="row ui-view-container">
+      <div class="span12" ui-view>
+      </div>
+    </div>
     
-    <ul class="pager" ng-hide="hidePageControls()">
-      <li class="previous" ng-class="{disabled: !forrige}">
-        <a ng-href="#/{{forrige}}">&larr; Forrige</a>
-      </li>
-      <li class="next" ng-class="{disabled: !neste}">
-        <a ng-href="#/{{neste}}">Neste &rarr;</a>
-      </li>
-    </ul>
+
   </div>
   
  
 
-  <script src="libs/angular.js"></script>
+  <script src="libs/angular.min.js"></script>
   <script src="libs/angular-ui-router.js"></script>
+  <script src="libs/ui-utils.min.js"></script>
   <script src="app.js"></script>
   
   <!-- Controllers -->

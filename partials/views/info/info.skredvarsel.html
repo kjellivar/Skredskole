@@ -1,12 +1,10 @@
-<div class="progress">
-  <div class="bar" ng-style="info.skredvarsel.progressbarStyle" ng-class="info.skredvarsel.barClass"></div>
-</div>
 
-<h3>Skredvarsel <small ng-bind="skredvarselDato"></small></p></h3>
 
-<p>I skredvarselet finner du viktig informasjon om den generelle skredfaren i området.</p>
-<p ng-bind="infoVarslingsOmrade"></p>
-<p>Skredvarslet finner du på <a ng-href="{{skredvarselLink}}">Varsom.no</a></p>
+
+
+<p class="lead">I skredvarselet finner du viktig informasjon om den generelle skredfaren i området.
+    <span ng-bind="infoVarslingsOmrade"></span> Skredvarslet finner du på <a ng-href="{{skredvarselLink}}">Varsom.no</a></p>
+
 
 <hr>
 <div class="row">
@@ -15,8 +13,7 @@
     <label><strong>Faregrad</strong></label>
     <div class="btn-group">
       <button ng-repeat="item in faregrader" 
-      class="btn {{item.class}}" ng-click="info.skredvarsel.svar.faregrad = item.grad" ng-bind="item.grad" ng-class="{active: info.skredvarsel.svar.faregrad == item.grad}"></button>
-      
+      class="btn" ng-click="info.skredvarsel.svar.faregrad = item.grad" ng-bind="item.grad" ng-class="{active: info.skredvarsel.svar.faregrad == item.grad}"></button>
     </div>
   </div>
 
@@ -44,7 +41,7 @@
 </div>
 
 <div class="row">
-  <div class="span6">
+  <div class="span3">
     <strong>Utsatte himmelretninger</strong>
     <ul class="inline">
       <li ng-repeat="item in himmelRetningerLabels">
@@ -52,8 +49,44 @@
       </li>
     </ul>
   </div>
-  <div class="span6">
-    <strong>Utsatt høydenivå</strong>
-    <label>Over / under <input type="number" min="0" step="100" ng-model="info.skredvarsel.svar.hoydeniva">m</label>
+  <div class="offset3 span6">
+    <label><strong>Utsatt høydenivå over / under</strong></label>
+    <div class="input-append">
+      <input class="span2" type="number" min="0" step="100" ng-model="info.skredvarsel.svar.hoydeniva">
+      <span class="add-on">m</span>
+    </div>
   </div>
 </div>
+
+<hr>
+
+<div ng-show="showAnswerPane">
+<div class="alert" ng-show="visAlert">
+    <p ng-hide="faregradBesvart">Hva er varslet faregrad?</p>
+    <p ng-hide="utsatteOmraderBesvart">Hva er mest utsatte områder?</p>
+    <p ng-hide="snodekkeBesvart">Hvordan er snødekket?</p>
+    <p ng-hide="himmelRetningerBesvart">Hva er mest utsatt himmelretning?</p>
+    <p ng-hide="hoydenivaBesvart">Hva er mest utsatt høydenivå?</p>
+</div>
+
+<div class="alert alert-success" ng-show="info.skredvarsel.item.cleared">
+    <p>Alt riktig! Bra!</p>
+</div>
+
+<div class="progress">
+    <div class="bar" ng-style="info.skredvarsel.progressbarStyle" ng-class="info.skredvarsel.barClass"></div>
+</div>
+</div>
+
+
+<ul class="pager" ng-hide="hidePageControls()" >
+    <li class="previous" ng-class="{disabled: !forrige}">
+        <a ng-href="#/{{forrige}}">&larr; Forrige</a>
+    </li>
+    <li>
+        <button class="btn btn-primary btn-large" ng-click="visAntallKorrekteSvar(info.skredvarsel.svar)">Sjekk svar</button>
+    </li>
+    <li class="next" ng-class="{disabled: !neste}">
+        <a ng-href="#/{{neste}}">Neste &rarr;</a>
+    </li>
+</ul>

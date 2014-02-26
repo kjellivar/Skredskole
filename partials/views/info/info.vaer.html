@@ -36,9 +36,16 @@ hvordan den påvirker skredfaren.</p>
     </ul>
   </div>
   <div class="span6">
-    <strong>Temperatur</strong>
-    <label>Temperatur 1000 moh: <input type="number" ng-model="info.vaer.svar.temperatur">°C</label>
-    <label>Nullisoterm: <input type="number" ng-model="info.vaer.svar.nullisoterm">m</label>
+    <label for="temperatur"><strong>Temperatur 1000 moh:</strong></label>
+    <div class="input-append">
+        <input id="temperatur" class="span2" type="number" ng-model="info.vaer.svar.temperatur">
+        <span class="add-on">°C</span>
+    </div>
+    <label for="nullisoterm"><strong>Nullisoterm:</strong></label>
+    <div class="input-append">
+      <input id="nullisoterm" class="span2" type="number" ng-model="info.vaer.svar.nullisoterm">
+        <span class="add-on">m</span>
+    </div>
   
     
   </div>

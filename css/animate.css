@@ -1,0 +1,23 @@
+.ui-view-container {
+    position: relative;
+}
+
+.animation {
+    -webkit-transition:all 0.5s ease-in-out;
+    -moz-transition:all 0.5s ease-in-out;
+    -o-transition:all 0.5s ease-in-out;
+    opacity: 1;
+    max-height: 1000px;
+    overflow: hidden;
+    display: block;
+}
+
+.animation.hideIt {
+    opacity: 0;
+    max-height: 0;
+
+    -webkit-transform:translate3d(50px, 0, 0);
+    -moz-transform:translate3d(50px, 0, 0);
+    transform:translate3d(50px, 0, 0);
+}
+
