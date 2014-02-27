@@ -7,34 +7,47 @@ myapp.directive('nveCanvas', function($log, $timeout) {
         colors: '='
       },
     transclude: true,
-    controller: function($scope, $element, $attrs, $transclude) {
+    controller: function($scope, $element, $attrs, $transclude, $window) {
 
       $scope.task = {};
       $scope.canvas = {};
       $scope.canvasContext = {};
+      $scope.canvasWidth = $element.parent().width();
+      $scope.canvasHeight = $scope.canvasWidth * 0.7;
+      var scale = $scope.canvasWidth / 960;
  
       this.setTask = function(task) {
         $scope.task = task;
       };
       
       this.setCanvas = function(canvas) {
+
         $scope.canvas = canvas;
       };
       
       this.setCanvasContext = function(context) {
         $scope.canvasContext = context;
         //Hack for displaying after load
-        $timeout(function () {$scope.clearCanvas();}, 100);
+        $timeout(function () {
+            $scope.canvasContext.lineWidth = $scope.settings.lineWidth;
+            $scope.clearCanvas();
+        }, 100);
       };
       
       $scope.clearCanvas = function () {
         $log.info("Clearing canvas");
+        $scope.canvasContext.save();
+        $scope.canvasContext.scale(scale, scale);
         $scope.canvasContext.drawImage($scope.task.questionImg,0,0);
+        $scope.canvasContext.restore();
       };
       
       $scope.showSolution = function () {
         $log.info("Showing solution");
+        $scope.canvasContext.save();
+        $scope.canvasContext.scale(scale, scale);
         $scope.canvasContext.drawImage($scope.task.solutionImg,0,0);
+        $scope.canvasContext.restore();
       };
       
       $scope.changeColor = function(color) {

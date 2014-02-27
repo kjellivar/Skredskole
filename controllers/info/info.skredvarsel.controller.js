@@ -1,4 +1,4 @@
-myapp.controller("infoSkredvarselCtrl", function($scope, $rootScope){
+myapp.controller("infoSkredvarselCtrl", function($scope, $rootScope, $timeout){
 
 
   
@@ -29,21 +29,21 @@ myapp.controller("infoSkredvarselCtrl", function($scope, $rootScope){
 
 
     $scope.visAntallKorrekteSvar =  function(newAnswers) {
-        $scope.showAnswerPane = !$scope.showAnswerPane;
         $scope.info.skredvarsel.progressbarStyle.width = '0%';
-        $scope.sjekkFasit(newAnswers, $scope.info.skredvarsel);
+        $timeout(function(){$scope.sjekkFasit(newAnswers, $scope.info.skredvarsel)}, 500);
         $scope.himmelRetningerBesvart = newAnswers.n || newAnswers.no || newAnswers.o || newAnswers.so || newAnswers.s || newAnswers.sv || newAnswers.v || newAnswers.nv;
         $scope.snodekkeBesvart = newAnswers.nySno || newAnswers.vindtransportertSno || newAnswers.svakeLagISnopakken || newAnswers.vatOgVannmettetSno;
         $scope.utsatteOmraderBesvart = newAnswers.middelsBratteHeng || newAnswers.bratteHeng || newAnswers.veldigBratteHeng || newAnswers.ekstremtBratteHeng || newAnswers.omraderNaerRygger || newAnswers.terrengFeller || newAnswers.overgangFraLiteTilMyeSno;
         $scope.hoydenivaBesvart = newAnswers.hoydeniva && true;
         $scope.faregradBesvart = newAnswers.faregrad && true;
         $scope.visAlert = !($scope.himmelRetningerBesvart && $scope.snodekkeBesvart && $scope.utsatteOmraderBesvart && $scope.hoydenivaBesvart && $scope.faregradBesvart);
+        angular.element("#alertPane").slideToggle();
     };
 
-    $scope.$watchCollection('info.skredvarsel.svar', function(newAnswers) {
-        $scope.showAnswerPane = false;
+    /*$scope.$watchCollection('info.skredvarsel.svar', function(newAnswers) {
+        angular.element("#alertPane").slideUp();
         $scope.sjekkFasit(newAnswers, $scope.info.skredvarsel);
-    });
+    });*/
 
     $rootScope.forrige = false;
     $rootScope.neste = "info/vaer";

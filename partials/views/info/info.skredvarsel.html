@@ -60,7 +60,7 @@
 
 <hr>
 
-<div ng-show="showAnswerPane">
+<!--<div style="display:none" id="alertPane">
 <div class="alert" ng-show="visAlert">
     <p ng-hide="faregradBesvart">Hva er varslet faregrad?</p>
     <p ng-hide="utsatteOmraderBesvart">Hva er mest utsatte områder?</p>
@@ -76,17 +76,48 @@
 <div class="progress">
     <div class="bar" ng-style="info.skredvarsel.progressbarStyle" ng-class="info.skredvarsel.barClass"></div>
 </div>
+</div>-->
+
+<!-- Modal -->
+<div id="myModal" class="modal hide fade" tabindex="-1" role="dialog" aria-labelledby="myModalLabel" aria-hidden="true">
+    <div class="modal-header">
+        <button type="button" class="close" data-dismiss="modal" aria-hidden="true">×</button>
+        <h3 id="myModalLabel">Sjekk svar</h3>
+    </div>
+    <div class="modal-body">
+        <div class="alert" ng-show="visAlert">
+            <p ng-hide="faregradBesvart">Hva er varslet faregrad?</p>
+            <p ng-hide="utsatteOmraderBesvart">Hva er mest utsatte områder?</p>
+            <p ng-hide="snodekkeBesvart">Hvordan er snødekket?</p>
+            <p ng-hide="himmelRetningerBesvart">Hva er mest utsatt himmelretning?</p>
+            <p ng-hide="hoydenivaBesvart">Hva er mest utsatt høydenivå?</p>
+        </div>
+
+        <div class="alert alert-success" ng-show="info.skredvarsel.item.cleared">
+            <p>Alt riktig! Bra!</p>
+        </div>
+
+        <div class="progress">
+            <div class="bar" ng-style="info.skredvarsel.progressbarStyle" ng-class="info.skredvarsel.barClass"></div>
+        </div>
+    </div>
+    <div class="modal-footer">
+        {{info.skredvarsel.antallRiktigeSvar}} / {{info.skredvarsel.antallFasitSvar}}
+        <button class="btn" data-dismiss="modal" aria-hidden="true">Close</button>
+    </div>
 </div>
 
 
-<ul class="pager" ng-hide="hidePageControls()" >
+<ul class="pager">
     <li class="previous" ng-class="{disabled: !forrige}">
         <a ng-href="#/{{forrige}}">&larr; Forrige</a>
     </li>
     <li>
-        <button class="btn btn-primary btn-large" ng-click="visAntallKorrekteSvar(info.skredvarsel.svar)">Sjekk svar</button>
+        <button data-target="#myModal" data-toggle="modal" class="btn btn-primary btn-large" ng-click="visAntallKorrekteSvar(info.skredvarsel.svar)">Sjekk svar</button>
     </li>
     <li class="next" ng-class="{disabled: !neste}">
         <a ng-href="#/{{neste}}">Neste &rarr;</a>
     </li>
 </ul>
+
+

@@ -94,6 +94,8 @@ myapp.run(function($rootScope, $state) {
             });
         }
 
+        containerObject.antallRiktigeSvar = antallRiktigeSvar;
+
         var width = (antallRiktigeSvar / totaltRiktigeSvar) * 100;
         containerObject.progressbarStyle.width = width + '%';
 
