@@ -1,1 +1,5 @@
 <h3>Planleggingsskjema</h3>
+<p ng-class="{'text-warning':!isInfoCleared(), 'text-success':isInfoCleared()}">Informasjon</p>
+<p ng-class="{'text-warning':!isUtstyrCleared(), 'text-success':isUtstyrCleared()}">Utstyr</p>
+<p ng-class="{'text-warning':!isRuteCleared(), 'text-success':isRuteCleared()}">Rute</p>
+<p ng-class="{'text-warning':!isKritiskeOmraderCleared(), 'text-success':isKritiskeOmraderCleared()}">Kritiske områder</p>

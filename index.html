@@ -17,22 +17,22 @@
         <ul class="nav">
           <li ui-sref-active="active">
               <a ui-sref="info.skredvarsel">
-                  1. Informasjon <i class="icon-ok" ng-show="info.skredvarsel.item.cleared && info.vaer.item.cleared && info.alpineFarer.item.cleared"></i>
+                  1. Informasjon <i class="icon-ok" ng-show="isInfoCleared()"></i>
               </a>
           </li>
           <li ui-sref-active="active">
               <a ui-sref="utstyr.list">
-                  2. Utstyr <i class="icon-ok" ng-show="utstyr.list.item.cleared && utstyr.deltakere.item.cleared"></i>
+                  2. Utstyr <i class="icon-ok" ng-show="isUtstyrCleared()"></i>
               </a>
           </li>
           <li ui-sref-active="active">
               <a ui-sref="rute.rutevalg">
-                  3. Rute <i class="icon-ok" ng-show="rute.rutevalg.item.cleared && rute.distanse.item.cleared && rute.tidsplan.item.cleared"></i>
+                  3. Rute <i class="icon-ok" ng-show="isRuteCleared()"></i>
               </a>
           </li>
           <li ui-sref-active="active">
               <a ui-sref="kritiske-omrader.egenskaper">
-                  4. Kritiske områder <i class="icon-ok" ng-show="kritiskeOmrader.egenskaper.item.cleared && kritiskeOmrader.sjekk.item.cleared && kritiskeOmrader.nedkjoring.item.cleared"></i>
+                  4. Kritiske områder <i class="icon-ok" ng-show="isKritiskeOmraderCleared()"></i>
               </a>
           </li>
           <li ui-sref-active="active">
@@ -71,6 +71,9 @@
   <script src="controllers/rute/rute.distanse.controller.js"></script>
   <script src="controllers/rute/rute.tidsplan.controller.js"></script>
   <script src="controllers/kritiske-omrader/kritiske.omrader.egenskaper.controller.js"></script>
+  <script src="controllers/kritiske-omrader/kritiske.omrader.sjekk.controller.js"></script>
+  <script src="controllers/kritiske-omrader/kritiske.omrader.nedkjoring.controller.js"></script>
+  <script src="controllers/planleggingsskjema.controller.js"></script>
   
   <!-- Directives -->
   <script src="directives/nveCanvas.js"></script>

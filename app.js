@@ -143,6 +143,19 @@ myapp.run(function($rootScope, $timeout) {
         $timeout(function(){containerObject.progressbarStyle.width = endWidth;}, 500);
     };
 
+    $rootScope.isInfoCleared = function () {
+        return ($rootScope.info.skredvarsel.item.cleared && $rootScope.info.vaer.item.cleared && $rootScope.info.alpineFarer.item.cleared);
+    };
+    $rootScope.isUtstyrCleared = function () {
+        return ($rootScope.utstyr.list.item.cleared && $rootScope.utstyr.deltakere.item.cleared);
+    };
+    $rootScope.isRuteCleared = function () {
+        return ($rootScope.rute.rutevalg.item.cleared && $rootScope.rute.distanse.item.cleared && $rootScope.rute.tidsplan.item.cleared);
+    };
+    $rootScope.isKritiskeOmraderCleared = function () {
+        return ($rootScope.kritiskeOmrader.egenskaper.item.cleared && $rootScope.kritiskeOmrader.sjekk.item.cleared && $rootScope.kritiskeOmrader.nedkjoring.item.cleared);
+    };
+
   
 });
 
@@ -235,7 +248,8 @@ myapp.config(function($stateProvider, $urlRouterProvider){
     
     .state('planleggingsskjema', {
         url: "/planleggingsskjema",
-        templateUrl: "partials/views/planleggingsskjema.html"
+        templateUrl: "partials/views/planleggingsskjema.html",
+       controller: "planleggingsskjemaCtrl"
     });
       
   
