@@ -1,23 +1,22 @@
-<h3>Tidsplan</h3>
-<p>Bruk følgende opplysninger for å beregne den totale turtiden for {{turTittel}} ({{hoydeMeter}} høydemeter).</p>
+<p class="lead">Bruk følgende opplysninger for å beregne den totale turtiden for {{turTittel}} ({{hoydeMeter}} høydemeter).</p>
 
 <div class="row">
   <div class="span4">
     <label><strong>Oppstigning:</strong>
       300 hm per time
-      <input type="number" min="0" ng-model="rute.tidsplan.oppstigning">
+      <input type="number" min="0" ng-model="rute.tidsplan.svar.oppstigning">
     </label>
   </div>
   <div class="span4">
     <label><strong>Nedfart:</strong>
       1/3 av tiden opp
-      <input type="number" step="0.5" min="0" ng-model="rute.tidsplan.nedfart">
+      <input type="number" step="0.5" min="0" ng-model="rute.tidsplan.svar.nedfart">
     </label>
   </div>
   <div class="span4">
     <label><strong>Pause:</strong>
       Beregn minst en halvtime.
-      <input type="number" min="0" step="0.25" ng-model="rute.tidsplan.pause">
+      <input type="number" min="0" step="0.25" ng-model="rute.tidsplan.svar.pause">
     </label>
   </div>
 </div>
@@ -26,7 +25,7 @@
   <div class="span4"></div>
   <div class="span4">
     <strong>Total tid:</strong>
-    {{rute.tidsplan.oppstigning + rute.tidsplan.nedfart + rute.tidsplan.pause}} timer
+    {{rute.tidsplan.svar.oppstigning + rute.tidsplan.svar.nedfart + rute.tidsplan.svar.pause}} timer
   </div>
   <div class="span4"></div>
 </div>
@@ -40,25 +39,25 @@
   </div>
   <div class="span4">
     <ul class="inline">
-    <li><label class="radio"><input type="radio" ng-model="rute.tidsplan.spesifikkStart" value="true"> Ja</label></li>
-    <li><label class="radio"><input type="radio" ng-model="rute.tidsplan.spesifikkStart" value="false"> Nei</label></li>
+    <li><label class="radio"><input type="radio" ng-model="rute.tidsplan.svar.spesifikkStart" value="true"> Ja</label></li>
+    <li><label class="radio"><input type="radio" ng-model="rute.tidsplan.svar.spesifikkStart" value="false"> Nei</label></li>
     </ul>
   </div>
 </div>
 
 <div class="row">
-  <div class="span6" ng-show="rute.tidsplan.spesifikkStart">
+  <div class="span6" ng-show="rute.tidsplan.svar.spesifikkStart">
     <p>På grunn av oppvarming bør turen avsluttes før kl. 12</p>
     <p>Når vil dere starte? Skriv en starttid (0-24).</p>
-    <input type="number" ng-model="rute.tidsplan.startTid" max="24" min="0">
+    <input type="number" ng-model="rute.tidsplan.svar.startTid" max="24" min="0">
   </div>
-  <div class="span6" ng-show="rute.tidsplan.spesifikkStart == 'false'">
+  <div class="span6" ng-show="rute.tidsplan.svar.spesifikkStart == 'false'">
     <p>Når vil dere starte? Skriv en starttid (0-24).</p>
-    <input type="number" ng-model="rute.tidsplan.startTid" max="24" min="0">
+    <input type="number" ng-model="rute.tidsplan.svar.startTid" max="24" min="0">
   </div>
   
 </div>
 
-
+<div nve-skred-footer></div>
 
 

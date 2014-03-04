@@ -13,13 +13,33 @@
   <div class="container">
     <div class="navbar">
       <div class="navbar-inner">
-        <a class="brand" ui-sref="start">Skredskolen</a>
+        <a class="brand" ui-sref="start" ng-bind="turTittel"></a>
         <ul class="nav">
-          <li ui-sref-active="active"><a ui-sref="info.skredvarsel">1. Informasjon <i class="icon-ok" ng-show="info.skredvarsel.item.cleared && info.vaer.item.cleared && info.alpineFarer.item.cleared"></i></a></li>
-          <li ui-sref-active="active"><a ui-sref="utstyr.list">2. Utstyr</a></li>
-          <li ui-sref-active="active"><a ui-sref="rute.rutevalg">3. Rute</a></li>
-          <li ui-sref-active="active"><a ui-sref="kritiske-omrader.egenskaper">4. Kritiske områder</a></li>
-          <li ui-sref-active="active"><a ui-sref="planleggingsskjema">5. Planleggingsskjema</a></li>
+          <li ui-sref-active="active">
+              <a ui-sref="info.skredvarsel">
+                  1. Informasjon <i class="icon-ok" ng-show="info.skredvarsel.item.cleared && info.vaer.item.cleared && info.alpineFarer.item.cleared"></i>
+              </a>
+          </li>
+          <li ui-sref-active="active">
+              <a ui-sref="utstyr.list">
+                  2. Utstyr <i class="icon-ok" ng-show="utstyr.list.item.cleared && utstyr.deltakere.item.cleared"></i>
+              </a>
+          </li>
+          <li ui-sref-active="active">
+              <a ui-sref="rute.rutevalg">
+                  3. Rute <i class="icon-ok" ng-show="rute.rutevalg.item.cleared && rute.distanse.item.cleared && rute.tidsplan.item.cleared"></i>
+              </a>
+          </li>
+          <li ui-sref-active="active">
+              <a ui-sref="kritiske-omrader.egenskaper">
+                  4. Kritiske områder <i class="icon-ok" ng-show="kritiskeOmrader.egenskaper.item.cleared && kritiskeOmrader.sjekk.item.cleared && kritiskeOmrader.nedkjoring.item.cleared"></i>
+              </a>
+          </li>
+          <li ui-sref-active="active">
+              <a ui-sref="planleggingsskjema">
+                  5. Planleggingsskjema
+              </a>
+          </li>
         </ul>
       </div>
     </div>

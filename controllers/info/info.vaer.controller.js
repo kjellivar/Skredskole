@@ -1,5 +1,7 @@
 myapp.controller("infoVaerCtrl", function($scope, $rootScope){
 
+    $scope.containerObject = $scope.info.vaer;
+
     $scope.nedborLabels =
       [{title: "Ingen nedbør", key: "ingenNedbor"},
       {title: "Snø", key: "sno"},
@@ -14,10 +16,15 @@ myapp.controller("infoVaerCtrl", function($scope, $rootScope){
       {title: "Kuling, storm", key: "kulingStorm"}];
 
     $scope.$watchCollection('info.vaer.svar', function(newAnswers, oldAnswers) {
-        $scope.sjekkFasit(newAnswers, $scope.info.vaer);
+        $scope.sjekkFasit($scope.containerObject);
     });
 
-    $rootScope.forrige = "info/skredvarsel";
-    $rootScope.neste = "info/alpine-farer";
+    $scope.visAntallKorrekteSvar =  function() {
+        var newAnswers = $scope.containerObject.svar;
+        $scope.runProgressbarAnimation($scope.containerObject);
+    };
+
+    $scope.forrige = "info/skredvarsel";
+    $scope.neste = "info/alpine-farer";
   
 });

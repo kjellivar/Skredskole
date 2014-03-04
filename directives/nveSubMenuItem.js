@@ -7,3 +7,8 @@ myapp.directive('nveSubMenuItem', function() {
     }
   };
 })
+.directive('nveSkredFooter', function() {
+    return {
+        templateUrl: 'partials/directives/nveSkredFooter.html'
+    };
+});

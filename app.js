@@ -1,6 +1,6 @@
 var myapp = angular.module('myapp', ["ui.router"]);
 
-myapp.run(function($rootScope, $state) {
+myapp.run(function($rootScope, $timeout) {
   
     var MenuItem = function(navn, link, fasit){
         return {
@@ -14,7 +14,6 @@ myapp.run(function($rootScope, $state) {
 
     // Opprettelse av container-objects for hver modul. Svar blir lagret på hvert objekt
     $rootScope.info = {
-        cleared: false,
         skredvarsel: new MenuItem("Skredvarsel", ".skredvarsel", {
             faregrad: 2,
             //middelsBratteHeng: true,
@@ -53,14 +52,39 @@ myapp.run(function($rootScope, $state) {
         })
     };
 
-    $rootScope.utstyr = {cleared: false};
+    $rootScope.utstyr = {
+        list: new MenuItem("Utstyr", ".list", {
+            skredsoker: true,
+            spade: true,
+            sokestang: true,
+            //ballongsekkAvalungSkredball: true,
+            kartKompassHoydemaler: true,
+            mobiltelefon: true,
+            forstehjelpssett: true
+            //bivuakksekk: true
+        }),
+        deltakere: new MenuItem("Deltakere", ".deltakere", {
 
-    $rootScope.rute = {
-        cleared:false,
-        tidsplan: new MenuItem("Tidsplan", ".tidsplan", {oppstigning: 3, nedfart: 1, pause: 0.5})
+        })
     };
 
-    $rootScope.kritiskeOmrader = {cleared: false};
+    $rootScope.rute = {
+        tidsplan: new MenuItem("Tidsplan", ".tidsplan", {
+            oppstigning: 3,
+            nedfart: 1,
+            pause: 0.5,
+            spesifikkStart: "required",
+            startTid: "required"
+        }),
+        rutevalg: new MenuItem("Rutevalg", ".rutevalg", {rutevalg: true}),
+        distanse: new MenuItem("Distanse", ".distanse", {lengde: "required", hoyde: 931})
+    };
+
+    $rootScope.kritiskeOmrader = {
+        egenskaper: new MenuItem("Egenskaper", ".egenskaper", {}),
+        sjekk: new MenuItem("Sjekk", ".sjekk", {}),
+        nedkjoring: new MenuItem("Nedkjøring", ".nedkjoring", {})
+    };
 
     //Tur-spesifikk info
     $rootScope.turTittel = 'Kyrkjebønosi';
@@ -71,7 +95,8 @@ myapp.run(function($rootScope, $state) {
     $rootScope.vaerLink = 'http://www.yr.no/sted/Norge/Buskerud/Hemsedal/Hemsedal~515335/';
     $rootScope.ruteTekst = 'Start ved grustaket ved Kyrkjebøen. Følg sommerstien nordøstover gjennom skogen i overkant av bratt område ned mot bekken. Når det blir brattere dreier en oppover mot nord -nordvest. På cirka 1120moh kommer man ut av skogen og møter et bratt heng hvor selvutløste skred er observert. Dette henget ligger i le for vestavinden som er rådende i området. Henget leder opp til en rygg som er naturlig å følge videre oppover. Ryggen er preget av fremstikkende steiner og renneformasjoner som kan samle snø. Etter hvert vil helningen avta og man kan følge ryggen nordover til toppen. Det finnes flere alternative nedfarter, hvor alle går i bratt terreng (> 30°), og flere inneholder terrengfeller som bekkedaler og skog.';
 
-    $rootScope.sjekkFasit = function(newAnswers, containerObject) {
+    $rootScope.sjekkFasit = function(containerObject) {
+        var newAnswers = containerObject.svar;
         if(containerObject.antallFasitSvar === undefined){
             containerObject.antallFasitSvar = 0.0;
             angular.forEach(containerObject.fasit, function () {
@@ -85,7 +110,7 @@ myapp.run(function($rootScope, $state) {
 
         if(angular.isObject(newAnswers)){
             angular.forEach(newAnswers, function(val, key){
-                if(val == containerObject.fasit[key]){
+                if(val == containerObject.fasit[key] || (containerObject.fasit[key] === "required" && val)){
                     antallRiktigeSvar = antallRiktigeSvar + 1;
                 } else if(val !== false) {
                     antallRiktigeSvar = antallRiktigeSvar > 0 ? antallRiktigeSvar - 1 : 0;
@@ -112,13 +137,12 @@ myapp.run(function($rootScope, $state) {
 
     }
 
-    $rootScope.hidePageControls = function() {
-        if($state.current.name === 'start') {
-            return true;
-        } else {
-            return false;
-        }
+    $rootScope.runProgressbarAnimation = function(containerObject){
+        var endWidth = containerObject.progressbarStyle.width;
+        containerObject.progressbarStyle.width = '0%';
+        $timeout(function(){containerObject.progressbarStyle.width = endWidth;}, 500);
     };
+
   
 });
 
@@ -198,6 +222,16 @@ myapp.config(function($stateProvider, $urlRouterProvider){
         templateUrl: "partials/views/kritiske-omrader/kritiske.omrader.egenskaper.html",
         controller: "kritiskeOmraderEgenskaperCtrl"
     })
+      .state('kritiske-omrader.sjekk', {
+          url: "/sjekk",
+          templateUrl: "partials/views/kritiske-omrader/kritiske.omrader.sjekk.html",
+          controller: "kritiskeOmraderSjekkCtrl"
+      })
+      .state('kritiske-omrader.nedkjoring', {
+          url: "/nedkjoring",
+          templateUrl: "partials/views/kritiske-omrader/kritiske.omrader.nedkjoring.html",
+          controller: "kritiskeOmraderNedkjoringCtrl"
+      })
     
     .state('planleggingsskjema', {
         url: "/planleggingsskjema",

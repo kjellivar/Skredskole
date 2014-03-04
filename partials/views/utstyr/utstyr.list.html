@@ -1,35 +1,46 @@
-<h3>Utstyr</h3>
-<p>Sjekk om dere har alt av nødvendig utstyr</p>
 
 <div class="row">
-  <div class="span12">
-    <strong>Alle turdeltakere</strong>
-    <ul class="inline">
-      <li ng-repeat="item in utstyr.liste.alleTurDeltakere">
-        <label class="checkbox"><input type="checkbox" ng-model="item.model"> {{item.title}}</label>
-      </li>
-    </ul>
+  <div class="span6">
+      <div class="row">
+          <div class="span6">
+              <p class="lead">Sjekk om dere har alt av nødvendig utstyr</p>
+          </div>
+      </div>
+      <div class="row">
+          <div class="span6">
+            <strong>Alle turdeltakere</strong>
+            <ul class="inline">
+              <li ng-repeat="item in alleTurDeltakereLabels">
+                <label class="checkbox"><input type="checkbox" ng-model="utstyr.list.svar[item.key]"> {{item.title}}</label>
+              </li>
+            </ul>
+          </div>
+      </div>
+      <div class="row">
+          <div class="span6">
+              <strong>Tilleggsutstyr</strong>
+              <ul class="inline">
+                  <li ng-repeat="item in tilleggsUtstyrLabels">
+                      <label class="checkbox"><input type="checkbox" ng-model="utstyr.list.svar[item.key]"> {{item.title}}</label>
+                  </li>
+              </ul>
+          </div>
+      </div>
+      <div class="row">
+          <div class="span6">
+              <strong>Annet</strong>
+              <ul class="inline">
+                  <li ng-repeat="item in annetLabels">
+                      <label class="checkbox"><input type="checkbox" ng-model="utstyr.list.svar[item.key]"> {{item.title}}</label>
+                  </li>
+              </ul>
+          </div>
+      </div>
   </div>
+    <div class="span6">
+        <img src="img/utstyr/oversikt.jpg">
+    </div>
 </div>
 
-<div class="row">
-  <div class="span12">
-    <strong>Tilleggsutstyr</strong>
-    <ul class="inline">
-      <li ng-repeat="item in utstyr.liste.tilleggsUtstyr">
-        <label class="checkbox"><input type="checkbox" ng-model="item.model"> {{item.title}}</label>
-      </li>
-    </ul>
-  </div>
-</div>
+<div nve-skred-footer></div>
 
-<div class="row">
-  <div class="span12">
-    <strong>Annet</strong>
-    <ul class="inline">
-      <li ng-repeat="item in utstyr.liste.annet">
-        <label class="checkbox"><input type="checkbox" ng-model="item.model"> {{item.title}}</label>
-      </li>
-    </ul>
-  </div>
-</div>

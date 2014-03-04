@@ -1,22 +1,27 @@
-myapp.controller("ruteTidsplanCtrl", function($scope, $rootScope, $log){
-  
-  if($rootScope.rute.tidsplan === undefined){
-    $scope.rute.tidsplan = {};
-    $scope.rute.tidsplan.oppstigning = 1;
-    $scope.rute.tidsplan.nedfart = 1;
-    $scope.rute.tidsplan.pause = 0.5;
-    
-    
-    
-  }
-  
-  $scope.checkFasit = function(scope, key){
-    if(scope[key] == scope.fasit[key]){
-      //$scope.
-    }
-  }
-  
-  $rootScope.forrige = "rute/distanse";
-  $rootScope.neste = "kritiske-omrader/egenskaper";
+myapp.controller("ruteTidsplanCtrl", function($scope){
+
+
+    $scope.forrige = "rute/distanse";
+    $scope.neste = "kritiske-omrader/egenskaper";
+    $scope.containerObject = $scope.rute.tidsplan;
+
+    $scope.$watchCollection('rute.tidsplan.svar', function() {
+        $scope.sjekkFasit($scope.containerObject);
+    });
+
+    $scope.visAntallKorrekteSvar =  function() {
+
+        var newAnswers = $scope.containerObject.svar;
+        $scope.runProgressbarAnimation($scope.containerObject);
+
+        $scope.alerts = [{
+            show: !(newAnswers.oppstigning && newAnswers.nedfart && newAnswers.pause),
+            text: "Fyll inn alle tider!"
+        }, {
+            show: !(newAnswers.startTid && newAnswers.spesifikkStart),
+            text: "Krever skredfaresituasjonen at man starter tidlig på morgenen?"
+        }];
+
+    };
   
 });

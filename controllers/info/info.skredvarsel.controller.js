@@ -1,6 +1,6 @@
 myapp.controller("infoSkredvarselCtrl", function($scope, $rootScope, $timeout){
 
-
+    $scope.containerObject = $scope.info.skredvarsel;
   
     $scope.himmelRetningerLabels =
       [{title: "N", key: "n"}, {title: "NØ", key: "no"}, {title: "Ø", key: "o"}, {title: "SØ", key: "so"},
@@ -28,25 +28,37 @@ myapp.controller("infoSkredvarselCtrl", function($scope, $rootScope, $timeout){
                     {grad: 5, class: 'btn-primary'}];
 
 
-    $scope.visAntallKorrekteSvar =  function(newAnswers) {
-        $scope.info.skredvarsel.progressbarStyle.width = '0%';
-        $timeout(function(){$scope.sjekkFasit(newAnswers, $scope.info.skredvarsel)}, 500);
-        $scope.himmelRetningerBesvart = newAnswers.n || newAnswers.no || newAnswers.o || newAnswers.so || newAnswers.s || newAnswers.sv || newAnswers.v || newAnswers.nv;
-        $scope.snodekkeBesvart = newAnswers.nySno || newAnswers.vindtransportertSno || newAnswers.svakeLagISnopakken || newAnswers.vatOgVannmettetSno;
-        $scope.utsatteOmraderBesvart = newAnswers.middelsBratteHeng || newAnswers.bratteHeng || newAnswers.veldigBratteHeng || newAnswers.ekstremtBratteHeng || newAnswers.omraderNaerRygger || newAnswers.terrengFeller || newAnswers.overgangFraLiteTilMyeSno;
-        $scope.hoydenivaBesvart = newAnswers.hoydeniva && true;
-        $scope.faregradBesvart = newAnswers.faregrad && true;
-        $scope.visAlert = !($scope.himmelRetningerBesvart && $scope.snodekkeBesvart && $scope.utsatteOmraderBesvart && $scope.hoydenivaBesvart && $scope.faregradBesvart);
-        angular.element("#alertPane").slideToggle();
+    $scope.visAntallKorrekteSvar =  function() {
+
+        var newAnswers = $scope.containerObject.svar;
+        $scope.runProgressbarAnimation($scope.containerObject);
+
+        $scope.alerts = [{
+            show: !(newAnswers.n || newAnswers.no || newAnswers.o || newAnswers.so || newAnswers.s || newAnswers.sv || newAnswers.v || newAnswers.nv),
+            text: "Hva er mest utsatt himmelretning?"
+        },{
+            show: !(newAnswers.nySno || newAnswers.vindtransportertSno || newAnswers.svakeLagISnopakken || newAnswers.vatOgVannmettetSno),
+            text: "Hvordan er snødekket?"
+        },{
+            show: !(newAnswers.middelsBratteHeng || newAnswers.bratteHeng || newAnswers.veldigBratteHeng || newAnswers.ekstremtBratteHeng || newAnswers.omraderNaerRygger || newAnswers.terrengFeller || newAnswers.overgangFraLiteTilMyeSno),
+            text: "Hva er mest utsatte områder?"
+        },{
+            show: !newAnswers.hoydeniva,
+            text: "Hva er mest utsatt høydenivå?"
+        },{
+            show: !newAnswers.faregrad,
+            text: "Hva er varslet faregrad?"
+        }];
+
+
     };
 
-    /*$scope.$watchCollection('info.skredvarsel.svar', function(newAnswers) {
-        angular.element("#alertPane").slideUp();
-        $scope.sjekkFasit(newAnswers, $scope.info.skredvarsel);
-    });*/
+    $scope.$watchCollection('info.skredvarsel.svar', function() {
+        $scope.sjekkFasit($scope.containerObject);
+    });
 
-    $rootScope.forrige = false;
-    $rootScope.neste = "info/vaer";
+    $scope.forrige = false;
+    $scope.neste = "info/vaer";
 
 
 

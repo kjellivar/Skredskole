@@ -24,53 +24,30 @@
 </div>
 
 <div class="row">
-  <div class="span6">
+  <div class="span6" ng-repeat="index in [1, 2]">
     <div ng-show="count > 1" class="well">
-      <h3>Kritisk område #1</h3>
+      <h3>Kritisk område #<span ng-bind="index"></span></h3>
       <label><strong>Grader helning:</strong> </label>
-      <input type="number" ng-model="kritiskeOmrader.egenskaper.omrader[0].helning">
+      <input type="number" ng-model="kritiskeOmrader.egenskaper.svar['helning' + index]">
       <label><strong>Høyde i meter:</strong></label>
-      <input type="number" ng-model="kritiskeOmrader.egenskaper.omrader[0].hoyde">
+      <input type="number" ng-model="kritiskeOmrader.egenskaper.svar['hoyde' + index]">
       
       <h4>Himmelretning</h4>
       <ul class="inline">
-        <li ng-repeat="item in kritiskeOmrader.egenskaper.omrader[0].himmelRetninger">
+        <li ng-repeat="item in himmelRetningerLabels">
           <label class="checkbox">
-            <input type="checkbox" ng-model="item.model">{{item.title}}</label>
+            <input type="checkbox" ng-model="kritiskeOmrader.egenskaper.svar[item.key + index]">{{item.title}}</label>
         </li>
       </ul>
       <ul class="unstyled">
-        <li ng-repeat="item in kritiskeOmrader.egenskaper.omrader[0].utsatteOmrader">
+        <li ng-repeat="item in utsatteOmraderLabels">
           <label class="checkbox">
-            <input type="checkbox" ng-model="item.model">{{item.title}}</label>
+            <input type="checkbox" ng-model="kritiskeOmrader.egenskaper.svar[item.key + index]">{{item.title}}</label>
         </li>
       </ul>
     </div>
   </div>
-  <div class="span6">
 
-    <div ng-show="count > 1" class="well">
-      <h3>Kritisk område #2</h3>
-      <label><strong>Grader helning:</strong></label>
-      <input type="number" ng-model="kritiskeOmrader.egenskaper.omrader[1].helning">
-      
-      <label><strong>Høyde i meter:</strong></label>
-      <input type="number" ng-model="kritiskeOmrader.egenskaper.omrader[1].hoyde">
-      
-      <h4>Himmelretning</h4>
-      <ul class="inline">
-        <li ng-repeat="item in kritiskeOmrader.egenskaper.omrader[1].himmelRetninger">
-          <label class="checkbox">
-            <input type="checkbox" ng-model="item.model">{{item.title}}</label>
-        </li>
-      </ul>
-      <ul class="unstyled">
-        <li ng-repeat="item in kritiskeOmrader.egenskaper.omrader[1].utsatteOmrader">
-          <label class="checkbox">
-            <input type="checkbox" ng-model="item.model">{{item.title}}</label>
-        </li>
-      </ul>
-    </div>
-  </div>
 </div>
 
+<div nve-skred-footer></div>
