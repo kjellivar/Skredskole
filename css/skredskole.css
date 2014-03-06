@@ -24,7 +24,3 @@
 div.labels:hover {
     cursor:pointer;
 }
-
-.probabilitysprite {
-    background: url("Images/likelihood/probabilitysprite.png") top left no-repeat;
-}

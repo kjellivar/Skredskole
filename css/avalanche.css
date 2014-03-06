@@ -274,7 +274,7 @@
 }
 
 
-.damagesprite{ background:url("Images/DamageSize/damagesprite.png") top left no-repeat; }
+.damagesprite{ background:url("images/DamageSize/damagesprite.png") top left no-repeat; }
 .damage5{ width:137px; height:164px; background-position:-10px -10px; }
 .damage4{ width:137px; height:164px; background-position:-10px -184px; }
 .damage3{ width:137px; height:164px; background-position:-10px -358px; }
@@ -282,7 +282,7 @@
 
 
 
-.heightsprite{ background:url("Images/elevation/heightsprite.png") top left no-repeat; }
+.heightsprite{ background:url("images/elevation/heightsprite.png") top left no-repeat; }
 .heightfill4{ width:137px; height:164px; background-position:-10px -10px; }
 .heightfill3{ width:137px; height:164px; background-position:-10px -184px; }
 .heightfill2{ width:137px; height:164px; background-position:-10px -358px; }
