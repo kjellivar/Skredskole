@@ -16,13 +16,20 @@
       class="btn" ng-click="info.skredvarsel.svar.faregrad = item.grad" ng-bind="item.grad" ng-class="{active: info.skredvarsel.svar.faregrad == item.grad}"></button>
     </div>
   </div>
+    <div class="span4">
+        <label><strong>Utsatt høydenivå over / under</strong></label>
+        <div class="input-append">
+            <input class="span2" type="number" min="0" step="100" ng-model="info.skredvarsel.svar.hoydeniva">
+            <span class="add-on">m</span>
+        </div>
+    </div>
 
 </div>
 
 <hr>
 
 <div class="row">
-  <div class="span6">
+  <div class="span4">
     <strong>Utsatte områder</strong>
     <ul class="unstyled">
       <li ng-repeat="item in utsatteOmraderLabels">
@@ -40,22 +47,93 @@
   </div>
 </div>
 
+<h5>Utsatte himmelretninger</h5>
 <div class="row">
-  <div class="span3">
-    <strong>Utsatte himmelretninger</strong>
-    <ul class="inline">
-      <li ng-repeat="item in himmelRetningerLabels">
-        <label class="checkbox"><input type="checkbox" ng-model="info.skredvarsel.svar[item.key]"> {{item.title}}</label>
-      </li>
-    </ul>
-  </div>
-  <div class="offset3 span6">
-    <label><strong>Utsatt høydenivå over / under</strong></label>
-    <div class="input-append">
-      <input class="span2" type="number" min="0" step="100" ng-model="info.skredvarsel.svar.hoydeniva">
-      <span class="add-on">m</span>
+
+    <div class="span4">
+
+        <svg height="200" width="200" style="fill:white;stroke:#ccc;stroke-width:1" class="skredskoleCompass">
+            <polygon points="100,100 138,8 62,8"
+                     ng-click="info.skredvarsel.svar.n = !info.skredvarsel.svar.n"
+                     ng-class="{selected: info.skredvarsel.svar.n}" />
+
+            <polygon points="100,100 192,62 138,8"
+                     ng-click="info.skredvarsel.svar.no = !info.skredvarsel.svar.no"
+                     ng-class="{selected: info.skredvarsel.svar.no}"/>
+
+            <polygon points="100,100 192,138 192,62"
+                     ng-click="info.skredvarsel.svar.o = !info.skredvarsel.svar.o"
+                     ng-class="{selected: info.skredvarsel.svar.o}"/>
+
+            <polygon points="100,100 138,192 192,138"
+                     ng-click="info.skredvarsel.svar.so = !info.skredvarsel.svar.so"
+                     ng-class="{selected: info.skredvarsel.svar.so}"/>
+
+            <polygon points="100,100 62,192 138,192"
+                     ng-click="info.skredvarsel.svar.s = !info.skredvarsel.svar.s"
+                     ng-class="{selected: info.skredvarsel.svar.s}"/>
+
+            <polygon points="100,100 8,138 62,192"
+                     ng-click="info.skredvarsel.svar.sv = !info.skredvarsel.svar.sv"
+                     ng-class="{selected: info.skredvarsel.svar.sv}"/>
+
+            <polygon points="100,100 8,62 8,138"
+                     ng-click="info.skredvarsel.svar.v = !info.skredvarsel.svar.v"
+                     ng-class="{selected: info.skredvarsel.svar.v}"/>
+
+            <polygon points="100,100 62,8 8,62"
+                     ng-click="info.skredvarsel.svar.nv = !info.skredvarsel.svar.nv"
+                     ng-class="{selected: info.skredvarsel.svar.nv}"/>
+
+            <g font-size="12" fill="#666" stroke="none" text-anchor="middle">
+                <text x="100" y="20">N</text>
+                <text x="185" y="105">Ø</text>
+                <text x="100" y="190">S</text>
+                <text x="15" y="105">V</text>
+            </g>
+        </svg>
+
     </div>
-  </div>
+    <div class="span4">
+        <div class="damagesprite damagesize damage{{info.skredvarsel.svar.skredstorrelse}}">
+            <div class="labels damage5Label" ng-click="info.skredvarsel.svar.skredstorrelse = 5" ng-class="{activelabel: info.skredvarsel.svar.skredstorrelse == 5}">
+                <span>SVÆRT STORE</span>
+            </div>
+            <div class="labels damage4Label" ng-click="info.skredvarsel.svar.skredstorrelse = 4" ng-class="{activelabel: info.skredvarsel.svar.skredstorrelse == 4}">
+                <span>STORE</span>
+            </div>
+            <div class="labels damage3Label" ng-click="info.skredvarsel.svar.skredstorrelse = 3" ng-class="{activelabel: info.skredvarsel.svar.skredstorrelse == 3}">
+                <span>MIDDELS</span>
+            </div>
+            <div class="labels damage2Label" ng-click="info.skredvarsel.svar.skredstorrelse = 2" ng-class="{activelabel: info.skredvarsel.svar.skredstorrelse == 2}">
+                <span>SMÅ</span>
+            </div>
+
+            <div id="damagefooter" class="labels activelabel damagefooter">
+                <span>SKREDSTØRRELSE</span>
+            </div>
+        </div>
+
+        <div class="probabilitysprite probability probability{{info.skredvarsel.svar.sannsynlighet}}">
+            <div class="labels probability7Label" ng-click="info.skredvarsel.svar.sannsynlighet = 7" ng-class="{activelabel: info.skredvarsel.svar.sannsynlighet == 7}">
+                <span>SVÆRT SANNSYNLIG</span>
+            </div>
+            <div class="labels probability5Label" ng-click="info.skredvarsel.svar.sannsynlighet = 5" ng-class="{activelabel: info.skredvarsel.svar.sannsynlighet == 5}">
+                <span>SANNSYNLIG</span>
+            </div>
+            <div class="labels probability3Label" ng-click="info.skredvarsel.svar.sannsynlighet = 3" ng-class="{activelabel: info.skredvarsel.svar.sannsynlighet == 3}">
+                <span>MULIG</span>
+            </div>
+            <div class="labels probability2Label" ng-click="info.skredvarsel.svar.sannsynlighet = 2" ng-class="{activelabel: info.skredvarsel.svar.sannsynlighet == 2}">
+                <span>LITE SANNSYNLIG</span>
+            </div>
+
+            <div id="damagefooter" class="labels activelabel damagefooter">
+                <span>SKREDSTØRRELSE</span>
+            </div>
+        </div>
+    </div>
+
 </div>
 
 

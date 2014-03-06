@@ -1,6 +1,9 @@
 myapp.controller("infoSkredvarselCtrl", function($scope, $rootScope, $timeout){
 
     $scope.containerObject = $scope.info.skredvarsel;
+
+    $scope.containerObject.svar.skredstorrelse = $scope.containerObject.svar.skredstorrelse || 2;
+    $scope.containerObject.svar.sannsynlighet = $scope.containerObject.svar.sannsynlighet || 2;
   
     $scope.himmelRetningerLabels =
       [{title: "N", key: "n"}, {title: "NØ", key: "no"}, {title: "Ø", key: "o"}, {title: "SØ", key: "so"},

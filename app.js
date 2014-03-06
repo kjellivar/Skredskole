@@ -16,6 +16,8 @@ myapp.run(function($rootScope, $timeout) {
     $rootScope.info = {
         skredvarsel: new MenuItem("Skredvarsel", ".skredvarsel", {
             faregrad: 2,
+            skredstorrelse: 3,  //2:små 3:middels 4:store 5:svært store
+            sannsynlighet: 3,  //2:lite sannsynlig 3:mulig 5:sannsynlig 7:svært sannsynlig
             //middelsBratteHeng: true,
             //bratteHeng: true,
             //veldigBratteHeng: true,

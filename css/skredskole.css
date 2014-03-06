@@ -1,0 +1,26 @@
+.skredskoleCompass {
+    fill:white;
+    stroke:#ccc;
+    stroke-width:1;
+}
+
+.skredskoleCompass text {
+    pointer-events: none;
+}
+
+.skredskoleCompass polygon:hover {
+    fill:#ccc;
+    cursor: pointer;
+}
+
+.skredskoleCompass polygon.selected {
+    fill:#999;
+}
+
+.skredskoleCompass polygon.selected g {
+    fill:#fff;
+}
+
+div.labels:hover {
+    cursor:pointer;
+}

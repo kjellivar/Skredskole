@@ -1,0 +1,290 @@
+﻿body {
+}
+
+#wind {
+    float: left;
+    background: url("images/aspect/Bakgrunn.png") no-repeat;
+    width: 137px;
+    height: 164px;
+    margin-right: 14px;
+}
+
+.aspectBase {
+    float: left;
+    background: url("images/aspect/Bakgrunn.png") no-repeat;
+    width: 137px;
+    height: 164px;
+    margin-right: 14px;
+}
+.windsprite {
+    background: url("images/aspect/windsprite.png") top left no-repeat;
+}
+
+.addMarginTop {
+    margin-top: 30px;
+    
+}
+
+.wind5 {
+    width: 44px;
+    height: 56px;
+    background-position: -10px -10px;
+    position: relative;
+    top: -136px;
+    left: 46px;
+}
+
+.wind1 {
+    width: 44px;
+    height: 56px;
+    background-position: -10px -76px;
+    position: relative;
+    top: 17px;
+    left: 47px;
+
+}
+.wind2 {
+    width: 53px;
+    height: 53px;
+    background-position: -10px -331px;
+    position: relative;
+    top: -35px;
+    left: 67px;
+
+}
+.wind8 {
+    width: 53px;
+    height: 53px;
+    background-position: -10px -142px;
+    position: relative;
+    top: -338px;
+    left: 17px;
+}
+
+.wind6 {
+    width: 53px;
+    height: 53px;
+    background-position: -10px -205px;
+    position: relative;
+    top: -191px;
+    left: 17px;
+}
+
+.wind4 {
+    width: 53px;
+    height: 53px;
+    background-position: -10px -268px;
+    position: relative;
+    top: -83px;
+    left: 67px;
+}
+
+.aspectHidden {
+    visibility: hidden;
+}
+
+.elementHidden {
+    visibility: hidden;
+}
+
+.wind7 {
+    width: 56px;
+    height: 44px;
+    background-position: -10px -394px;
+    position: relative;
+    top: -265px;
+    left: 13px;
+}
+
+.wind3 {
+    width: 56px;
+    height: 44px;
+    background-position: -10px -448px;
+    position: relative;
+    top: -58px;
+    left: 68px;
+}
+
+.windfooter{
+    position: relative;
+    top: -273px;
+/*
+    margin-left: 1px;
+    margin-right: 1px;
+*/
+    background-color: #424242;
+    border: 1px solid #999999;
+}
+.probability {
+    float: left;
+
+
+}
+
+.probability7Label {
+    position: relative;
+    top: 8px;
+
+}
+
+.probability5Label {
+    position: relative;
+    top: 22px;
+
+}
+
+.probability3Label {
+    position: relative;
+    top: 38px;
+
+}
+
+.probability2Label {
+    position: relative;
+    top: 53px;
+
+}
+
+.probabilityfooter {
+    position: relative;
+    top: 61px;
+
+}
+
+.labels {
+    text-align: center;
+    font-family: verdana;
+    font-size: 12px;
+    color: #b3b3b3;
+}
+
+.activelabel {
+    color: #ffffff;
+}
+
+.probabilitysprite {
+    background: url("images/likelihood/probabilitysprite.png") top left no-repeat;
+}
+
+.probability7 {
+    width: 137px;
+    height: 164px;
+    background-position: -10px -10px;
+}
+
+.probability5 {
+    width: 137px;
+    height: 164px;
+    background-position: -10px -184px;
+}
+
+.probability3 {
+    width: 137px;
+    height: 164px;
+    background-position: -10px -358px;
+
+}
+
+.probability2 {
+    width: 137px;
+    height: 164px;
+    background-position: -10px -532px;
+}
+/**/
+.damagesize{
+    float: left;
+    margin-right: 14px;
+}
+
+.avalancheHidden{
+    display: none;
+}
+
+.avalancheVisible{
+    display: block;
+}
+
+.damageSizeVisible{
+    display: block;
+}
+.damageSizeHidden{
+    display: none;
+}
+
+.probabilityVisible{
+    display: block;
+}
+.probabilityHidden{
+    display: none;
+}
+
+.exposedHeightVisible{
+    display: block;
+}
+
+.exposedHeightHidden{
+    display: none;
+}
+.windHidden{
+    display: none;
+}
+.windVisible{
+    display: block;
+}
+.exposedHeight{
+    float: left;
+    margin-right: 14px;
+}
+
+#exposedHeightfooter{
+    position: relative;
+    top: 138px;
+    background-color: #424242;
+    border: 1px solid #999999;
+    padding-top: 1px;
+    padding-bottom: 3px;
+
+}
+#exposedHeightFooterLabel{
+    margin-left: 2px;
+    margin-right: 2px;
+}
+
+.damagefooter{
+    position: relative;
+    top: 61px;
+}
+
+
+.damage2Label{
+    position: relative;
+    top: 53px;
+}
+.damage3Label{
+    position: relative;
+    top: 38px;
+}
+.damage4Label{
+    position: relative;
+    top: 22px;
+}
+.damage5Label{
+    position: relative;
+    top: 8px;
+}
+
+
+.damagesprite{ background:url("Images/DamageSize/damagesprite.png") top left no-repeat; }
+.damage5{ width:137px; height:164px; background-position:-10px -10px; }
+.damage4{ width:137px; height:164px; background-position:-10px -184px; }
+.damage3{ width:137px; height:164px; background-position:-10px -358px; }
+.damage2{ width:137px; height:164px; background-position:-10px -532px; }
+
+
+
+.heightsprite{ background:url("Images/elevation/heightsprite.png") top left no-repeat; }
+.heightfill4{ width:137px; height:164px; background-position:-10px -10px; }
+.heightfill3{ width:137px; height:164px; background-position:-10px -184px; }
+.heightfill2{ width:137px; height:164px; background-position:-10px -358px; }
+.heightfill1{ width:137px; height:164px; background-position:-10px -532px; }
+
