@@ -16,10 +16,7 @@ myapp.controller("infoSkredvarselCtrl", function($scope, $rootScope, $timeout){
       {title: "Våt og vannmettet snø", key: "vatOgVannmettetSno"}];
 
     $scope.utsatteOmraderLabels =
-      [{title: "Middels bratte heng (<30°)", key: "middelsBratteHeng"},
-      {title: "Bratte heng (>30°)", key: "bratteHeng"},
-      {title: "Veldig bratte heng (>35°)", key: "veldigBratteHeng"},
-      {title: "Ekstremt bratte heng (>40°)", key: "ekstremtBratteHeng"},
+      [{title: "Bratte heng (>30°)", key: "bratteHeng"},
       {title: "Områder nær rygger", key: "omraderNaerRygger"},
       {title: "Terrengfeller", key: "terrengFeller"},
       {title: "Overgang fra lite til mye snø", key: "overgangFraLiteTilMyeSno"}];
@@ -29,6 +26,12 @@ myapp.controller("infoSkredvarselCtrl", function($scope, $rootScope, $timeout){
                     {grad: 3, class: 'btn-primary'},
                     {grad: 4, class: 'btn-primary'},
                     {grad: 5, class: 'btn-primary'}];
+
+    $scope.damageSize = {values: [{v:5, t: "SVÆRT STORE"}, {v: 4, t: "STORE"}, {v: 3, t: "MIDDELS"}, {v: 2, t: "SMÅ"}],
+        footer:"SKREDSTØRRELSE"};
+
+    $scope.probability = {values: [{v:5, t: "MEGET SANNSYNLIG"}, {v: 4, t: "SANNSYNLIG"}, {v: 3, t: "MULIG"}, {v: 2, t: "LITE SANNSYNLIG"}],
+        footer:"SANNSYNLIGHET"};
 
 
     $scope.visAntallKorrekteSvar =  function() {
@@ -43,7 +46,7 @@ myapp.controller("infoSkredvarselCtrl", function($scope, $rootScope, $timeout){
             show: !(newAnswers.nySno || newAnswers.vindtransportertSno || newAnswers.svakeLagISnopakken || newAnswers.vatOgVannmettetSno),
             text: "Hvordan er snødekket?"
         },{
-            show: !(newAnswers.middelsBratteHeng || newAnswers.bratteHeng || newAnswers.veldigBratteHeng || newAnswers.ekstremtBratteHeng || newAnswers.omraderNaerRygger || newAnswers.terrengFeller || newAnswers.overgangFraLiteTilMyeSno),
+            show: !(newAnswers.bratteHeng || newAnswers.omraderNaerRygger || newAnswers.terrengFeller || newAnswers.overgangFraLiteTilMyeSno),
             text: "Hva er mest utsatte områder?"
         },{
             show: !newAnswers.hoydeniva,

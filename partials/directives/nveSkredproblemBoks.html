@@ -1,0 +1,8 @@
+<div class="damagesprite damagesize damage{{nveModel}}">
+    <div ng-repeat="item in boks.values" class="labels damage{{item.v}}Label" ng-click="changeModel(item.v)" ng-class="{activelabel: nveModel == item.v}" >
+        <span ng-bind="item.t"></span>
+    </div>
+    <div id="damagefooter" class="labels activelabel damagefooter">
+        <span ng-bind="boks.footer"></span>
+    </div>
+</div>

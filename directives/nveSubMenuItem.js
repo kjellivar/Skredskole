@@ -20,4 +20,19 @@ myapp.directive('nveSubMenuItem', function() {
         transclude: true,
         templateUrl: 'partials/directives/nveCheckboxButton.html'
     };
+})
+.directive('nveSkredproblemBoks', function() {
+    return {
+        scope: {
+            boks: '=nveSkredproblemBoks',
+            nveModel: '='
+        },
+        transclude: false,
+        templateUrl: 'partials/directives/nveSkredproblemBoks.html',
+        link: function(scope){
+            scope.changeModel = function(val){
+                scope.nveModel = val;
+            }
+        }
+    };
 });

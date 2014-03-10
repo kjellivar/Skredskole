@@ -23,4 +23,8 @@
 
 div.labels:hover {
     cursor:pointer;
+    color:black;
+}
+div.labels.activelabel:hover {
+    color:white;
 }
