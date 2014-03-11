@@ -1,3 +1,5 @@
+
+/* Himmelretninger */
 .skredskoleCompass {
     fill:white;
     stroke:#ccc;
@@ -21,10 +23,17 @@
     fill:#fff;
 }
 
+/* Varsom.no bokser */
 div.labels:hover {
     cursor:pointer;
     color:black;
 }
 div.labels.activelabel:hover {
     color:white;
+}
+
+/* Bootstrap tilpasning */
+.btn-group.btn-group-vertical button {
+    padding-left: 20px;
+    padding-right: 20px;
 }

@@ -1,9 +1,6 @@
 myapp.controller("infoSkredvarselCtrl", function($scope, $rootScope, $timeout){
 
     $scope.containerObject = $scope.info.skredvarsel;
-
-    $scope.containerObject.svar.skredstorrelse = $scope.containerObject.svar.skredstorrelse || 2;
-    $scope.containerObject.svar.sannsynlighet = $scope.containerObject.svar.sannsynlighet || 2;
   
     $scope.himmelRetningerLabels =
       [{title: "N", key: "n"}, {title: "NØ", key: "no"}, {title: "Ø", key: "o"}, {title: "SØ", key: "so"},
@@ -21,40 +18,54 @@ myapp.controller("infoSkredvarselCtrl", function($scope, $rootScope, $timeout){
       {title: "Terrengfeller", key: "terrengFeller"},
       {title: "Overgang fra lite til mye snø", key: "overgangFraLiteTilMyeSno"}];
 
-    $scope.faregrader = [{grad: 1, class: 'btn-primary'},
-                    {grad: 2, class: 'btn-primary'},
-                    {grad: 3, class: 'btn-primary'},
-                    {grad: 4, class: 'btn-primary'},
-                    {grad: 5, class: 'btn-primary'}];
+    $scope.faregrader = {values: [{v: 1, t: '1'},{v: 2, t: '2'},{v: 3, t: '3'},{v: 4, t: '4'},{v: 5, t: '5'}],
+    name: "Faregrad"};
 
-    $scope.damageSize = {values: [{v:5, t: "SVÆRT STORE"}, {v: 4, t: "STORE"}, {v: 3, t: "MIDDELS"}, {v: 2, t: "SMÅ"}],
-        footer:"SKREDSTØRRELSE"};
+    $scope.damageSize = {values: [{v:5, t: "Svært store"}, {v: 4, t: "Store"}, {v: 3, t: "Middels"}, {v: 2, t: "Små"}],
+        name:"Skredstørrelse", vertical: true};
 
-    $scope.probability = {values: [{v:5, t: "MEGET SANNSYNLIG"}, {v: 4, t: "SANNSYNLIG"}, {v: 3, t: "MULIG"}, {v: 2, t: "LITE SANNSYNLIG"}],
-        footer:"SANNSYNLIGHET"};
+    $scope.probability = {values: [{v:5, t: "Meget sannsynlig"}, {v: 4, t: "Sannsynlig"}, {v: 3, t: "Mulig"}, {v: 2, t: "Lite sannsynlig"}],
+        name:"Sannsynlighet", vertical: true};
+
+    $scope.tilleggsbelastning = {values: [{v:"naturlig", t: "Naturlig"}, {v: "liten", t: "Liten"}, {v: "stor", t: "Stor"}],
+        name:"Tilleggsbelastning"};
+
+    $scope.tilleggsbelastning = {values: [{v:"naturlig", t: "Naturlig"}, {v: "liten", t: "Liten"}, {v: "stor", t: "Stor"}],
+        name:"Tilleggsbelastning"};
 
 
     $scope.visAntallKorrekteSvar =  function() {
 
-        var newAnswers = $scope.containerObject.svar;
+        var newAnswers = $scope.containerObject.svar,
+            fasit = $scope.containerObject.fasit;
         $scope.runProgressbarAnimation($scope.containerObject);
 
-        $scope.alerts = [{
-            show: !(newAnswers.n || newAnswers.no || newAnswers.o || newAnswers.so || newAnswers.s || newAnswers.sv || newAnswers.v || newAnswers.nv),
-            text: "Hva er mest utsatt himmelretning?"
-        },{
-            show: !(newAnswers.nySno || newAnswers.vindtransportertSno || newAnswers.svakeLagISnopakken || newAnswers.vatOgVannmettetSno),
-            text: "Hvordan er snødekket?"
-        },{
-            show: !(newAnswers.bratteHeng || newAnswers.omraderNaerRygger || newAnswers.terrengFeller || newAnswers.overgangFraLiteTilMyeSno),
-            text: "Hva er mest utsatte områder?"
-        },{
-            show: !newAnswers.hoydeniva,
-            text: "Hva er mest utsatt høydenivå?"
-        },{
-            show: !newAnswers.faregrad,
-            text: "Hva er varslet faregrad?"
-        }];
+        $scope.alerts = [
+            createAlertObject("Hva er mest utsatt himmelretning?", ['n','no','o','so','s','sv','v','nv']),
+            createAlertObject("Hvordan er snødekket?", ['nySno','vindtransportertSno','svakeLagISnopakken','vatOgVannmettetSno']),
+            createAlertObject("Hva er de mest utsatte områdene?", ['bratteHeng','omraderNaerRygger','terrengFeller','overgangFraLiteTilMyeSno']),
+            createAlertObject("Hva er mest utsatt høydenivå?", ['hoydeniva']),
+            createAlertObject("Hva er varslet faregrad?", ['faregrad']),
+            createAlertObject("Hva er varslet sannsynlighet for skred?", ['sannsynlighet']),
+            createAlertObject("Hva er varslet skredstørrelse?", ['skredstorrelse']),
+            createAlertObject("Hva er varslet tilleggsbelastning?", ['tilleggsbelastning'])
+        ];
+
+        function createAlertObject(text, keys){
+            var show = false;
+            var i = 0;
+            for(i = 0; i < keys.length; i = i + 1){
+                if(newAnswers[keys[i]] !== fasit[keys[i]] && !(newAnswers[keys[i]] === false || fasit[keys[i]] === undefined)){
+                    show = true;
+                    break;
+                }
+            }
+
+            return {
+                text: text,
+                show: show
+            }
+        }
 
 
     };

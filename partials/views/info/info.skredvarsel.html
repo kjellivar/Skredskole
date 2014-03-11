@@ -1,30 +1,22 @@
 
 
-<p class="lead">I skredvarselet finner du viktig informasjon om den generelle skredfaren i området.
-    <span ng-bind="infoVarslingsOmrade"></span> Skredvarslet finner du på <a target="nveSkredskoleVindu" ng-href="{{skredvarselLink}}">Varsom.no</a></p>
+<p class="lead">
+    I skredvarselet finner du viktig informasjon om den generelle skredfaren i området.
+    <span ng-bind="infoVarslingsOmrade"></span> Skredvarslet finner du på <a target="nveSkredskoleVindu" ng-href="{{skredvarselLink}}">Varsom.no</a>
+</p>
 
 
 <hr>
 <div class="row">
   
   <div class="span4">
-    <label><strong>Faregrad</strong></label>
-    <div class="btn-group">
-      <button ng-repeat="item in faregrader" 
-      class="btn" ng-click="info.skredvarsel.svar.faregrad = item.grad" ng-bind="item.grad" ng-class="{active: info.skredvarsel.svar.faregrad == item.grad}"></button>
-    </div>
+      <div nve-model="info.skredvarsel.svar.faregrad" nve-skredproblem-boks="faregrader"></div>
   </div>
     <div class="span4">
-        <label><strong>Tilleggsbelastning</strong></label>
-        <div class="btn-group">
-            <button class="btn" ng-click="info.skredvarsel.svar.tilleggsbelastning = 'naturlig'" ng-class="{active: info.skredvarsel.svar.tilleggsbelastning == 'naturlig'}">Naturlig</button>
-            <button class="btn" ng-click="info.skredvarsel.svar.tilleggsbelastning = 'liten'" ng-class="{active: info.skredvarsel.svar.tilleggsbelastning == 'liten'}">Liten</button>
-            <button class="btn" ng-click="info.skredvarsel.svar.tilleggsbelastning = 'stor'" ng-class="{active: info.skredvarsel.svar.tilleggsbelastning == 'stor'}">Stor</button>
-
-        </div>
+        <div nve-model="info.skredvarsel.svar.tilleggsbelastning" nve-skredproblem-boks="tilleggsbelastning"></div>
     </div>
     <div class="span4">
-        <label><strong>Utsatt høydenivå over / under</strong></label>
+        <h5>Utsatt høydenivå over / under</h5>
         <div class="input-append">
             <input class="span2" type="number" min="0" step="100" ng-model="info.skredvarsel.svar.hoydeniva">
             <span class="add-on">m</span>
@@ -37,28 +29,32 @@
 
 <div class="row">
   <div class="span4">
-    <strong>Utsatte områder</strong>
+    <h5>Utsatte områder</h5>
     <ul class="unstyled">
       <li ng-repeat="item in utsatteOmraderLabels">
         <label class="checkbox"><input type="checkbox" ng-model="info.skredvarsel.svar[item.key]"> {{item.title}}</label>
       </li>
     </ul>
   </div>
-  <div class="span6">
-    <strong>Snødekke</strong>
+  <div class="span4">
+    <h5>Snødekke</h5>
     <ul class="unstyled">
       <li ng-repeat="item in snoDekkeLabels">
         <label class="checkbox"><input type="checkbox" ng-model="info.skredvarsel.svar[item.key]"> {{item.title}}</label>
       </li>
     </ul>
   </div>
+
+    <div class="span4">
+        <div nve-model="info.skredvarsel.svar.sannsynlighet" nve-skredproblem-boks="probability"></div>
+    </div>
 </div>
 
-<h5>Utsatte himmelretninger</h5>
+
 <div class="row">
 
     <div class="span4">
-
+        <h5>Utsatte himmelretninger</h5>
         <svg height="200" width="200" style="fill:white;stroke:#ccc;stroke-width:1" class="skredskoleCompass">
             <polygon points="100,100 138,8 62,8"
                      ng-click="info.skredvarsel.svar.n = !info.skredvarsel.svar.n"
@@ -102,13 +98,9 @@
 
     </div>
     <div class="span4">
-
         <div nve-model="info.skredvarsel.svar.skredstorrelse" nve-skredproblem-boks="damageSize"></div>
-        <div nve-model="info.skredvarsel.svar.sannsynlighet" nve-skredproblem-boks="probability"></div>
-
-
-
     </div>
+
 
 </div>
 

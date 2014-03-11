@@ -1,8 +1,17 @@
+
+<h5 ng-bind="boks.name"></h5>
+<div class="btn-group" ng-class="{'btn-group-vertical':boks.vertical}">
+    <button ng-repeat="item in boks.values" class="btn" ng-click="changeModel(item.v)" ng-class="{active: nveModel == item.v, 'btn-block': boks.vertical}" >
+        <span ng-bind="item.t"></span>
+    </button>
+</div>
+
+<!--
 <div class="damagesprite damagesize damage{{nveModel}}">
     <div ng-repeat="item in boks.values" class="labels damage{{item.v}}Label" ng-click="changeModel(item.v)" ng-class="{activelabel: nveModel == item.v}" >
         <span ng-bind="item.t"></span>
     </div>
     <div id="damagefooter" class="labels activelabel damagefooter">
-        <span ng-bind="boks.footer"></span>
+        <span ng-bind="boks.name"></span>
     </div>
-</div>
+</div>-->

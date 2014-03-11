@@ -31,7 +31,7 @@ myapp.directive('nveCanvas', function($log, $timeout) {
         $timeout(function () {
             $scope.canvasContext.lineWidth = $scope.settings.lineWidth;
             $scope.clearCanvas();
-        }, 100);
+        }, 500);
       };
       
       $scope.clearCanvas = function () {
