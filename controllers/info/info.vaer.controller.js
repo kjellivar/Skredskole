@@ -1,4 +1,4 @@
-myapp.controller("infoVaerCtrl", function($scope, $rootScope){
+myapp.controller("infoVaerCtrl", function($scope, sjekkFasit, runProgressbarAnimation, AlertObject){
 
     $scope.containerObject = $scope.info.vaer;
 
@@ -15,13 +15,32 @@ myapp.controller("infoVaerCtrl", function($scope, $rootScope){
       {title: "Lett til frisk bris", key: "lettTilFriskBris"},
       {title: "Kuling, storm", key: "kulingStorm"}];
 
-    $scope.$watchCollection('info.vaer.svar', function(newAnswers, oldAnswers) {
-        $scope.sjekkFasit($scope.containerObject);
+    var keys = {nedbor: [], sikt: [], vind: []};
+    angular.forEach($scope.nedborLabels, function(val){
+        keys.nedbor.push(val.key);
+    });
+    angular.forEach($scope.siktLabels, function(val){
+        keys.sikt.push(val.key);
+    });
+    angular.forEach($scope.vindLabels, function(val){
+        keys.vind.push(val.key);
+    });
+
+    $scope.$watchCollection('info.vaer.svar', function() {
+        sjekkFasit($scope.containerObject);
     });
 
     $scope.visAntallKorrekteSvar =  function() {
-        var newAnswers = $scope.containerObject.svar;
-        $scope.runProgressbarAnimation($scope.containerObject);
+        runProgressbarAnimation($scope.containerObject);
+
+        $scope.alerts =
+            AlertObject({
+                "Er det ventet nedbør? Hvis ja, hvilken?": keys.vind,
+                "Hvordan er sikten?": keys.sikt,
+                "Vil vinden være en faktor?": keys.vind,
+                "Hvilken temperatur vil det være på 1000moh?": ['temperatur'],
+                "Hva er nullgradsgrensen?": ['nullisoterm']
+            }, $scope.containerObject);
     };
 
     $scope.forrige = "info/skredvarsel";

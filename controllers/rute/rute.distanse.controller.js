@@ -1,4 +1,4 @@
-myapp.controller("ruteDistanseCtrl", function($scope){
+myapp.controller("ruteDistanseCtrl", function($scope, sjekkFasit, runProgressbarAnimation, AlertObject){
 
     $scope.forrige = "rute/rutevalg";
     $scope.neste = "rute/tidsplan";
@@ -6,13 +6,13 @@ myapp.controller("ruteDistanseCtrl", function($scope){
     $scope.containerObject = $scope.rute.distanse;
 
     $scope.$watchCollection('rute.distanse.svar', function() {
-        $scope.sjekkFasit($scope.containerObject);
+        sjekkFasit($scope.containerObject);
     });
 
     $scope.visAntallKorrekteSvar =  function() {
 
-        var newAnswers = $scope.containerObject.svar;
-        $scope.runProgressbarAnimation($scope.containerObject);
+
+        runProgressbarAnimation($scope.containerObject);
 
         $scope.alerts = [{
             show: !(newAnswers.lengde),

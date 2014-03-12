@@ -1,4 +1,4 @@
-myapp.controller("kritiskeOmraderEgenskaperCtrl", function($scope, $rootScope){
+myapp.controller("kritiskeOmraderEgenskaperCtrl", function($scope, sjekkFasit, runProgressbarAnimation, AlertObject){
 
 
     

@@ -1,4 +1,4 @@
-myapp.controller("infoSkredvarselCtrl", function($scope, $rootScope, $timeout){
+myapp.controller("infoSkredvarselCtrl", function($scope, AlertObject, sjekkFasit, runProgressbarAnimation){
 
     $scope.containerObject = $scope.info.skredvarsel;
   
@@ -36,42 +36,24 @@ myapp.controller("infoSkredvarselCtrl", function($scope, $rootScope, $timeout){
 
     $scope.visAntallKorrekteSvar =  function() {
 
-        var newAnswers = $scope.containerObject.svar,
-            fasit = $scope.containerObject.fasit;
-        $scope.runProgressbarAnimation($scope.containerObject);
+        runProgressbarAnimation($scope.containerObject);
 
-        $scope.alerts = [
-            createAlertObject("Hva er mest utsatt himmelretning?", ['n','no','o','so','s','sv','v','nv']),
-            createAlertObject("Hvordan er snødekket?", ['nySno','vindtransportertSno','svakeLagISnopakken','vatOgVannmettetSno']),
-            createAlertObject("Hva er de mest utsatte områdene?", ['bratteHeng','omraderNaerRygger','terrengFeller','overgangFraLiteTilMyeSno']),
-            createAlertObject("Hva er mest utsatt høydenivå?", ['hoydeniva']),
-            createAlertObject("Hva er varslet faregrad?", ['faregrad']),
-            createAlertObject("Hva er varslet sannsynlighet for skred?", ['sannsynlighet']),
-            createAlertObject("Hva er varslet skredstørrelse?", ['skredstorrelse']),
-            createAlertObject("Hva er varslet tilleggsbelastning?", ['tilleggsbelastning'])
-        ];
-
-        function createAlertObject(text, keys){
-            var show = false;
-            var i = 0;
-            for(i = 0; i < keys.length; i = i + 1){
-                if(newAnswers[keys[i]] !== fasit[keys[i]] && !(newAnswers[keys[i]] === false || fasit[keys[i]] === undefined)){
-                    show = true;
-                    break;
-                }
-            }
-
-            return {
-                text: text,
-                show: show
-            }
-        }
-
+        $scope.alerts =
+            AlertObject({
+                "Hva er mest utsatt himmelretning?": ['n','no','o','so','s','sv','v','nv'],
+                "Hvordan er snødekket?": ['nySno','vindtransportertSno','svakeLagISnopakken','vatOgVannmettetSno'],
+                "Hva er de mest utsatte områdene?": ['bratteHeng','omraderNaerRygger','terrengFeller','overgangFraLiteTilMyeSno'],
+                "Hva er mest utsatt høydenivå?": ['hoydeniva'],
+                "Hva er varslet faregrad?": ['faregrad'],
+                "Hva er varslet sannsynlighet for skred?": ['sannsynlighet'],
+                "Hva er varslet skredstørrelse?": ['skredstorrelse'],
+                "Hva er varslet tilleggsbelastning?": ['tilleggsbelastning']
+            }, $scope.containerObject);
 
     };
 
     $scope.$watchCollection('info.skredvarsel.svar', function() {
-        $scope.sjekkFasit($scope.containerObject);
+        sjekkFasit($scope.containerObject);
     });
 
     $scope.forrige = false;

@@ -11,8 +11,8 @@
             <p ng-repeat="item in alerts" ng-show="item.show" ng-bind="item.text"></p>
         </div>
 
-        <div class="alert alert-success" ng-show="containerObject.item.cleared">
-            <p>Alt riktig! Bra!</p>
+        <div ng-show="containerObject.item.cleared">
+            <p class="text-success">Alt fylt ut korrekt!</p>
         </div>
 
         <div class="progress progress-striped">

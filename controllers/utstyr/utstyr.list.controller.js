@@ -1,5 +1,5 @@
 
-myapp.controller("utstyrListCtrl", function($scope, $rootScope){
+myapp.controller("utstyrListCtrl", function($scope, sjekkFasit, runProgressbarAnimation, AlertObject){
 
     $scope.containerObject = $scope.utstyr.list;
 
@@ -20,27 +20,19 @@ myapp.controller("utstyrListCtrl", function($scope, $rootScope){
 
     //required stuff
     $scope.$watchCollection('utstyr.list.svar', function() {
-        $scope.sjekkFasit($scope.containerObject);
+        sjekkFasit($scope.containerObject);
     });
 
     $scope.visAntallKorrekteSvar =  function() {
 
-        var newAnswers = $scope.containerObject.svar;
-        $scope.runProgressbarAnimation($scope.containerObject);
-
-        $scope.alerts = [{
-            show: !(newAnswers.skredsoker && newAnswers.spade && newAnswers.sokestang),
-            text: "Skredsøker, spade og sondestang er helt nødvendig for å kunne ferdes i snøskredterreng!"
-        },{
-            show: !newAnswers.mobiltelefon,
-            text: "En mobiltelefon er nyttig i tilfelle nødsituasjon!"
-        },{
-            show: !newAnswers.kartKompassHoydemaler,
-            text: "Kart, kompass og høydemåler er viktig for å kunne orientere seg!"
-        },{
-            show: !newAnswers.forstehjelpssett,
-            text: "Førstehjelpsutstyr er viktig for å kunne ta hånd om småskader etc!"
-        }];
+        runProgressbarAnimation($scope.containerObject);
+        $scope.alerts =
+            AlertObject({
+                "Sender/mottaker, spade og søkestang er nødvendig for å kunne ferdes i snøskredterreng!": ['skredsoker','spade','sokestang'],
+                "Kart, kompass og høydemåler er viktig for å kunne orientere seg!": ['kartKompassHoydemaler'],
+                "En mobiltelefon er nyttig i tilfelle en nødssituasjon!": ['mobiltelefon'],
+                "Førstehjelpssett er viktig for å kunne ta hånd om småskader etc.!":['forstehjelpssett']
+            }, $scope.containerObject);
 
     };
 

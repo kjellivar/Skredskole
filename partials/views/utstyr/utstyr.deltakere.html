@@ -5,7 +5,7 @@
             <div class="span4">
                 <label for="gruppeStorrelse"><strong>Hvor stor er gruppa som skal på tur?</strong></label>
                 <div class="input-append">
-                    <input class="span2" id="gruppeStorrelse" type="number" ng-model="utstyr.deltakere.svar.gruppeStorrelse">
+                    <input class="span2" id="gruppeStorrelse" min="0" type="number" ng-model="utstyr.deltakere.svar.gruppeStorrelse">
                     <span class="add-on">Personer</span>
                 </div>
             </div>
@@ -13,7 +13,7 @@
 
         <div class="row">
             <div class="span4">
-                <strong>Hvor mye erfaring har dere i å gå på topptur?</strong>
+                <h5>Hvor mye erfaring har dere i å gå på topptur?</h5>
                 <label class="radio"><input type="radio" ng-model="utstyr.deltakere.svar.erfaring" value="1"> Lite erfaring (0 - 10 turer)</label>
                 <label class="radio"><input type="radio" ng-model="utstyr.deltakere.svar.erfaring" value="2"> Noe erfaring (10 - 30 turer)</label>
                 <label class="radio"><input type="radio" ng-model="utstyr.deltakere.svar.erfaring" value="3"> Erfarne (over 30 turer)</label>
@@ -22,7 +22,7 @@
 
         <div class="row">
             <div class="span4">
-                <strong>Hvordan er motivasjonen i gruppa før turen?</strong>
+                <h5>Hvordan er motivasjonen i gruppa før turen?</h5>
                 <label class="radio"><input type="radio" ng-model="utstyr.deltakere.svar.motivasjon" value="1"> Tilbakeholden</label>
                 <label class="radio"><input type="radio" ng-model="utstyr.deltakere.svar.motivasjon" value="2"> Behersket / realistisk</label>
                 <label class="radio"><input type="radio" ng-model="utstyr.deltakere.svar.motivasjon" value="3"> Ambisiøs</label>

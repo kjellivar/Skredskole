@@ -1,16 +1,15 @@
-myapp.controller("kritiskeOmraderNedkjoringCtrl", function($scope){
+myapp.controller("kritiskeOmraderNedkjoringCtrl", function($scope, sjekkFasit, runProgressbarAnimation, AlertObject){
 
     $scope.containerObject = $scope.kritiskeOmrader.nedkjoring;
     $scope.forrige = "kritiske-omrader/sjekk";
     $scope.neste = "planleggingsskjema";
 
     $scope.$watchCollection('kritiskeOmrader.nedkjoring.svar', function() {
-        $scope.sjekkFasit($scope.containerObject);
+        sjekkFasit($scope.containerObject);
     });
 
     $scope.visAntallKorrekteSvar =  function() {
-        var newAnswers = $scope.containerObject.svar;
-        $scope.runProgressbarAnimation($scope.containerObject);
+        runProgressbarAnimation($scope.containerObject);
     };
 
 
