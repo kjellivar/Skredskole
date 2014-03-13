@@ -2,10 +2,12 @@
 <html ng-app="myapp">
 
 <head>
-  <meta charset="UTF-8">
-  <title>Skredskolen</title>
+    <meta charset="utf-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+    <title>Skredskolen</title>
     <link href="css/bootstrap.min.css" rel="stylesheet">
-  <link href="css/bootstrap-responsive.css" rel="stylesheet">
+    <link href="css/bootstrap-responsive.css" rel="stylesheet">
     <link href="css/avalanche.css" rel="stylesheet">
     <link href="css/skredskole.css" rel="stylesheet">
 </head>
@@ -54,6 +56,9 @@
   </div>
 
 
+  <script src="libs/jspdf.min.js"></script>
+  <script src="libs/downloadify/js/swfobject.js"></script>
+  <script src="libs/downloadify/js/downloadify.min.js"></script>
   <script src="libs/jquery.min.js"></script>
   <script src="libs/bootstrap.min.js"></script>
   <script src="https://ajax.googleapis.com/ajax/libs/angularjs/1.2.14/angular.min.js"></script>
@@ -62,17 +67,16 @@
   
   <!-- Controllers -->
   <script src="controllers/start.controller.js"></script>
-  <script src="controllers/info/info.skredvarsel.controller.js"></script>
-  <script src="controllers/info/info.vaer.controller.js"></script>
-  <script src="controllers/info/info.alpine.farer.controller.js"></script>
-  <script src="controllers/utstyr/utstyr.list.controller.js"></script>
-  <script src="controllers/utstyr/utstyr.deltakere.controller.js"></script>
-  <script src="controllers/rute/rute.rutevalg.controller.js"></script>
-  <script src="controllers/rute/rute.distanse.controller.js"></script>
-  <script src="controllers/rute/rute.tidsplan.controller.js"></script>
-  <script src="controllers/kritiske-omrader/kritiske.omrader.egenskaper.controller.js"></script>
-  <script src="controllers/kritiske-omrader/kritiske.omrader.sjekk.controller.js"></script>
-  <script src="controllers/kritiske-omrader/kritiske.omrader.nedkjoring.controller.js"></script>
+  <script src="controllers/info/skredvarsel.controller.js"></script>
+  <script src="controllers/info/vaer.controller.js"></script>
+  <script src="controllers/info/alpine.farer.controller.js"></script>
+  <script src="controllers/utstyr/list.controller.js"></script>
+  <script src="controllers/utstyr/deltakere.controller.js"></script>
+  <script src="controllers/rute/rutevalg.controller.js"></script>
+  <script src="controllers/rute/distanse.controller.js"></script>
+  <script src="controllers/rute/tidsplan.controller.js"></script>
+  <script src="controllers/kritiske-omrader/egenskaper.controller.js"></script>
+  <script src="controllers/kritiske-omrader/nedkjoring.controller.js"></script>
   <script src="controllers/planleggingsskjema.controller.js"></script>
   
   <!-- Directives -->

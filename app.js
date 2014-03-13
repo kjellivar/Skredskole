@@ -297,17 +297,17 @@ myapp.config(function($stateProvider, $urlRouterProvider){
     })
       .state('info.skredvarsel', {
           url: "/skredvarsel",
-          templateUrl: "partials/views/info/info.skredvarsel.html",
+          templateUrl: "partials/views/info/skredvarsel.html",
           controller: "infoSkredvarselCtrl"
       })
       .state('info.vaer', {
           url: "/vaer",
-          templateUrl: "partials/views/info/info.vaer.html",
+          templateUrl: "partials/views/info/vaer.html",
           controller: "infoVaerCtrl"
       })
       .state('info.alpine-farer', {
           url: "/alpine-farer",
-          templateUrl: "partials/views/info/info.alpine.farer.html",
+          templateUrl: "partials/views/info/alpine.farer.html",
           controller: "infoAlpineFarerCtrl"
       })
       
@@ -317,12 +317,12 @@ myapp.config(function($stateProvider, $urlRouterProvider){
     })
       .state('utstyr.list', {
           url: "/list",
-          templateUrl: "partials/views/utstyr/utstyr.list.html",
+          templateUrl: "partials/views/utstyr/list.html",
           controller: "utstyrListCtrl"
       })
       .state('utstyr.deltakere', {
           url: "/deltakere",
-          templateUrl: "partials/views/utstyr/utstyr.deltakere.html",
+          templateUrl: "partials/views/utstyr/deltakere.html",
           controller: "utstyrDeltakereCtrl"
       })
     
@@ -332,17 +332,17 @@ myapp.config(function($stateProvider, $urlRouterProvider){
     })
       .state('rute.rutevalg', {
           url: "/rutevalg",
-          templateUrl: "partials/views/rute/rute.rutevalg.html",
+          templateUrl: "partials/views/rute/rutevalg.html",
           controller: "ruteRutevalgCtrl"
       })
       .state('rute.distanse', {
           url: "/distanse",
-          templateUrl: "partials/views/rute/rute.distanse.html",
+          templateUrl: "partials/views/rute/distanse.html",
           controller: "ruteDistanseCtrl"
       })
       .state('rute.tidsplan', {
           url: "/tidsplan",
-          templateUrl: "partials/views/rute/rute.tidsplan.html",
+          templateUrl: "partials/views/rute/tidsplan.html",
           controller: "ruteTidsplanCtrl"
       })
       
@@ -353,17 +353,12 @@ myapp.config(function($stateProvider, $urlRouterProvider){
     })
       .state('kritiske-omrader.egenskaper', {
         url: "/egenskaper",
-        templateUrl: "partials/views/kritiske-omrader/kritiske.omrader.egenskaper.html",
+        templateUrl: "partials/views/kritiske-omrader/egenskaper.html",
         controller: "kritiskeOmraderEgenskaperCtrl"
     })
-      .state('kritiske-omrader.sjekk', {
-          url: "/sjekk",
-          templateUrl: "partials/views/kritiske-omrader/kritiske.omrader.sjekk.html",
-          controller: "kritiskeOmraderSjekkCtrl"
-      })
       .state('kritiske-omrader.nedkjoring', {
           url: "/nedkjoring",
-          templateUrl: "partials/views/kritiske-omrader/kritiske.omrader.nedkjoring.html",
+          templateUrl: "partials/views/kritiske-omrader/nedkjoring.html",
           controller: "kritiskeOmraderNedkjoringCtrl"
       })
     
