@@ -4,6 +4,6 @@
 <p ng-class="{'text-warning':!isRuteCleared(), 'text-success':isRuteCleared()}">Rute</p>
 <p ng-class="{'text-warning':!isKritiskeOmraderCleared(), 'text-success':isKritiskeOmraderCleared()}">Kritiske områder</p>
 
-<button class="btn" ng-click="saveDoc()" ng-show="showRegularButton">Last ned</button>
+<button class="btn" ng-click="saveDoc()" ng-if="showRegularButton">Last ned</button>
 
-<p id="downloadify"></p>
+<p ng-if="!showRegularButton" id="downloadify"></p>

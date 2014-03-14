@@ -1,12 +1,30 @@
 myapp.controller("planleggingsskjemaCtrl", function($scope, $window){
 
     var doc = new jsPDF();
+    var docFilename = 'Planleggingsskjema-' + $scope.turTittel + '.pdf';
+
+    var x = 20;
+    var y = 20;
     doc.setFontSize(22);
-    doc.text(20, 20, 'Planleggingsskjema ' + $scope.turTittel);
-    doc.setFontSize(16);
-    doc.text(20, 30, 'This is client-side Javascript, pumping out a PDF.');
-    doc.addPage();
-    doc.text(20, 20, 'Do you like that?');
+    doc.text(x, y, 'Planleggingsskjema');
+    doc.setFontSize(14);
+    addText('Turmål', $scope.turTittel);
+    addText('Høydeforskjell', $scope.rute.distanse.svar.hoyde);
+    addText('Distanse', $scope.rute.distanse.svar.lengde);
+    addText('Tidsplan', 'Opp: ' + $scope.rute.tidsplan.svar.oppstigning + 't Pause: ' + $scope.rute.tidsplan.svar.pause + 't Nedstigning: ' + $scope.rute.tidsplan.svar.nedfart);
+/*    addText('Nedfartsrute', );
+    addText('Gruppe', );*/
+
+
+    function addText(title, text){
+        y = y + 10;
+        if(y > 270){
+            doc.addPage();
+            y = 20;
+        }
+        doc.text(x, y, title);
+        doc.text(x + 50, y, text + '');
+    }
 
     $scope.showRegularButton = false;
 
@@ -15,7 +33,7 @@ myapp.controller("planleggingsskjemaCtrl", function($scope, $window){
     } else {
         //console.log("Du har dårlig browser");
         Downloadify.create('downloadify',{
-            filename: 'Example.pdf',
+            filename: docFilename,
             data: function(){
                 return doc.output();
             },
@@ -36,7 +54,7 @@ myapp.controller("planleggingsskjemaCtrl", function($scope, $window){
     };
 
     $scope.saveDoc = function() {
-      doc.save('Planleggingsskjema-' + $scope.turTittel + '.pdf');
+      doc.save(docFilename);
     };
   
 });
