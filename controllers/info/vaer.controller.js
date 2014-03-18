@@ -1,6 +1,20 @@
-myapp.controller("infoVaerCtrl", function($scope, sjekkFasit, runProgressbarAnimation, AlertObject){
+myapp.controller("infoVaerCtrl", function($scope, sjekkFasit, korrekteSvar, CurrentPageObject){
 
-    $scope.containerObject = $scope.info.vaer;
+    $scope.containerObject = CurrentPageObject();
+
+    $scope.$watchCollection('containerObject.svar', function() {
+        sjekkFasit();
+    });
+
+    $scope.visAntallKorrekteSvar =  function() {
+        korrekteSvar({
+            "Er det ventet nedbør? Hvis ja, hvilken?": keys.vind,
+            "Hvordan er sikten?": keys.sikt,
+            "Vil vinden være en faktor?": keys.vind,
+            "Hvilken temperatur vil det være på 1000moh?": ['temperatur'],
+            "Hva er nullgradsgrensen?": ['nullisoterm']
+        });
+    };
 
     $scope.nedborLabels =
       [{title: "Ingen nedbør", key: "ingenNedbor"},
@@ -26,24 +40,11 @@ myapp.controller("infoVaerCtrl", function($scope, sjekkFasit, runProgressbarAnim
         keys.vind.push(val.key);
     });
 
-    $scope.$watchCollection('info.vaer.svar', function() {
-        sjekkFasit($scope.containerObject);
-    });
 
-    $scope.visAntallKorrekteSvar =  function() {
-        runProgressbarAnimation($scope.containerObject);
-
-        $scope.alerts =
-            AlertObject({
-                "Er det ventet nedbør? Hvis ja, hvilken?": keys.vind,
-                "Hvordan er sikten?": keys.sikt,
-                "Vil vinden være en faktor?": keys.vind,
-                "Hvilken temperatur vil det være på 1000moh?": ['temperatur'],
-                "Hva er nullgradsgrensen?": ['nullisoterm']
-            }, $scope.containerObject);
-    };
 
     $scope.forrige = "info/skredvarsel";
     $scope.neste = "info/alpine-farer";
+
+
   
 });

@@ -7,8 +7,8 @@
         <h3 id="myModalLabel">Sjekk svar</h3>
     </div>
     <div class="modal-body">
-        <div class="alert" ng-show="(alerts | filter:{show:true})[0].show">
-            <p ng-repeat="item in alerts" ng-show="item.show" ng-bind="item.text"></p>
+        <div class="alert" ng-show="(containerObject.alerts | filter:{show:true})[0].show">
+            <p ng-repeat="item in containerObject.alerts | filter:{show:true}" ng-bind="item.text"></p>
         </div>
 
         <div ng-show="containerObject.item.cleared">

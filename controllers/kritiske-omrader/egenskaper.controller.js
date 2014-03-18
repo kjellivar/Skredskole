@@ -1,6 +1,10 @@
-myapp.controller("kritiskeOmraderEgenskaperCtrl", function($scope, sjekkFasit, runProgressbarAnimation, AlertObject){
+myapp.controller("kritiskeOmraderEgenskaperCtrl", function($scope, sjekkFasit, korrekteSvar, CurrentPageObject, AppData){
 
+    $scope.containerObject = CurrentPageObject();
 
+    $scope.$watchCollection('containerObject.svar', function() {
+        sjekkFasit();
+    });
     
     $scope.himmelRetningerLabels =
       [{title: "N", key: "n"}, {title: "NØ", key: "no"}, {title: "Ø", key: "o"}, {title: "SØ", key: "so"},
@@ -20,6 +24,8 @@ myapp.controller("kritiskeOmraderEgenskaperCtrl", function($scope, sjekkFasit, r
 
     $scope.forrige = "rute/tidsplan";
     $scope.neste = "kritiske-omrader/sjekk";
+
+    $scope.turTittel = AppData.turTittel;
   
 
 });

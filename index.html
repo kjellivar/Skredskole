@@ -15,27 +15,27 @@
 <body>
   <div class="container">
     <div class="navbar">
-      <div class="navbar-inner">
+      <div class="navbar-inner" ng-controller="menuCtrl">
         <a class="brand" ui-sref="start" ng-bind="turTittel"></a>
         <ul class="nav">
-          <li ui-sref-active="active">
+          <li ng-class="{active: infoActive()}">
               <a ui-sref="info.skredvarsel">
-                  1. Informasjon <i class="icon-ok" ng-show="isInfoCleared()"></i>
+                  1. Informasjon <i class="icon-ok" ng-show="cleared.info()"></i>
               </a>
           </li>
-          <li ui-sref-active="active">
+          <li ng-class="{active: utstyrActive()}">
               <a ui-sref="utstyr.list">
-                  2. Utstyr <i class="icon-ok" ng-show="isUtstyrCleared()"></i>
+                  2. Utstyr <i class="icon-ok" ng-show="cleared.utstyr()"></i>
               </a>
           </li>
-          <li ui-sref-active="active">
+          <li ng-class="{active: ruteActive()}">
               <a ui-sref="rute.rutevalg">
-                  3. Rute <i class="icon-ok" ng-show="isRuteCleared()"></i>
+                  3. Rute <i class="icon-ok" ng-show="cleared.rute()"></i>
               </a>
           </li>
-          <li ui-sref-active="active">
-              <a ui-sref="kritiske-omrader.egenskaper">
-                  4. Kritiske områder <i class="icon-ok" ng-show="isKritiskeOmraderCleared()"></i>
+          <li ng-class="{active: kritiskeOmraderActive()}">
+              <a ui-sref="kritiskeOmrader.egenskaper">
+                  4. Kritiske områder <i class="icon-ok" ng-show="cleared.kritiskeOmrader()"></i>
               </a>
           </li>
           <li ui-sref-active="active">
@@ -65,8 +65,17 @@
   <script src="libs/angular-locale_no.js"></script>
   <script src="libs/angular-ui-router.js"></script>
   <script src="app.js"></script>
+
+  <!-- Directives -->
+  <script src="directives/nveCanvas.js"></script>
+  <script src="directives/nveDraggable.js"></script>
+  <script src="directives/nveSubMenuItem.js"></script>
+
+  <!-- Services -->
+  <script src="services/services.js"></script>
   
   <!-- Controllers -->
+  <script src="controllers/menu.controller.js"></script>
   <script src="controllers/start.controller.js"></script>
   <script src="controllers/info/skredvarsel.controller.js"></script>
   <script src="controllers/info/vaer.controller.js"></script>
@@ -80,10 +89,11 @@
   <script src="controllers/kritiske-omrader/nedkjoring.controller.js"></script>
   <script src="controllers/planleggingsskjema.controller.js"></script>
   
-  <!-- Directives -->
-  <script src="directives/nveCanvas.js"></script>
-  <script src="directives/nveDraggable.js"></script>
-  <script src="directives/nveSubMenuItem.js"></script>
+
+
+
+  <!-- App config -->
+  <script src="turer/kyrkjebonosi.js"></script>
 </body>
 
 </html>

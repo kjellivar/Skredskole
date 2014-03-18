@@ -1,6 +1,4 @@
-myapp.controller("startCtrl", function($rootScope, $state){
-  
-
-    
+myapp.controller("startCtrl", function($scope, AppData){
+    $scope.turTittel = AppData.turTittel;
   
 });

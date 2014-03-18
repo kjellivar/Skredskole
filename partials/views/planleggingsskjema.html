@@ -1,8 +1,8 @@
 <h3>Planleggingsskjema</h3>
-<p ng-class="{'text-warning':!isInfoCleared(), 'text-success':isInfoCleared()}">Informasjon</p>
-<p ng-class="{'text-warning':!isUtstyrCleared(), 'text-success':isUtstyrCleared()}">Utstyr</p>
-<p ng-class="{'text-warning':!isRuteCleared(), 'text-success':isRuteCleared()}">Rute</p>
-<p ng-class="{'text-warning':!isKritiskeOmraderCleared(), 'text-success':isKritiskeOmraderCleared()}">Kritiske områder</p>
+<p ng-class="{'text-warning':!cleared.info(), 'text-success':cleared.info()}">Informasjon</p>
+<p ng-class="{'text-warning':!cleared.utstyr(), 'text-success':cleared.utstyr()}">Utstyr</p>
+<p ng-class="{'text-warning':!cleared.rute(), 'text-success':cleared.rute()}">Rute</p>
+<p ng-class="{'text-warning':!cleared.kritiskeOmrader(), 'text-success':cleared.kritiskeOmrader()}">Kritiske områder</p>
 
 <button class="btn" ng-click="saveDoc()" ng-if="showRegularButton">Last ned</button>
 

@@ -1,17 +1,12 @@
-myapp.controller("ruteTidsplanCtrl", function($scope, sjekkFasit, runProgressbarAnimation, AlertObject){
+myapp.controller("ruteTidsplanCtrl", function($scope, sjekkFasit, korrekteSvar, CurrentPageObject, AppData){
 
+    $scope.containerObject = CurrentPageObject();
 
-    $scope.forrige = "rute/distanse";
-    $scope.neste = "kritiske-omrader/egenskaper";
-    $scope.containerObject = $scope.rute.tidsplan;
-
-    $scope.$watchCollection('rute.tidsplan.svar', function() {
-        sjekkFasit($scope.containerObject);
+    $scope.$watchCollection('containerObject.svar', function() {
+        sjekkFasit();
     });
 
     $scope.visAntallKorrekteSvar =  function() {
-
-        runProgressbarAnimation($scope.containerObject);
 
         $scope.alerts = [{
             show: !(newAnswers.oppstigning && newAnswers.nedfart && newAnswers.pause),
@@ -22,5 +17,11 @@ myapp.controller("ruteTidsplanCtrl", function($scope, sjekkFasit, runProgressbar
         }];
 
     };
+
+    $scope.forrige = "rute/distanse";
+    $scope.neste = "kritiske-omrader/egenskaper";
+
+    $scope.turTittel = AppData.turTittel;
+    $scope.hoydeMeter = AppData.hoydeMeter;
   
 });

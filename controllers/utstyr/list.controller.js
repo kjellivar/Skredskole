@@ -1,7 +1,23 @@
 
-myapp.controller("utstyrListCtrl", function($scope, sjekkFasit, runProgressbarAnimation, AlertObject){
+myapp.controller("utstyrListCtrl", function($scope, sjekkFasit, korrekteSvar, CurrentPageObject){
 
-    $scope.containerObject = $scope.utstyr.list;
+    $scope.containerObject = CurrentPageObject();
+
+    $scope.$watchCollection('containerObject.svar', function() {
+        sjekkFasit();
+    });
+
+    $scope.visAntallKorrekteSvar =  function() {
+
+        korrekteSvar({
+            "Sender/mottaker, spade og søkestang er nødvendig for å kunne ferdes i snøskredterreng!": ['skredsoker','spade','sokestang'],
+            "Kart, kompass og høydemåler er viktig for å kunne orientere seg!": ['kartKompassHoydemaler'],
+            "En mobiltelefon er nyttig i tilfelle en nødssituasjon!": ['mobiltelefon'],
+            "Førstehjelpssett er viktig for å kunne ta hånd om småskader etc.!":['forstehjelpssett']
+        });
+
+    };
+
 
     $scope.alleTurDeltakereLabels =
       [{title: "Skredsøker", key: "skredsoker"},
@@ -19,22 +35,6 @@ myapp.controller("utstyrListCtrl", function($scope, sjekkFasit, runProgressbarAn
 
 
     //required stuff
-    $scope.$watchCollection('utstyr.list.svar', function() {
-        sjekkFasit($scope.containerObject);
-    });
-
-    $scope.visAntallKorrekteSvar =  function() {
-
-        runProgressbarAnimation($scope.containerObject);
-        $scope.alerts =
-            AlertObject({
-                "Sender/mottaker, spade og søkestang er nødvendig for å kunne ferdes i snøskredterreng!": ['skredsoker','spade','sokestang'],
-                "Kart, kompass og høydemåler er viktig for å kunne orientere seg!": ['kartKompassHoydemaler'],
-                "En mobiltelefon er nyttig i tilfelle en nødssituasjon!": ['mobiltelefon'],
-                "Førstehjelpssett er viktig for å kunne ta hånd om småskader etc.!":['forstehjelpssett']
-            }, $scope.containerObject);
-
-    };
 
     $scope.forrige = "info/alpine-farer";
     $scope.neste = "utstyr/deltakere";
