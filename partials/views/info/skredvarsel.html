@@ -1,9 +1,14 @@
 
+<div class="row">
+    <div class="span7">
+        <p class="lead">
+            I skredvarselet finner du viktig informasjon om den generelle skredfaren i området.
+            <span ng-bind="infoVarslingsOmrade"></span>
+        </p>
+    </div>
+    <div class="span5"><a class="nve-btn arrow-right" target="nveSkredskoleVindu" ng-href="{{skredvarselLink}}">Skredvarslet finner du på Varsom.no</a></div>
+</div>
 
-<p class="lead">
-    I skredvarselet finner du viktig informasjon om den generelle skredfaren i området.
-    <span ng-bind="infoVarslingsOmrade"></span> Skredvarslet finner du på <a target="nveSkredskoleVindu" ng-href="{{skredvarselLink}}">Varsom.no</a>
-</p>
 
 
 <hr>
@@ -24,7 +29,7 @@
         <h5>Skredproblem</h5>
         <ul class="unstyled">
             <li ng-repeat="item in skredproblemLabels">
-                <label class="checkbox"><input type="checkbox" ng-model="info.skredvarsel.svar[item.key]"> {{item.title}}</label>
+                <label class="radio"><input type="radio" ng-model="info.skredvarsel.svar.skredproblem" ng-value="item.key"> {{item.title}}</label>
             </li>
         </ul>
     </div>
@@ -36,15 +41,23 @@
             </li>
         </ul>
     </div>
+
     <div class="span3">
+        <h5>Spesielt utsatte områder gitt i varselet</h5>
+        <ul class="unstyled">
+            <li ng-repeat="item in utsatteOmraderLabels">
+                <label class="checkbox"><input type="checkbox" ng-model="info.skredvarsel.svar[item.key]"> {{item.title}}</label>
+            </li>
+        </ul>
+    </div>
+    <div class="span3">
+
         <div nve-model="info.skredvarsel.svar.tilleggsbelastning" nve-skredproblem-boks="tilleggsbelastning"></div>
     </div>
 
 
 
-    <div class="span3">
-        <div nve-model="info.skredvarsel.svar.sannsynlighet" nve-skredproblem-boks="probability"></div>
-    </div>
+
 </div>
 
 
@@ -98,6 +111,7 @@
     </div>
     <div class="span3">
         <h5>Utsatt høydenivå over / under</h5>
+        <img src="img/skredvarsel/hoyde.png" alt="Utsatt høydenivå">
         <div class="input-append">
             <input class="span2" type="number" min="0" step="100" ng-model="info.skredvarsel.svar.hoydeniva">
             <span class="add-on">m</span>
@@ -106,14 +120,11 @@
     <div class="span3">
         <div nve-model="info.skredvarsel.svar.skredstorrelse" nve-skredproblem-boks="damageSize"></div>
     </div>
+
     <div class="span3">
-        <h5>Spesielt utsatte områder gitt i varselet</h5>
-        <ul class="unstyled">
-            <li ng-repeat="item in utsatteOmraderLabels">
-                <label class="checkbox"><input type="checkbox" ng-model="info.skredvarsel.svar[item.key]"> {{item.title}}</label>
-            </li>
-        </ul>
+        <div nve-model="info.skredvarsel.svar.sannsynlighet" nve-skredproblem-boks="probability"></div>
     </div>
+
 
 
 </div>

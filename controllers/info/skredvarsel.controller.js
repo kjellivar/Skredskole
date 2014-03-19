@@ -53,10 +53,7 @@ myapp.controller("infoSkredvarselCtrl", function($scope, sjekkFasit, korrekteSva
         name:"Sannsynlighet for å utløse snøskred", vertical: true};
 
     $scope.tilleggsbelastning = {values: [{v:"naturlig", t: "Naturlig"}, {v: "liten", t: "Liten"}, {v: "stor", t: "Stor"}],
-        name:"Tilleggsbelastning"};
-
-    $scope.tilleggsbelastning = {values: [{v:"naturlig", t: "Naturlig"}, {v: "liten", t: "Liten"}, {v: "stor", t: "Stor"}],
-        name:"Tilleggsbelastning"};
+        name:"Tilleggsbelastning", vertical: true};
 
     $scope.forrige = false;
     $scope.neste = "info/vaer";

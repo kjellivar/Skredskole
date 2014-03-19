@@ -3,13 +3,13 @@
   <div class="span6">
       <div class="row">
           <div class="span6">
-              <p class="lead">Sjekk om dere har alt av nødvendig utstyr</p>
+              <p class="lead">Sjekk om dere har alt av nødvendig utstyr!</p>
           </div>
       </div>
       <div class="row">
           <div class="span6">
             <strong>Alle turdeltakere</strong>
-            <ul class="inline">
+            <ul class="unstyled">
               <li ng-repeat="item in alleTurDeltakereLabels">
                 <label class="checkbox"><input type="checkbox" ng-model="utstyr.list.svar[item.key]"> {{item.title}}</label>
               </li>
@@ -19,7 +19,7 @@
       <div class="row">
           <div class="span6">
               <strong>Tilleggsutstyr</strong>
-              <ul class="inline">
+              <ul class="unstyled">
                   <li ng-repeat="item in tilleggsUtstyrLabels">
                       <label class="checkbox"><input type="checkbox" ng-model="utstyr.list.svar[item.key]"> {{item.title}}</label>
                   </li>
@@ -29,7 +29,7 @@
       <div class="row">
           <div class="span6">
               <strong>Annet</strong>
-              <ul class="inline">
+              <ul class="unstyled">
                   <li ng-repeat="item in annetLabels">
                       <label class="checkbox"><input type="checkbox" ng-model="utstyr.list.svar[item.key]"> {{item.title}}</label>
                   </li>

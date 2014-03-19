@@ -6,46 +6,49 @@
     <meta http-equiv="X-UA-Compatible" content="IE=edge">
     <meta name="viewport" content="width=device-width, initial-scale=1">
     <title>Skredskolen</title>
-    <link href="css/bootstrap.min.css" rel="stylesheet">
+    <link href="css/bootstrap.css" rel="stylesheet">
     <link href="css/bootstrap-responsive.css" rel="stylesheet">
+    <link href="css/main.css" rel="stylesheet">
     <link href="css/avalanche.css" rel="stylesheet">
     <link href="css/skredskole.css" rel="stylesheet">
 </head>
 
 <body>
-  <div class="container">
-    <div class="navbar">
-      <div class="navbar-inner" ng-controller="menuCtrl">
-        <a class="brand" ui-sref="start" ng-bind="turTittel"></a>
-        <ul class="nav">
+  <div class="container" ng-cloak>
+
+      <div ng-controller="menuCtrl">
+
+        <ul class="nav nav-tabs">
+           <li ui-sref-active="active">
+               <a class="brand" ui-sref="start"><strong ng-bind="turTittel"></strong></a>
+           </li>
           <li ng-class="{active: infoActive()}">
               <a ui-sref="info.skredvarsel">
-                  1. Informasjon <i class="icon-ok" ng-show="cleared.info()"></i>
+                  Område <span class="text-success" ng-show="cleared.info()">&#x2713;</span>
               </a>
           </li>
           <li ng-class="{active: utstyrActive()}">
               <a ui-sref="utstyr.list">
-                  2. Utstyr <i class="icon-ok" ng-show="cleared.utstyr()"></i>
+                  Forberedelse <span class="text-success" ng-show="cleared.utstyr()">&#x2713;</span>
               </a>
           </li>
           <li ng-class="{active: ruteActive()}">
               <a ui-sref="rute.rutevalg">
-                  3. Rute <i class="icon-ok" ng-show="cleared.rute()"></i>
+                  Rute <span class="text-success" ng-show="cleared.rute()">&#x2713;</span>
               </a>
           </li>
           <li ng-class="{active: kritiskeOmraderActive()}">
               <a ui-sref="kritiskeOmrader.egenskaper">
-                  4. Kritiske områder <i class="icon-ok" ng-show="cleared.kritiskeOmrader()"></i>
+                  Kritiske områder <span class="text-success" ng-show="cleared.kritiskeOmrader()">&#x2713;</span>
               </a>
           </li>
           <li ui-sref-active="active">
               <a ui-sref="planleggingsskjema">
-                  5. Planleggingsskjema
+                  Planleggingsskjema
               </a>
           </li>
         </ul>
       </div>
-    </div>
   
     <div class="row ui-view-container">
       <div class="span12" ui-view>

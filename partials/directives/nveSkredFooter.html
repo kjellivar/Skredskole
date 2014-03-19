@@ -25,14 +25,14 @@
     </div>
 </div>
 
-<ul class="pager">
-    <li class="previous" ng-class="{disabled: !forrige}">
-        <a ng-href="#/{{forrige}}">&larr; Forrige</a>
-    </li>
-    <li>
-        <button data-target="#myModal" data-toggle="modal" class="btn btn-primary btn-large" ng-click="visAntallKorrekteSvar()">Sjekk svar</button>
-    </li>
-    <li class="next" ng-class="{disabled: !neste}">
-        <a ng-href="#/{{neste}}">Neste &rarr;</a>
-    </li>
-</ul>
+<div class="row">
+    <div class="span1" ng-class="{disabled: !forrige}">
+        <a class="nve-btn arrow-left" ng-href="#/{{forrige}}"></a>
+    </div>
+    <div class="offset3 span4 ">
+        <a class="nve-btn blue" data-target="#myModal" data-toggle="modal" class="btn btn-primary btn-large" ng-click="visAntallKorrekteSvar()">Sjekk svar</a>
+    </div>
+    <div class="offset3 span1"  ng-class="{disabled: !neste}">
+        <a class="nve-btn arrow-right" ng-href="#/{{neste}}"></a>
+    </div>
+</div>
