@@ -2,6 +2,7 @@ myapp.config(function (InfoProvider, UtstyrProvider, RuteProvider, KritiskeOmrad
     InfoProvider.setFasit({
         skredvarsel: {
             faregrad: 2,
+            skredproblem: 'torreFlakskred',
             skredstorrelse: 3,  //2:små 3:middels 4:store 5:svært store
             sannsynlighet: 3,  //2:lite sannsynlig 3:mulig 4:sannsynlig 5:svært sannsynlig
             tilleggsbelastning: 'liten',

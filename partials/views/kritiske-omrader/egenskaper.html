@@ -34,12 +34,7 @@
       <input type="number" ng-model="kritiskeOmrader.egenskaper.svar['hoyde' + index]">
       
       <h4>Himmelretning</h4>
-      <ul class="inline">
-        <li ng-repeat="item in himmelRetningerLabels">
-          <label class="checkbox">
-            <input type="checkbox" ng-model="kritiskeOmrader.egenskaper.svar[item.key + index]">{{item.title}}</label>
-        </li>
-      </ul>
+      <div nve-compass="kritiskeOmrader.egenskaper.svar"></div>
       <ul class="unstyled">
         <li ng-repeat="item in utsatteOmraderLabels">
           <label class="checkbox">

@@ -4,11 +4,12 @@ myapp.controller("infoSkredvarselCtrl", function($scope, sjekkFasit, korrekteSva
 
     $scope.visAntallKorrekteSvar =  function() {
         korrekteSvar({
+            "Hva er varslet faregrad?": ['faregrad'],
+            "Hva slags type skredproblem kan man møte?": ['skredproblem'],
             "Hva er mest utsatt himmelretning?": ['n','no','o','so','s','sv','v','nv'],
             "Hvordan er snødekket?": ['nySno','vindtransportertSno','svakeLagISnopakken','vatOgVannmettetSno'],
             "Hva er de mest utsatte områdene?": ['bratteHeng','omraderNaerRygger','terrengFeller','overgangFraLiteTilMyeSno'],
             "Hva er mest utsatt høydenivå?": ['hoydeniva'],
-            "Hva er varslet faregrad?": ['faregrad'],
             "Hva er varslet sannsynlighet for skred?": ['sannsynlighet'],
             "Hva er varslet skredstørrelse?": ['skredstorrelse'],
             "Hva er varslet tilleggsbelastning?": ['tilleggsbelastning']

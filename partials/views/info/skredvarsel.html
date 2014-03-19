@@ -4,6 +4,7 @@
         <p class="lead">
             I skredvarselet finner du viktig informasjon om den generelle skredfaren i området.
             <span ng-bind="infoVarslingsOmrade"></span>
+            Fyll inn informasjonen du finner i eksempelvarselet til høyre.
         </p>
     </div>
     <div class="span5"><a class="nve-btn arrow-right" target="nveSkredskoleVindu" ng-href="{{skredvarselLink}}">Skredvarslet finner du på Varsom.no</a></div>
@@ -67,48 +68,7 @@
 
     <div class="span3">
         <h5>Utsatte himmelretninger</h5>
-        <div class="skredkoleCompassBG">
-        <svg height="200" width="200" style="fill:white;stroke:#ccc;stroke-width:1" class="skredskoleCompass">
-            <polygon points="100,100 138,8 62,8"
-                     ng-click="info.skredvarsel.svar.n = !info.skredvarsel.svar.n"
-                     ng-class="{selected: info.skredvarsel.svar.n}" />
-
-            <polygon points="100,100 192,62 138,8"
-                     ng-click="info.skredvarsel.svar.no = !info.skredvarsel.svar.no"
-                     ng-class="{selected: info.skredvarsel.svar.no}"/>
-
-            <polygon points="100,100 192,138 192,62"
-                     ng-click="info.skredvarsel.svar.o = !info.skredvarsel.svar.o"
-                     ng-class="{selected: info.skredvarsel.svar.o}"/>
-
-            <polygon points="100,100 138,192 192,138"
-                     ng-click="info.skredvarsel.svar.so = !info.skredvarsel.svar.so"
-                     ng-class="{selected: info.skredvarsel.svar.so}"/>
-
-            <polygon points="100,100 62,192 138,192"
-                     ng-click="info.skredvarsel.svar.s = !info.skredvarsel.svar.s"
-                     ng-class="{selected: info.skredvarsel.svar.s}"/>
-
-            <polygon points="100,100 8,138 62,192"
-                     ng-click="info.skredvarsel.svar.sv = !info.skredvarsel.svar.sv"
-                     ng-class="{selected: info.skredvarsel.svar.sv}"/>
-
-            <polygon points="100,100 8,62 8,138"
-                     ng-click="info.skredvarsel.svar.v = !info.skredvarsel.svar.v"
-                     ng-class="{selected: info.skredvarsel.svar.v}"/>
-
-            <polygon points="100,100 62,8 8,62"
-                     ng-click="info.skredvarsel.svar.nv = !info.skredvarsel.svar.nv"
-                     ng-class="{selected: info.skredvarsel.svar.nv}"/>
-
-            <g font-size="12" fill="#000" stroke="none" text-anchor="middle">
-                <text x="100" y="20">N</text>
-                <text x="185" y="105">Ø</text>
-                <text x="100" y="190">S</text>
-                <text x="15" y="105">V</text>
-            </g>
-        </svg>
-        </div>
+        <div nve-compass="info.skredvarsel.svar"></div>
 
     </div>
     <div class="span3">

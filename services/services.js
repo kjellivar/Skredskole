@@ -147,6 +147,7 @@ myapp.provider('Info', function () {
     var fasit = {
         skredvarsel: {
             faregrad: undefined,
+            skredproblem: undefined,
             tilleggsbelastning: undefined,
             skredstorrelse: undefined,  //2:små 3:middels 4:store 5:svært store
             sannsynlighet: undefined,  //2:lite sannsynlig 3:mulig 4:sannsynlig 5:svært sannsynlig

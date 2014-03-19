@@ -35,4 +35,12 @@ myapp.directive('nveSubMenuItem', function() {
             }
         }
     };
+})
+.directive('nveCompass', function() {
+    return {
+        scope: {
+            nveCompass: '='
+        },
+        templateUrl: 'partials/directives/nveCompass.html'
+    };
 });

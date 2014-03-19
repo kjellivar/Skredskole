@@ -1,0 +1,42 @@
+<div class="skredkoleCompassBG">
+    <svg height="200" width="200" style="fill:white;stroke:#ccc;stroke-width:1" class="skredskoleCompass">
+        <polygon points="100,100 138,8 62,8"
+                 ng-click="nveCompass.n = !nveCompass.n"
+                 ng-class="{selected: nveCompass.n}" />
+
+        <polygon points="100,100 192,62 138,8"
+                 ng-click="nveCompass.no = !nveCompass.no"
+                 ng-class="{selected: nveCompass.no}"/>
+
+        <polygon points="100,100 192,138 192,62"
+                 ng-click="nveCompass.o = !nveCompass.o"
+                 ng-class="{selected: nveCompass.o}"/>
+
+        <polygon points="100,100 138,192 192,138"
+                 ng-click="nveCompass.so = !nveCompass.so"
+                 ng-class="{selected: nveCompass.so}"/>
+
+        <polygon points="100,100 62,192 138,192"
+                 ng-click="nveCompass.s = !nveCompass.s"
+                 ng-class="{selected: nveCompass.s}"/>
+
+        <polygon points="100,100 8,138 62,192"
+                 ng-click="nveCompass.sv = !nveCompass.sv"
+                 ng-class="{selected: nveCompass.sv}"/>
+
+        <polygon points="100,100 8,62 8,138"
+                 ng-click="nveCompass.v = !nveCompass.v"
+                 ng-class="{selected: nveCompass.v}"/>
+
+        <polygon points="100,100 62,8 8,62"
+                 ng-click="nveCompass.nv = !nveCompass.nv"
+                 ng-class="{selected: nveCompass.nv}"/>
+
+        <g font-size="12" fill="#000" stroke="none" text-anchor="middle">
+            <text x="100" y="20">N</text>
+            <text x="185" y="105">Ø</text>
+            <text x="100" y="190">S</text>
+            <text x="15" y="105">V</text>
+        </g>
+    </svg>
+</div>
