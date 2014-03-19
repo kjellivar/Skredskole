@@ -1,8 +1,18 @@
 <h3>Planleggingsskjema</h3>
-<p ng-class="{'text-warning':!cleared.info(), 'text-success':cleared.info()}">Informasjon</p>
-<p ng-class="{'text-warning':!cleared.utstyr(), 'text-success':cleared.utstyr()}">Utstyr</p>
-<p ng-class="{'text-warning':!cleared.rute(), 'text-success':cleared.rute()}">Rute</p>
-<p ng-class="{'text-warning':!cleared.kritiskeOmrader(), 'text-success':cleared.kritiskeOmrader()}">Kritiske områder</p>
+<ul class="unstyled">
+    <li>
+        <a ui-sref="info" ng-class="{'text-warning':!cleared.info(), 'text-success':cleared.info()}">Informasjon</a>
+    </li>
+    <li>
+        <a ui-sref="utstyr" ng-class="{'text-warning':!cleared.utstyr(), 'text-success':cleared.utstyr()}">Utstyr</a>
+    </li>
+    <li>
+        <a ui-sref="rute" ng-class="{'text-warning':!cleared.rute(), 'text-success':cleared.rute()}">Rute</a>
+    </li>
+    <li>
+        <a ui-sref="kritiskeOmrader" ng-class="{'text-warning':!cleared.kritiskeOmrader(), 'text-success':cleared.kritiskeOmrader()}">Kritiske områder</a>
+    </li>
+</ul>
 
 <button class="btn" ng-click="saveDoc()" ng-if="showRegularButton">Last ned</button>
 
