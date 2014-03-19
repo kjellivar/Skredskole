@@ -5,7 +5,10 @@
     opacity: 0.8;
     stroke:#ccc;
     stroke-width:1;
+}
+.skredkoleCompassBG {
     background-image: url(images/skredskole/kompass.png);
+    background-repeat: no-repeat;
 }
 
 .skredskoleCompass text {
