@@ -2,8 +2,10 @@
 /* Himmelretninger */
 .skredskoleCompass {
     fill:white;
+    opacity: 0.8;
     stroke:#ccc;
     stroke-width:1;
+    background-image: url(images/skredskole/kompass.png);
 }
 
 .skredskoleCompass text {
