@@ -3,35 +3,23 @@ myapp.config(function (InfoProvider, UtstyrProvider, RuteProvider, KritiskeOmrad
         skredvarsel: {
             faregrad: 2,
             skredproblem: 'torreFlakskred',
-            skredstorrelse: 3,  //2:små 3:middels 4:store 5:svært store
-            sannsynlighet: 3,  //2:lite sannsynlig 3:mulig 4:sannsynlig 5:svært sannsynlig
+            skredstorrelse: 1,  //1:små 2:middels 3:store 4:svært store
+            sannsynlighet: 2,  //1:lite sannsynlig 2:mulig 3:sannsynlig 4:svært sannsynlig
             tilleggsbelastning: 'liten',
-            bratteHeng: undefined,
-            omraderNaerRygger: true,
-            nySno: true,
+            leomrader: true,
             vindtransportertSno: true,
             n: true, no: true, o: true, so: true, v: true, nv: true,
             hoydeniva: 700
         },
         vaer: {
-            //ingenNedbor: true,
             sno: true,
-            //regn: true,
-            svakVind: true,
             lettTilFriskBris: true,
-            kulingStorm: true,
-            godSikt: true,
             begrensetSikt: true,
-            darligSikt: true,
-            temperatur: 20,
-            nullisoterm: 20
+            nullisoterm: 300
         },
         alpineFarer: {
             fall: true,
-            bresprekker: true,
-            skalver: true,
-            klipper: true,
-            vindavkjoling: true
+            klipper: true
         }
     });
     UtstyrProvider.setFasit({

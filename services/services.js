@@ -149,11 +149,10 @@ myapp.provider('Info', function () {
             faregrad: undefined,
             skredproblem: undefined,
             tilleggsbelastning: undefined,
-            skredstorrelse: undefined,  //2:små 3:middels 4:store 5:svært store
-            sannsynlighet: undefined,  //2:lite sannsynlig 3:mulig 4:sannsynlig 5:svært sannsynlig
+            skredstorrelse: undefined,  //1:små 2:middels 3:store 4:svært store
+            sannsynlighet: undefined,  //1:lite sannsynlig 2:mulig 3:sannsynlig 4:svært sannsynlig
 
-            bratteHeng: undefined,
-            omraderNaerRygger: undefined,
+            leomrader: undefined,
             terrengFeller: undefined,
             overgangFraLiteTilMyeSno: undefined,
 
@@ -178,7 +177,6 @@ myapp.provider('Info', function () {
             begrensetSikt: undefined,
             darligSikt: undefined,
 
-            temperatur: undefined,
             nullisoterm: undefined
         },
         alpineFarer: {

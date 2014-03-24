@@ -11,7 +11,6 @@ myapp.controller("infoVaerCtrl", function($scope, sjekkFasit, korrekteSvar, Curr
             "Er det ventet nedbør? Hvis ja, hvilken?": keys.vind,
             "Hvordan er sikten?": keys.sikt,
             "Vil vinden være en faktor?": keys.vind,
-            "Hvilken temperatur vil det være på 1000moh?": ['temperatur'],
             "Hva er nullgradsgrensen?": ['nullisoterm']
         });
     };
