@@ -1,19 +1,9 @@
-myapp.controller("ruteRutevalgCtrl", function($scope, sjekkFasit, korrekteSvar, CurrentPageObject, AppData){
+myapp.controller("ruteRutevalgCtrl", function($scope, AppData){
 
-    $scope.containerObject = CurrentPageObject();
-
-    $scope.visAntallKorrekteSvar =  function() {
-
-        $scope.alerts = [{
-            show: !(newAnswers.rutevalg),
-            text: "Tegn inn rute!"
-        }];
-
+    $scope.alerts = {
+        "Tegn inn rute!": ['rutevalg']
     };
 
-    $scope.$watchCollection('containerObject.svar', function() {
-        sjekkFasit();
-    });
 
     $scope.colors = [{color: "#ff0000", name: "red"}];
     $scope.settings = {
@@ -22,7 +12,7 @@ myapp.controller("ruteRutevalgCtrl", function($scope, sjekkFasit, korrekteSvar, 
         };
 
     $scope.rutevalgDone = function () {
-        $scope.containerObject.svar.rutevalg = true;
+        $scope.rute.rutevalg.svar.rutevalg = true;
     };
 
     //Required stuff
@@ -31,9 +21,5 @@ myapp.controller("ruteRutevalgCtrl", function($scope, sjekkFasit, korrekteSvar, 
     $scope.neste = "rute/distanse";
 
     $scope.ruteTekst = AppData.ruteTekst;
-
-
-
-
   
 });

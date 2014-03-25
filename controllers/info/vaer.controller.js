@@ -1,19 +1,8 @@
-myapp.controller("infoVaerCtrl", function($scope, sjekkFasit, korrekteSvar, CurrentPageObject){
+myapp.controller("infoVaerCtrl", function($scope){
 
-    $scope.containerObject = CurrentPageObject();
 
-    $scope.$watchCollection('containerObject.svar', function() {
-        sjekkFasit();
-    });
 
-    $scope.visAntallKorrekteSvar =  function() {
-        korrekteSvar({
-            "Er det ventet nedbør? Hvis ja, hvilken?": keys.vind,
-            "Hvordan er sikten?": keys.sikt,
-            "Vil vinden være en faktor?": keys.vind,
-            "Hva er nullgradsgrensen?": ['nullisoterm']
-        });
-    };
+
 
     $scope.nedborLabels =
       [{title: "Ingen nedbør", key: "ingenNedbor"},
@@ -38,6 +27,13 @@ myapp.controller("infoVaerCtrl", function($scope, sjekkFasit, korrekteSvar, Curr
     angular.forEach($scope.vindLabels, function(val){
         keys.vind.push(val.key);
     });
+
+    $scope.alerts = {
+        "Er det ventet nedbør? Hvis ja, hvilken?": keys.vind,
+        "Hvordan er sikten?": keys.sikt,
+        "Vil vinden være en faktor?": keys.vind,
+        "Hva er nullgradsgrensen?": ['nullisoterm']
+    };
 
 
 

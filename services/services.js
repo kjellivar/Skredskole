@@ -187,11 +187,28 @@ myapp.provider('Info', function () {
             vindavkjoling: undefined
         }
     };
+
     this.$get = ["MenuItem", function (MenuItem) {
         return {
             skredvarsel: MenuItem("Skredvarsel", ".skredvarsel", fasit.skredvarsel),
             vaer: MenuItem("Vær", ".vaer", fasit.vaer),
-            alpineFarer: MenuItem("Alpine farer", ".alpineFarer", fasit.alpineFarer)
+            alpineFarer: MenuItem("Alpine farer", ".alpineFarer", fasit.alpineFarer),
+            labels: {
+                skredproblem:{
+                    torreLossnoskred: "Tørre løssnøskred",
+                    vateLossnoskred: "Våte løssnøskred",
+                    torreFlakskred: "Tørre flakskred",
+                    vateFlakskred: "Våte flakskred",
+                    sorpeskred: "Sørpeskred",
+                    skavl: "Skavl"
+                },
+                snodekke: {
+                    nySno:"Nysnø",
+                    vindtransportertSno:"Vindtransportert snø",
+                    svakeLagISnopakken:"Svake lag i snøpakken",
+                    vatOgVannmettetSno:"Våt og vannmettet snø"
+                }
+            }
         };
     }];
     this.setFasit = function (newFasit) {
@@ -201,19 +218,19 @@ myapp.provider('Info', function () {
 myapp.provider('Utstyr', function () {
     var fasit = {
         list: {
-            skredsoker: undefined,
-            spade: undefined,
-            sokestang: undefined,
-            ballongsekkAvalungSkredball: undefined,
-            kartKompassHoydemaler: undefined,
-            mobiltelefon: undefined,
-            forstehjelpssett: undefined,
-            bivuakksekk: undefined
+            skredsoker: true,
+            spade: true,
+            sokestang: true,
+            //ballongsekkAvalungSkredball: true,
+            kartKompassHoydemaler: true,
+            mobiltelefon: true,
+            forstehjelpssett: true
+            //bivuakksekk: true
         },
         deltakere: {
-            gruppeStorrelse: undefined,
-            erfaring: undefined,
-            motivasjon: undefined
+            gruppeStorrelse: "required",
+            erfaring: "required",
+            motivasjon: "required"
         }
 
     };

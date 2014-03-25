@@ -4,36 +4,19 @@ myapp.controller("menuCtrl", function($scope, Cleared, $state, AppData){
     $scope.turTittel = AppData.turTittel;
 
 
-
-    $scope.$on('$stateChangeSuccess', function(event, toState, toParams, fromState, fromParams){
+    $scope.$on('$stateChangeSuccess', function(){
         var state = $state.current.name.split(".")[0];
         $scope.infoActive = function () {
-            if(state === "info"){
-                return true;
-            } else {
-                return false;
-            }
+            return state === "info";
         };
         $scope.ruteActive = function () {
-            if(state === "rute"){
-                return true;
-            } else {
-                return false;
-            }
+            return state === "rute";
         };
         $scope.utstyrActive = function () {
-            if(state === "utstyr"){
-                return true;
-            } else {
-                return false;
-            }
+            return state === "utstyr";
         };
         $scope.kritiskeOmraderActive = function () {
-            if(state === "kritiskeOmrader"){
-                return true;
-            } else {
-                return false;
-            }
+            return state === "kritiskeOmrader";
         };
     });
 

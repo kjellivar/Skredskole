@@ -9,7 +9,27 @@ myapp.directive('nveSubMenuItem', function() {
 })
 .directive('nveSkredFooter', function() {
     return {
-        templateUrl: 'partials/directives/nveSkredFooter.html'
+        restrict: "AE",
+        scope: {
+            alerts: "=",
+            customAlerts: "&"
+        },
+        templateUrl: 'partials/directives/nveSkredFooter.html',
+        controller: function($scope, CurrentPageObject, sjekkFasit, korrekteSvar) {
+            $scope.containerObject = CurrentPageObject();
+            $scope.$watchCollection('containerObject.svar', function() {
+                sjekkFasit();
+            });
+            $scope.visAntallKorrekteSvar =  function() {
+                korrekteSvar($scope.alerts);
+                if(angular.isFunction($scope.customAlerts)){
+                    var custAlertArray = $scope.customAlerts();
+                    angular.forEach(custAlertArray, function(val){
+                        $scope.containerObject.alerts.push(val);
+                    });
+                }
+            };
+        }
     };
 })
 .directive('nveCheckboxButton', function() {

@@ -1,9 +1,6 @@
-myapp.controller("infoSkredvarselCtrl", function($scope, sjekkFasit, korrekteSvar, CurrentPageObject, AppData){
+myapp.controller("infoSkredvarselCtrl", function($scope, AppData){
 
-    $scope.containerObject = CurrentPageObject();
-
-    $scope.visAntallKorrekteSvar =  function() {
-        korrekteSvar({
+    $scope.alerts = {
             "Hva er varslet faregrad?": ['faregrad'],
             "Hva slags type skredproblem kan man møte?": ['skredproblem'],
             "Hva er mest utsatt himmelretning?": ['n','no','o','so','s','sv','v','nv'],
@@ -13,30 +10,14 @@ myapp.controller("infoSkredvarselCtrl", function($scope, sjekkFasit, korrekteSva
             "Hva er varslet sannsynlighet for skred?": ['sannsynlighet'],
             "Hva er varslet skredstørrelse?": ['skredstorrelse'],
             "Hva er varslet tilleggsbelastning?": ['tilleggsbelastning']
-        });
-    };
+        };
 
-    $scope.$watchCollection('containerObject.svar', function() {
-        sjekkFasit();
-    });
+
   
     $scope.himmelRetningerLabels =
       [{title: "N", key: "n"}, {title: "NØ", key: "no"}, {title: "Ø", key: "o"}, {title: "SØ", key: "so"},
       {title: "S", key: "s"}, {title: "SV", key: "sv"}, {title: "V", key: "v"}, {title: "NV", key: "nv"}];
 
-    $scope.skredproblemLabels =
-        [{title: "Tørre løssnøskred", key: "torreLossnoskred"},
-        {title: "Våte løssnøskred", key: "vateLossnoskred"},
-        {title: "Tørre flakskred", key: "torreFlakskred"},
-        {title: "Våte flakskred", key: "vateFlakskred"},
-        {title: "Sørpeskred", key: "sorpeskred"},
-        {title: "Skavl", key: "skavl"}];
-
-    $scope.snoDekkeLabels =
-      [{title: "Nysnø", key: "nySno"},
-      {title: "Vindtransportert snø", key: "vindtransportertSno"},
-      {title: "Svake lag i snøpakken", key: "svakeLagISnopakken"},
-      {title: "Våt og vannmettet snø", key: "vatOgVannmettetSno"}];
 
     $scope.utsatteOmraderLabels =
       [{title: "Leområrder", key: "leomrader"},

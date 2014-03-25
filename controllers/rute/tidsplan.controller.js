@@ -1,21 +1,8 @@
-myapp.controller("ruteTidsplanCtrl", function($scope, sjekkFasit, korrekteSvar, CurrentPageObject, AppData){
+myapp.controller("ruteTidsplanCtrl", function($scope, AppData){
 
-    $scope.containerObject = CurrentPageObject();
-
-    $scope.$watchCollection('containerObject.svar', function() {
-        sjekkFasit();
-    });
-
-    $scope.visAntallKorrekteSvar =  function() {
-
-        $scope.alerts = [{
-            show: !(newAnswers.oppstigning && newAnswers.nedfart && newAnswers.pause),
-            text: "Fyll inn alle tider!"
-        }, {
-            show: !(newAnswers.startTid && newAnswers.spesifikkStart),
-            text: "Krever skredfaresituasjonen at man starter tidlig på morgenen?"
-        }];
-
+    $scope.alerts = {
+        "Fyll inn alle tider!": ['oppstigning', 'nedfart', 'pause'],
+        "Krever skredfaresituasjonen at man starter tidlig på morgenen?": ['startTid', 'spesifikkStart']
     };
 
     $scope.forrige = "rute/distanse";

@@ -1,11 +1,7 @@
-myapp.controller("kritiskeOmraderEgenskaperCtrl", function($scope, sjekkFasit, korrekteSvar, CurrentPageObject, AppData){
+myapp.controller("kritiskeOmraderEgenskaperCtrl", function($scope, AppData){
 
-    $scope.containerObject = CurrentPageObject();
 
-    $scope.$watchCollection('containerObject.svar', function() {
-        sjekkFasit();
-    });
-    
+
     $scope.himmelRetningerLabels =
       [{title: "N", key: "n"}, {title: "NØ", key: "no"}, {title: "Ø", key: "o"}, {title: "SØ", key: "so"},
       {title: "S", key: "s"}, {title: "SV", key: "sv"}, {title: "V", key: "v"}, {title: "NV", key: "nv"}];
@@ -20,7 +16,7 @@ myapp.controller("kritiskeOmraderEgenskaperCtrl", function($scope, sjekkFasit, k
     $scope.showPoints = false;
     $scope.togglePoints = function () {
         $scope.showPoints = !$scope.showPoints;
-    }
+    };
 
     $scope.forrige = "rute/tidsplan";
     $scope.neste = "kritiske-omrader/sjekk";

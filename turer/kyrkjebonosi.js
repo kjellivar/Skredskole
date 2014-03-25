@@ -22,24 +22,7 @@ myapp.config(function (InfoProvider, UtstyrProvider, RuteProvider, KritiskeOmrad
             klipper: true
         }
     });
-    UtstyrProvider.setFasit({
-        list: {
-            skredsoker: true,
-            spade: true,
-            sokestang: true,
-            //ballongsekkAvalungSkredball: true,
-            kartKompassHoydemaler: true,
-            mobiltelefon: true,
-            forstehjelpssett: true
-            //bivuakksekk: true
-        },
-        deltakere: {
-            gruppeStorrelse: "required",
-            erfaring: "required",
-            motivasjon: "required"
-        }
 
-    });
     RuteProvider.setFasit({
         tidsplan: {
             oppstigning: 3,
@@ -49,7 +32,7 @@ myapp.config(function (InfoProvider, UtstyrProvider, RuteProvider, KritiskeOmrad
             startTid: "required"
         },
         rutevalg: {rutevalg: true},
-        distanse: {lengde: "required", hoyde: 931}
+        distanse: {lengde: "required", hoyde: 900}
     });
     KritiskeOmraderProvider.setFasit({
         egenskaper: {},

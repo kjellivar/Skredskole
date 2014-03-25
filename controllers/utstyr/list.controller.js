@@ -1,22 +1,12 @@
 
-myapp.controller("utstyrListCtrl", function($scope, sjekkFasit, korrekteSvar, CurrentPageObject){
+myapp.controller("utstyrListCtrl", function($scope){
 
-    $scope.containerObject = CurrentPageObject();
-
-    $scope.$watchCollection('containerObject.svar', function() {
-        sjekkFasit();
-    });
-
-    $scope.visAntallKorrekteSvar =  function() {
-
-        korrekteSvar({
+    $scope.alerts = {
             "Sender/mottaker, spade og søkestang er nødvendig for å kunne ferdes i snøskredterreng!": ['skredsoker','spade','sokestang'],
             "Kart, kompass og høydemåler er viktig for å kunne orientere seg!": ['kartKompassHoydemaler'],
             "En mobiltelefon er nyttig i tilfelle en nødssituasjon!": ['mobiltelefon'],
             "Førstehjelpssett er viktig for å kunne ta hånd om småskader etc.!":['forstehjelpssett']
-        });
-
-    };
+        };
 
 
     $scope.alleTurDeltakereLabels =

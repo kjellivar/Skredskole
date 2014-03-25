@@ -29,16 +29,16 @@
     <div class="span3">
         <h5>Skredproblem</h5>
         <ul class="unstyled">
-            <li ng-repeat="item in skredproblemLabels">
-                <label class="radio"><input type="radio" ng-model="info.skredvarsel.svar.skredproblem" ng-value="item.key"> {{item.title}}</label>
+            <li ng-repeat="(key, label) in info.labels.skredproblem">
+                <label class="radio"><input type="radio" ng-model="info.skredvarsel.svar.skredproblem" ng-value="key"> {{label}}</label>
             </li>
         </ul>
     </div>
     <div class="span3">
         <h5>Årsak til skredfare</h5>
         <ul class="unstyled">
-            <li ng-repeat="item in snoDekkeLabels">
-                <label class="checkbox"><input type="checkbox" ng-model="info.skredvarsel.svar[item.key]"> {{item.title}}</label>
+            <li ng-repeat="(key, label) in info.labels.snodekke">
+                <label class="checkbox"><input type="checkbox" ng-model="info.skredvarsel.svar[key]"> {{label}}</label>
             </li>
         </ul>
     </div>
@@ -51,26 +51,21 @@
             </li>
         </ul>
     </div>
-    <div class="span3">
 
+    <div class="span3">
         <div nve-model="info.skredvarsel.svar.tilleggsbelastning" nve-skredproblem-boks="tilleggsbelastning"></div>
     </div>
-
-
-
 
 </div>
 
 
 <div class="row">
 
-
-
     <div class="span3">
         <h5>Utsatte himmelretninger</h5>
         <div nve-compass="info.skredvarsel.svar"></div>
-
     </div>
+
     <div class="span3">
         <h5>Utsatt høydenivå over</h5>
         <img src="img/skredvarsel/hoyde.png" alt="Utsatt høydenivå">
@@ -79,6 +74,7 @@
             <span class="add-on">m</span>
         </div>
     </div>
+
     <div class="span3">
         <div nve-model="info.skredvarsel.svar.skredstorrelse" nve-skredproblem-boks="damageSize"></div>
     </div>
@@ -87,9 +83,7 @@
         <div nve-model="info.skredvarsel.svar.sannsynlighet" nve-skredproblem-boks="probability"></div>
     </div>
 
-
-
 </div>
 
 
-<div nve-skred-footer></div>
+<nve-skred-footer alerts="alerts"></nve-skred-footer>
