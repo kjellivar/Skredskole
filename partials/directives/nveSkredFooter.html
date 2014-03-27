@@ -27,12 +27,12 @@
 
 <div class="row">
     <div class="span1" ng-class="{disabled: !forrige}">
-        <a class="nve-btn arrow-left" ng-href="#/{{forrige}}"></a>
+        <a class="nve-btn arrow-left" ui-sref="{{forrige}}"></a>
     </div>
     <div class="offset3 span4 ">
         <a class="nve-btn blue" data-target="#myModal" data-toggle="modal" class="btn btn-primary btn-large" ng-click="visAntallKorrekteSvar()">Sjekk svar</a>
     </div>
     <div class="offset3 span1"  ng-class="{disabled: !neste}">
-        <a class="nve-btn arrow-right" ng-href="#/{{neste}}"></a>
+        <a class="nve-btn arrow-right" ui-sref="{{neste}}"></a>
     </div>
 </div>

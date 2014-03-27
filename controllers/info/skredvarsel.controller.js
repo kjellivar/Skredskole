@@ -12,8 +12,6 @@ myapp.controller("infoSkredvarselCtrl", function($scope, AppData){
             "Hva er varslet tilleggsbelastning?": ['tilleggsbelastning']
         };
 
-
-  
     $scope.himmelRetningerLabels =
       [{title: "N", key: "n"}, {title: "NØ", key: "no"}, {title: "Ø", key: "o"}, {title: "SØ", key: "so"},
       {title: "S", key: "s"}, {title: "SV", key: "sv"}, {title: "V", key: "v"}, {title: "NV", key: "nv"}];
@@ -36,8 +34,8 @@ myapp.controller("infoSkredvarselCtrl", function($scope, AppData){
     $scope.tilleggsbelastning = {values: [{v:"naturlig", t: "Naturlig utløst"}, {v: "liten", t: "Liten"}, {v: "stor", t: "Stor"}],
         name:"Tilleggsbelastning", vertical: true};
 
-    $scope.forrige = false;
-    $scope.neste = "info/vaer";
+    $scope.forrige = "info.info";
+    $scope.neste = "info.vaer";
 
     $scope.infoVarslingsOmrade = AppData.infoVarslingsOmrade;
     $scope.skredvarselLink = AppData.skredvarselLink;

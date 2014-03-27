@@ -12,7 +12,9 @@ myapp.directive('nveSubMenuItem', function() {
         restrict: "AE",
         scope: {
             alerts: "=",
-            customAlerts: "&"
+            customAlerts: "&",
+            forrige: '=',
+            neste: '='
         },
         templateUrl: 'partials/directives/nveSkredFooter.html',
         controller: function($scope, CurrentPageObject, sjekkFasit, korrekteSvar) {

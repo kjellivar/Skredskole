@@ -18,8 +18,8 @@ myapp.controller("kritiskeOmraderEgenskaperCtrl", function($scope, AppData){
         $scope.showPoints = !$scope.showPoints;
     };
 
-    $scope.forrige = "rute/tidsplan";
-    $scope.neste = "kritiske-omrader/sjekk";
+    $scope.forrige = "rute.tidsplan";
+    $scope.neste = "kritiskeOmrader.nedkjoring";
 
     $scope.turTittel = AppData.turTittel;
   

@@ -13,12 +13,17 @@ myapp.config(function($stateProvider, $urlRouterProvider){
         controller: "startCtrl"
     })
     .state('info', {
-        url: "/info",
-        templateUrl: "partials/views/info/info.html",
+        url: "/omrade",
+        templateUrl: "partials/views/info/info.meny.html",
         controller: function($scope, Info){
             $scope.info = Info;
         }
     })
+      .state('info.info', {
+          url: "/info",
+          templateUrl: "partials/views/info/info.html",
+          controller: "infoInfoCtrl"
+      })
       .state('info.skredvarsel', {
           url: "/skredvarsel",
           templateUrl: "partials/views/info/skredvarsel.html",
@@ -36,8 +41,8 @@ myapp.config(function($stateProvider, $urlRouterProvider){
       })
       
     .state('utstyr', {
-        url: "/utstyr",
-        templateUrl: "partials/views/utstyr/utstyr.html",
+        url: "/forberedelse",
+        templateUrl: "partials/views/utstyr/utstyr.meny.html",
         controller: function($scope, Utstyr){
           $scope.utstyr = Utstyr;
         }
@@ -55,7 +60,7 @@ myapp.config(function($stateProvider, $urlRouterProvider){
     
     .state('rute', {
         url: "/rute",
-        templateUrl: "partials/views/rute/rute.html",
+        templateUrl: "partials/views/rute/rute.meny.html",
         controller: function($scope, Rute){
           $scope.rute = Rute;
         }
@@ -79,7 +84,7 @@ myapp.config(function($stateProvider, $urlRouterProvider){
     
     .state('kritiskeOmrader', {
         url: "/kritiske-omrader",
-        templateUrl: "partials/views/kritiske-omrader/kritiske.omrader.html",
+        templateUrl: "partials/views/kritiske-omrader/kritiske.omrader.meny.html",
         controller: function($scope, KritiskeOmrader){
           $scope.kritiskeOmrader = KritiskeOmrader;
         }

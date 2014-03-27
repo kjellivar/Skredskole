@@ -23,7 +23,7 @@
                <a class="brand" ui-sref="start"><strong ng-bind="turTittel"></strong></a>
            </li>
           <li ng-class="{active: infoActive()}">
-              <a ui-sref="info.skredvarsel">
+              <a ui-sref="info.info">
                   Område <span class="text-success" ng-show="cleared.info()">&#x2713;</span>
               </a>
           </li>
@@ -80,6 +80,7 @@
   <!-- Controllers -->
   <script src="controllers/menu.controller.js"></script>
   <script src="controllers/start.controller.js"></script>
+  <script src="controllers/info/info.controller.js"></script>
   <script src="controllers/info/skredvarsel.controller.js"></script>
   <script src="controllers/info/vaer.controller.js"></script>
   <script src="controllers/info/alpine.farer.controller.js"></script>
@@ -91,9 +92,6 @@
   <script src="controllers/kritiske-omrader/egenskaper.controller.js"></script>
   <script src="controllers/kritiske-omrader/nedkjoring.controller.js"></script>
   <script src="controllers/planleggingsskjema.controller.js"></script>
-  
-
-
 
   <!-- App config -->
   <script src="turer/kyrkjebonosi.js"></script>

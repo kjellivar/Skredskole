@@ -1,10 +1,6 @@
 myapp.controller("kritiskeOmraderNedkjoringCtrl", function($scope){
 
-
-
-    $scope.forrige = "kritiske-omrader/sjekk";
+    $scope.forrige = "kritiskeOmrader.egenskaper";
     $scope.neste = "planleggingsskjema";
-
-
 
 });

@@ -37,8 +37,8 @@ myapp.controller("infoVaerCtrl", function($scope){
 
 
 
-    $scope.forrige = "info/skredvarsel";
-    $scope.neste = "info/alpine-farer";
+    $scope.forrige = "info.skredvarsel";
+    $scope.neste = "info.alpineFarer";
 
 
   

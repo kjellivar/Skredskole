@@ -190,6 +190,7 @@ myapp.provider('Info', function () {
 
     this.$get = ["MenuItem", function (MenuItem) {
         return {
+            info: MenuItem("Info", ".info", {}),
             skredvarsel: MenuItem("Skredvarsel", ".skredvarsel", fasit.skredvarsel),
             vaer: MenuItem("Vær", ".vaer", fasit.vaer),
             alpineFarer: MenuItem("Alpine farer", ".alpineFarer", fasit.alpineFarer),
@@ -289,10 +290,11 @@ myapp.provider('KritiskeOmrader', function () {
 myapp.provider('AppData', function () {
     var turTittel = "turTittel";
     var hoydeMeter = 'Høydemeter';
-    var infoVarslingsOmrade = 'Varslingsomrade';
+    var infoVarslingsOmrade = ['paragraf1', 'paragraf2'];
     var skredvarselDato = 'dato';
     var skredvarselLink = 'url';
     var ruteTekst = 'tekst';
+
     this.$get = function () {
         return {
             turTittel: turTittel,

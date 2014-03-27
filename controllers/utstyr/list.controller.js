@@ -26,7 +26,7 @@ myapp.controller("utstyrListCtrl", function($scope){
 
     //required stuff
 
-    $scope.forrige = "info/alpine-farer";
-    $scope.neste = "utstyr/deltakere";
+    $scope.forrige = "info.alpineFarer";
+    $scope.neste = "utstyr.deltakere";
   
 });

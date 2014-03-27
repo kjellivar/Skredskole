@@ -3,9 +3,10 @@ myapp.controller("menuCtrl", function($scope, Cleared, $state, AppData){
     $scope.cleared = Cleared;
     $scope.turTittel = AppData.turTittel;
 
-
     $scope.$on('$stateChangeSuccess', function(){
-        var state = $state.current.name.split(".")[0];
+        var completeState = $state.current.name;
+        var state = completeState.split(".")[0];
+
         $scope.infoActive = function () {
             return state === "info";
         };
@@ -18,6 +19,8 @@ myapp.controller("menuCtrl", function($scope, Cleared, $state, AppData){
         $scope.kritiskeOmraderActive = function () {
             return state === "kritiskeOmrader";
         };
+
+
     });
 
 

@@ -32,7 +32,7 @@ myapp.controller("utstyrDeltakereCtrl", function($scope){
         }];
     };
 
-  $scope.forrige = "utstyr/list";
-  $scope.neste = "rute/rutevalg";
+  $scope.forrige = "utstyr.list";
+  $scope.neste = "rute.rutevalg";
 
 });

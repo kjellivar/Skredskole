@@ -17,8 +17,8 @@ myapp.controller("ruteRutevalgCtrl", function($scope, AppData){
 
     //Required stuff
 
-    $scope.forrige = "utstyr/deltakere";
-    $scope.neste = "rute/distanse";
+    $scope.forrige = "utstyr.deltakere";
+    $scope.neste = "rute.distanse";
 
     $scope.ruteTekst = AppData.ruteTekst;
   

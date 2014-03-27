@@ -5,8 +5,8 @@ myapp.controller("ruteTidsplanCtrl", function($scope, AppData){
         "Krever skredfaresituasjonen at man starter tidlig på morgenen?": ['startTid', 'spesifikkStart']
     };
 
-    $scope.forrige = "rute/distanse";
-    $scope.neste = "kritiske-omrader/egenskaper";
+    $scope.forrige = "rute.distanse";
+    $scope.neste = "kritiskeOmrader.egenskaper";
 
     $scope.turTittel = AppData.turTittel;
     $scope.hoydeMeter = AppData.hoydeMeter;
