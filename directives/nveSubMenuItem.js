@@ -17,11 +17,17 @@ myapp.directive('nveSubMenuItem', function() {
             neste: '='
         },
         templateUrl: 'partials/directives/nveSkredFooter.html',
-        controller: function($scope, CurrentPageObject, sjekkFasit, korrekteSvar) {
+        controller: function($scope, CurrentPageObject, sjekkFasit, korrekteSvar, filterFilter) {
             $scope.containerObject = CurrentPageObject();
+
+            var showFasit = false;
+            $scope.visFasitKnappTekst = "Vis fasit!";
+            var oldAnswers = {};
+
             $scope.$watchCollection('containerObject.svar', function() {
                 sjekkFasit();
             });
+
             $scope.visAntallKorrekteSvar =  function() {
                 korrekteSvar($scope.alerts);
                 if(angular.isFunction($scope.customAlerts)){
@@ -30,6 +36,24 @@ myapp.directive('nveSubMenuItem', function() {
                         $scope.containerObject.alerts.push(val);
                     });
                 }
+            };
+
+            $scope.toggleFasit = function () {
+                if(!showFasit){
+                    angular.copy($scope.containerObject.svar, oldAnswers);
+                    angular.copy($scope.containerObject.fasit, $scope.containerObject.svar);
+                    $scope.visFasitKnappTekst = "Skjul fasit!";
+                } else {
+                    angular.copy( oldAnswers, $scope.containerObject.svar);
+                    $scope.visFasitKnappTekst = "Vis fasit!";
+                }
+                showFasit = !showFasit;
+            };
+
+            $scope.emptyAnswers = function () {
+                $scope.containerObject.svar = {};
+                showFasit = false;
+                $scope.visFasitKnappTekst = "Vis fasit!";
             };
         }
     };

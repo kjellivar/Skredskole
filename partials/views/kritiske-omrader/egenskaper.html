@@ -1,48 +1,56 @@
 <h3>Kritiske områder</h3>
 <div class="row">
-  <div class="span10">
-    <p><strong>Langs ruta opp til {{turTittel}} er det spesielt to kritiske områder man må vurdere ekstra nøye!</strong>
-    </p>
-    <p>Bestem først posisjonen til disse områdene, og deretter helning, høyde, eksposisjon og hva som kjennetegner de kritiske punktene.</p>
-  </div>
-  <div class="span2">
-    <div class="text-center" ng-mouseup="count = count + 1" ng-init="count=0" nve-draggable>1</div>
-    <div class="text-center" ng-mouseup="count = count + 1" nve-draggable>2</div>
-  </div>
+    <div class="span10">
+        <p><strong>Langs ruta opp til {{turTittel}} er det spesielt to kritiske områder man må vurdere ekstra
+            nøye!</strong>
+        </p>
+
+        <p>Bestem først posisjonen til disse områdene, og deretter helning, høyde, eksposisjon og hva som kjennetegner
+            de kritiske punktene.</p>
+    </div>
+    <div class="span2">
+        <div class="text-center" ng-mouseup="count = count + 1" ng-init="count=0" nve-draggable>1</div>
+        <div class="text-center" ng-mouseup="count = count + 1" nve-draggable>2</div>
+    </div>
 </div>
 
 
 <button class="btn" ng-click="togglePoints()">Vis kritiske områder</button>
+<button class="btn" ng-click="showKritiskOmrade(1)">Fyll inn for kritiske område 1</button>
+<button class="btn" ng-click="showKritiskOmrade(2)">Vis kritiske område 2</button>
 <div class="row">
 
-  <div class="span12">
-
-    <img src="http://farm6.staticflickr.com/5482/12431394663_6045dd32c3_o.jpg" ng-hide="showPoints">
-    <img src="http://farm4.staticflickr.com/3757/12497404423_156c08d33c_o.jpg" ng-show="showPoints">
-    
-  </div>
 
 </div>
 
 <div class="row">
-  <div class="span6" ng-repeat="index in [1, 2]">
-    <div ng-show="count > 1" class="well">
-      <h3>Kritisk område #<span ng-bind="index"></span></h3>
-      <label><strong>Grader helning:</strong> </label>
-      <input type="number" ng-model="kritiskeOmrader.egenskaper.svar['helning' + index]">
-      <label><strong>Høyde i meter:</strong></label>
-      <input type="number" ng-model="kritiskeOmrader.egenskaper.svar['hoyde' + index]">
-      
-      <h4>Himmelretning</h4>
-      <div nve-compass="kritiskeOmrader.egenskaper.svar"></div>
-      <ul class="unstyled">
-        <li ng-repeat="item in utsatteOmraderLabels">
-          <label class="checkbox">
-            <input type="checkbox" ng-model="kritiskeOmrader.egenskaper.svar[item.key + index]">{{item.title}}</label>
-        </li>
-      </ul>
+    <div class="span12" ng-if="showKritiskOmradeNr == -1">
+
+        <img src="http://farm6.staticflickr.com/5482/12431394663_6045dd32c3_o.jpg" ng-if="!showPoints">
+        <img src="http://farm4.staticflickr.com/3757/12497404423_156c08d33c_o.jpg" ng-if="showPoints">
+
     </div>
-  </div>
+
+    <div class="span5" ng-repeat="index in [1, 2]" ng-if="showKritiskOmradeNr == index">
+        <div class="well">
+            <h3>Kritisk område #<span ng-bind="index"></span></h3>
+            <label><strong>Grader helning:</strong> </label>
+            <input type="number" ng-model="kritiskeOmrader.egenskaper.svar['helning' + index]">
+            <label><strong>Høyde i meter:</strong></label>
+            <input type="number" ng-model="kritiskeOmrader.egenskaper.svar['hoyde' + index]">
+
+            <h4>Himmelretning</h4>
+
+            <div nve-compass="kritiskeOmrader.egenskaper.svar"></div>
+            <ul class="unstyled">
+                <li ng-repeat="item in utsatteOmraderLabels">
+                    <label class="checkbox">
+                        <input type="checkbox" ng-model="kritiskeOmrader.egenskaper.svar[item.key + index]">{{item.title}}
+                    </label>
+                </li>
+            </ul>
+        </div>
+    </div>
 
 </div>
 

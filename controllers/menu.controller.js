@@ -19,10 +19,5 @@ myapp.controller("menuCtrl", function($scope, Cleared, $state, AppData){
         $scope.kritiskeOmraderActive = function () {
             return state === "kritiskeOmrader";
         };
-
-
     });
-
-
-
 });

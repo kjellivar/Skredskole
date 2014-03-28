@@ -7,8 +7,7 @@
     stroke-width:1;
 }
 .skredkoleCompassBG {
-    background-image: url(images/skredskole/kompass.png);
-    background-repeat: no-repeat;
+    background: url(images/skredskole/kompass.png) no-repeat;
 }
 
 .skredskoleCompass text {
@@ -27,4 +26,3 @@
 .skredskoleCompass polygon.selected g {
     fill:#fff;
 }
-

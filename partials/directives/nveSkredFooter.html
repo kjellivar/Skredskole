@@ -4,7 +4,7 @@
 <div id="myModal" class="modal hide fade" tabindex="-1" role="dialog" aria-labelledby="myModalLabel" aria-hidden="true">
     <div class="modal-header">
         <button type="button" class="close" data-dismiss="modal" aria-hidden="true">×</button>
-        <h3 id="myModalLabel">Sjekk svar</h3>
+        <h3 id="myModalLabel">Har du fylt ut rett?</h3>
     </div>
     <div class="modal-body">
         <div class="alert" ng-show="(containerObject.alerts | filter:{show:true})[0].show">
@@ -31,6 +31,8 @@
     </div>
     <div class="offset3 span4 ">
         <a class="nve-btn blue" data-target="#myModal" data-toggle="modal" class="btn btn-primary btn-large" ng-click="visAntallKorrekteSvar()">Sjekk svar</a>
+        <button class="btn" ng-click="toggleFasit()" ng-bind="visFasitKnappTekst"></button>
+        <button class="btn" ng-click="emptyAnswers()">Tøm skjema!</button>
     </div>
     <div class="offset3 span1"  ng-class="{disabled: !neste}">
         <a class="nve-btn arrow-right" ui-sref="{{neste}}"></a>

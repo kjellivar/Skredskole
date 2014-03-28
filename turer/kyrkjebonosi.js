@@ -32,7 +32,7 @@ myapp.config(function (InfoProvider, UtstyrProvider, RuteProvider, KritiskeOmrad
             startTid: "required"
         },
         rutevalg: {rutevalg: true},
-        distanse: {lengde: "required", hoyde: 900}
+        distanse: {lengde: 4000, hoyde: 900}
     });
     KritiskeOmraderProvider.setFasit({
         egenskaper: {},

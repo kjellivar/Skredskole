@@ -12,10 +12,16 @@ myapp.controller("kritiskeOmraderEgenskaperCtrl", function($scope, AppData){
       {title: "Områder med mye steiner/blokker" , key: "omraderMedMyeSteiner"}];
 
 
+    $scope.showKritiskOmradeNr = -1;
 
     $scope.showPoints = false;
     $scope.togglePoints = function () {
         $scope.showPoints = !$scope.showPoints;
+        $scope.showKritiskOmradeNr = -1;
+    };
+
+    $scope.showKritiskOmrade = function(nummer) {
+        $scope.showKritiskOmradeNr = nummer;
     };
 
     $scope.forrige = "rute.tidsplan";
