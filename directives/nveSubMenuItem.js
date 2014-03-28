@@ -24,8 +24,10 @@ myapp.directive('nveSubMenuItem', function() {
             $scope.visFasitKnappTekst = "Vis fasit!";
             var oldAnswers = {};
 
-            $scope.$watchCollection('containerObject.svar', function() {
+            $scope.$watchCollection('containerObject.svar', function(newAnswer) {
                 sjekkFasit();
+                console.log($scope.containerObject.svar);
+                console.log($scope.containerObject.fasit);
             });
 
             $scope.visAntallKorrekteSvar =  function() {
@@ -86,6 +88,13 @@ myapp.directive('nveSubMenuItem', function() {
     return {
         scope: {
             nveCompass: '='
+        },
+        link: function(scope){
+            if(!scope.nveCompass.keys) {
+                scope.nveCompass.keys = ['n','no','o','so','s','sv','v','nv'];
+            }
+            scope.model = scope.nveCompass.model;
+            scope.keys = scope.nveCompass.keys;
         },
         templateUrl: 'partials/directives/nveCompass.html'
     };

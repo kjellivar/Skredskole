@@ -9,8 +9,8 @@
             de kritiske punktene.</p>
     </div>
     <div class="span2">
-        <div class="text-center" ng-mouseup="count = count + 1" ng-init="count=0" nve-draggable>1</div>
-        <div class="text-center" ng-mouseup="count = count + 1" nve-draggable>2</div>
+        <div class="text-center" ng-mouseup="count = count + 1" ng-init="count=0" nve-draggable ng-show="showKritiskOmradeNr == -1">1</div>
+        <div class="text-center" ng-mouseup="count = count + 1" nve-draggable ng-show="showKritiskOmradeNr == -1">2</div>
     </div>
 </div>
 
@@ -31,24 +31,53 @@
 
     </div>
 
-    <div class="span5" ng-repeat="index in [1, 2]" ng-if="showKritiskOmradeNr == index">
-        <div class="well">
-            <h3>Kritisk område #<span ng-bind="index"></span></h3>
-            <label><strong>Grader helning:</strong> </label>
-            <input type="number" ng-model="kritiskeOmrader.egenskaper.svar['helning' + index]">
-            <label><strong>Høyde i meter:</strong></label>
-            <input type="number" ng-model="kritiskeOmrader.egenskaper.svar['hoyde' + index]">
+    <div ng-if="showKritiskOmradeNr == 1">
+        <div class="span5">
+            <div class="well">
+                <h3>Kritisk område #1</h3>
+                <label><strong>Grader helning:</strong> </label>
+                <input type="number" ng-model="kritiskeOmrader.egenskaper.svar.helning1">
+                <label><strong>Høyde i meter:</strong></label>
+                <input type="number" ng-model="kritiskeOmrader.egenskaper.svar.hoyde1">
 
-            <h4>Himmelretning</h4>
+                <h4>Himmelretning</h4>
 
-            <div nve-compass="kritiskeOmrader.egenskaper.svar"></div>
-            <ul class="unstyled">
-                <li ng-repeat="item in utsatteOmraderLabels">
-                    <label class="checkbox">
-                        <input type="checkbox" ng-model="kritiskeOmrader.egenskaper.svar[item.key + index]">{{item.title}}
-                    </label>
-                </li>
-            </ul>
+                <div nve-compass="{model: kritiskeOmrader.egenskaper.svar, keys: ['n1','no1','o1','so1','s1','sv1','v1','nv1']}"></div>
+                <ul class="unstyled">
+                    <li ng-repeat="item in utsatteOmraderLabels">
+                        <label class="checkbox">
+                            <input type="checkbox" ng-model="kritiskeOmrader.egenskaper.svar[item.key + '1']">{{item.title}}</label>
+                    </li>
+                </ul>
+            </div>
+        </div>
+        <div class="span7">
+            <img src="img/kritiskeOmrader/kyrkjebonosi/utsatt1_zoom3.jpg">
+        </div>
+    </div>
+
+    <div ng-if="showKritiskOmradeNr == 2">
+        <div class="span5">
+            <div class="well">
+                <h3>Kritisk område #2</h3>
+                <label><strong>Grader helning:</strong> </label>
+                <input type="number" ng-model="kritiskeOmrader.egenskaper.svar['helning2']">
+                <label><strong>Høyde i meter:</strong></label>
+                <input type="number" ng-model="kritiskeOmrader.egenskaper.svar['hoyde2']">
+
+                <h4>Himmelretning</h4>
+
+                <div nve-compass="{model: kritiskeOmrader.egenskaper.svar, keys: ['n2','no2','o2','so2','s2','sv2','v2','nv2']}"></div>
+                <ul class="unstyled">
+                    <li ng-repeat="item in utsatteOmraderLabels">
+                        <label class="checkbox">
+                            <input type="checkbox" ng-model="kritiskeOmrader.egenskaper.svar[item.key + '2']">{{item.title}}</label>
+                    </li>
+                </ul>
+            </div>
+        </div>
+        <div class="span7">
+            <img src="img/kritiskeOmrader/kyrkjebonosi/utsatt2_zoom3.jpg">
         </div>
     </div>
 

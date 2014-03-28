@@ -1,36 +1,36 @@
 <div class="skredkoleCompassBG">
     <svg height="200" width="200" style="fill:white;stroke:#ccc;stroke-width:1" class="skredskoleCompass">
         <polygon points="100,100 138,8 62,8"
-                 ng-click="nveCompass.n = !nveCompass.n"
-                 ng-class="{selected: nveCompass.n}" />
+                 ng-click="model[keys[0]] = !model[keys[0]]"
+                 ng-class="{selected: model[keys[0]]}" />
 
         <polygon points="100,100 192,62 138,8"
-                 ng-click="nveCompass.no = !nveCompass.no"
-                 ng-class="{selected: nveCompass.no}"/>
+                 ng-click="model[keys[1]] = !model[keys[1]]"
+                 ng-class="{selected: model[keys[1]]}" />
 
         <polygon points="100,100 192,138 192,62"
-                 ng-click="nveCompass.o = !nveCompass.o"
-                 ng-class="{selected: nveCompass.o}"/>
+                 ng-click="model[keys[2]] = !model[keys[2]]"
+                 ng-class="{selected: model[keys[2]]}" />
 
         <polygon points="100,100 138,192 192,138"
-                 ng-click="nveCompass.so = !nveCompass.so"
-                 ng-class="{selected: nveCompass.so}"/>
+                 ng-click="model[keys[3]] = !model[keys[3]]"
+                 ng-class="{selected: model[keys[3]]}" />
 
         <polygon points="100,100 62,192 138,192"
-                 ng-click="nveCompass.s = !nveCompass.s"
-                 ng-class="{selected: nveCompass.s}"/>
+                 ng-click="model[keys[4]] = !model[keys[4]]"
+                 ng-class="{selected: model[keys[4]]}" />
 
         <polygon points="100,100 8,138 62,192"
-                 ng-click="nveCompass.sv = !nveCompass.sv"
-                 ng-class="{selected: nveCompass.sv}"/>
+                 ng-click="model[keys[5]] = !model[keys[5]]"
+                 ng-class="{selected: model[keys[5]]}" />
 
         <polygon points="100,100 8,62 8,138"
-                 ng-click="nveCompass.v = !nveCompass.v"
-                 ng-class="{selected: nveCompass.v}"/>
+                 ng-click="model[keys[6]] = !model[keys[6]]"
+                 ng-class="{selected: model[keys[6]]}" />
 
         <polygon points="100,100 62,8 8,62"
-                 ng-click="nveCompass.nv = !nveCompass.nv"
-                 ng-class="{selected: nveCompass.nv}"/>
+                 ng-click="model[keys[7]] = !model[keys[7]]"
+                 ng-class="{selected: model[keys[7]]}" />
 
         <g font-size="12" fill="#000" stroke="none" text-anchor="middle">
             <text x="100" y="20">N</text>

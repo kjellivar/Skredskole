@@ -35,7 +35,18 @@ myapp.config(function (InfoProvider, UtstyrProvider, RuteProvider, KritiskeOmrad
         distanse: {lengde: 4000, hoyde: 900}
     });
     KritiskeOmraderProvider.setFasit({
-        egenskaper: {},
+        egenskaper: {
+            helning1: 30,
+            hoyde1: 1200,
+            s1: true,
+            bratteHeng1: true,
+            leomrader1: true,
+            helning2: 30,
+            hoyde2: 1460,
+            s2: true,
+            leomrader2: true,
+            omraderMedMyeSteiner2: true
+    },
         nedkjoring: {sammeRute: "required"}
     });
 
