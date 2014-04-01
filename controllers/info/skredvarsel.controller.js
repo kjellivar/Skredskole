@@ -18,7 +18,7 @@ myapp.controller("infoSkredvarselCtrl", function($scope, AppData){
 
 
     $scope.utsatteOmraderLabels =
-      [{title: "Leområrder", key: "leomrader"},
+      [{title: "Leområder", key: "leomrader"},
       {title: "Terrengfeller", key: "terrengFeller"},
       {title: "Overgang fra lite til mye snø", key: "overgangFraLiteTilMyeSno"}];
 

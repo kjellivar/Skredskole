@@ -200,7 +200,6 @@ myapp.provider('Info', function () {
                     vateLossnoskred: "Våte løssnøskred",
                     torreFlakskred: "Tørre flakskred",
                     vateFlakskred: "Våte flakskred",
-                    sorpeskred: "Sørpeskred",
                     skavl: "Skavl"
                 },
                 snodekke: {
@@ -223,7 +222,7 @@ myapp.provider('Utstyr', function () {
             spade: true,
             sokestang: true,
             //ballongsekkAvalungSkredball: true,
-            kartKompassHoydemaler: true,
+            kartKompass: true,
             mobiltelefon: true,
             forstehjelpssett: true
             //bivuakksekk: true
@@ -278,7 +277,7 @@ myapp.provider('KritiskeOmrader', function () {
     };
     this.$get = ["MenuItem", function (MenuItem) {
         return {
-            egenskaper: MenuItem("Egenskaper", ".egenskaper", fasit.egenskaper),
+            egenskaper: MenuItem("Detaljer", ".egenskaper", fasit.egenskaper),
             nedkjoring: MenuItem("Nedkjøring", ".nedkjoring", fasit.nedkjoring)
         };
     }];

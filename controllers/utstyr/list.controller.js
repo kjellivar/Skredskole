@@ -3,7 +3,7 @@ myapp.controller("utstyrListCtrl", function($scope){
 
     $scope.alerts = {
             "Sender/mottaker, spade og søkestang er nødvendig for å kunne ferdes i snøskredterreng!": ['skredsoker','spade','sokestang'],
-            "Kart, kompass og høydemåler er viktig for å kunne orientere seg!": ['kartKompassHoydemaler'],
+            "Kart og kompass er viktig for å kunne orientere seg!": ['kartKompass'],
             "En mobiltelefon er nyttig i tilfelle en nødssituasjon!": ['mobiltelefon'],
             "Førstehjelpssett er viktig for å kunne ta hånd om småskader etc.!":['forstehjelpssett']
         };
@@ -18,7 +18,7 @@ myapp.controller("utstyrListCtrl", function($scope){
       [{title: "Ballongsekk, avalung, skredball", key: "ballongsekkAvalungSkredball"}];
 
     $scope.annetLabels =
-      [{title: "Kart, kompass, høydemåler", key: "kartKompassHoydemaler"},
+      [{title: "Kart, kompass", key: "kartKompass"},
       {title: "Mobiltelefon", key: "mobiltelefon"},
       {title: "Førstehjelpssett", key: "forstehjelpssett"},
       {title: "Bivuakksekk", key: "bivuakksekk"}];

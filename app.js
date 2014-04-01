@@ -13,7 +13,7 @@ myapp.config(function($stateProvider, $urlRouterProvider){
         controller: "startCtrl"
     })
     .state('info', {
-        url: "/omrade",
+        url: "/forberedelse",
         templateUrl: "partials/views/info/info.meny.html",
         controller: function($scope, Info){
             $scope.info = Info;
@@ -25,7 +25,7 @@ myapp.config(function($stateProvider, $urlRouterProvider){
           controller: "infoInfoCtrl"
       })
       .state('info.skredvarsel', {
-          url: "/skredvarsel",
+          url: "/info",
           templateUrl: "partials/views/info/skredvarsel.html",
           controller: "infoSkredvarselCtrl"
       })
@@ -41,7 +41,7 @@ myapp.config(function($stateProvider, $urlRouterProvider){
       })
       
     .state('utstyr', {
-        url: "/forberedelse",
+        url: "/turgruppe",
         templateUrl: "partials/views/utstyr/utstyr.meny.html",
         controller: function($scope, Utstyr){
           $scope.utstyr = Utstyr;
@@ -90,7 +90,7 @@ myapp.config(function($stateProvider, $urlRouterProvider){
         }
     })
       .state('kritiskeOmrader.egenskaper', {
-        url: "/egenskaper",
+        url: "/detaljer",
         templateUrl: "partials/views/kritiske-omrader/egenskaper.html",
         controller: "kritiskeOmraderEgenskaperCtrl"
     })

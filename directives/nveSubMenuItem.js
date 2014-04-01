@@ -20,14 +20,14 @@ myapp.directive('nveSubMenuItem', function() {
         controller: function($scope, CurrentPageObject, sjekkFasit, korrekteSvar, filterFilter) {
             $scope.containerObject = CurrentPageObject();
 
-            var showFasit = false;
-            $scope.visFasitKnappTekst = "Vis fasit!";
+            var showFasit = false,
+                visFasitTekst = "Vis fasit",
+                skjulFasitTekst = "Skjul fasit";
+            $scope.fasitKnappTekst = visFasitTekst;
             var oldAnswers = {};
 
             $scope.$watchCollection('containerObject.svar', function(newAnswer) {
                 sjekkFasit();
-                console.log($scope.containerObject.svar);
-                console.log($scope.containerObject.fasit);
             });
 
             $scope.visAntallKorrekteSvar =  function() {
@@ -44,10 +44,10 @@ myapp.directive('nveSubMenuItem', function() {
                 if(!showFasit){
                     angular.copy($scope.containerObject.svar, oldAnswers);
                     angular.copy($scope.containerObject.fasit, $scope.containerObject.svar);
-                    $scope.visFasitKnappTekst = "Skjul fasit!";
+                    $scope.fasitKnappTekst = skjulFasitTekst;
                 } else {
                     angular.copy( oldAnswers, $scope.containerObject.svar);
-                    $scope.visFasitKnappTekst = "Vis fasit!";
+                    $scope.fasitKnappTekst = visFasitTekst;
                 }
                 showFasit = !showFasit;
             };
@@ -55,7 +55,7 @@ myapp.directive('nveSubMenuItem', function() {
             $scope.emptyAnswers = function () {
                 $scope.containerObject.svar = {};
                 showFasit = false;
-                $scope.visFasitKnappTekst = "Vis fasit!";
+                $scope.fasitKnappTekst = visFasitTekst;
             };
         }
     };
