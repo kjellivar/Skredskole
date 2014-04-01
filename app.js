@@ -25,7 +25,7 @@ myapp.config(function($stateProvider, $urlRouterProvider){
           controller: "infoInfoCtrl"
       })
       .state('info.skredvarsel', {
-          url: "/info",
+          url: "/skredvarsel",
           templateUrl: "partials/views/info/skredvarsel.html",
           controller: "infoSkredvarselCtrl"
       })
