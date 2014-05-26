@@ -28,6 +28,7 @@ myapp.controller("kritiskeOmraderEgenskaperCtrl", function($scope, AppData){
     $scope.neste = "kritiskeOmrader.nedkjoring";
 
     $scope.turTittel = AppData.turTittel;
+    $scope.bilder = AppData.bilder;
 
   
 

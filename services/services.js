@@ -153,7 +153,7 @@ myapp.provider('Info', function () {
             sannsynlighet: undefined,  //1:lite sannsynlig 2:mulig 3:sannsynlig 4:svært sannsynlig
 
             leomrader: undefined,
-            terrengFeller: undefined,
+            terrengfeller: undefined,
             overgangFraLiteTilMyeSno: undefined,
 
             nySno: undefined,
@@ -207,6 +207,28 @@ myapp.provider('Info', function () {
                     vindtransportertSno:"Vindtransportert snø",
                     svakeLagISnopakken:"Svake lag i snøpakken",
                     vatOgVannmettetSno:"Våt og vannmettet snø"
+                },
+                utsatt: {
+                    leomrader: "Leområder",
+                    terrengfeller: "Terrengfeller",
+                    overgangFraLiteTilMyeSno: "Overgang fra lite til mye snø"
+                },
+                tilleggsbelastning : {
+                    naturlig: "Naturlig utløst",
+                    liten: "Liten",
+                    stor: "Stor"
+                },
+                skredstorrelse : {
+                    "4": "Svært store",
+                    "3": "Store",
+                    "2": "Middels",
+                    "1": "Små"
+                },
+                sannsynlighet : {
+                    "4": "Meget sannsynlig",
+                    "3": "Sannsynlig",
+                    "2": "Mulig",
+                    "1": "Lite sannsynlig"
                 }
             }
         };
@@ -293,6 +315,13 @@ myapp.provider('AppData', function () {
     var skredvarselDato = 'dato';
     var skredvarselLink = 'url';
     var ruteTekst = 'tekst';
+    var bilder = {
+        kart: "",
+        kartMedLosning: "",
+        kartMedKritiskeOmrader: "",
+        kartKritiskOmrade1Zoom: "",
+        kartKritiskOmrade2Zoom: ""
+    };
 
     this.$get = function () {
         return {
@@ -301,7 +330,8 @@ myapp.provider('AppData', function () {
             infoVarslingsOmrade: infoVarslingsOmrade,
             skredvarselLink: skredvarselLink,
             skredvarselDato: skredvarselDato,
-            ruteTekst: ruteTekst
+            ruteTekst: ruteTekst,
+            bilder: bilder
         };
     };
     this.setTurTittel = function (tittel) {
@@ -321,6 +351,9 @@ myapp.provider('AppData', function () {
     };
     this.setRuteTekst = function (tekst) {
         ruteTekst = tekst;
+    };
+    this.setBilder = function (bildeObj){
+        bilder = bildeObj;
     };
 
 });

@@ -5,7 +5,7 @@ myapp.controller("planleggingsskjemaCtrl", function($scope, $window, Cleared, In
 
     var x = 20;
     var y = 20;
-    var margin = 50;
+    var margin = 60;
     var lineheight = 10;
     var seperatorWidth = 0.5;
     doc.setFontSize(22);
@@ -40,7 +40,7 @@ myapp.controller("planleggingsskjemaCtrl", function($scope, $window, Cleared, In
         } else if(angular.isObject(textOrArray)){
             textOrArray.prefix = textOrArray.prefix || "";
             textOrArray.postfix = textOrArray.postfix || "";
-            if(angular.isDefined(textOrArray.text)){
+            if(angular.isDefined(textOrArray.text) && textOrArray.text !== ""){
                 text = textOrArray.prefix + textOrArray.text + textOrArray.postfix;
             } else {
                 text = textOrArray.prefix + "__________" + textOrArray.postfix;
@@ -127,6 +127,37 @@ myapp.controller("planleggingsskjemaCtrl", function($scope, $window, Cleared, In
     addText('', Info.labels.snodekke.svakeLagISnopakken, Info.skredvarsel.svar.svakeLagISnopakken === true);
     addText('', Info.labels.snodekke.vatOgVannmettetSno, Info.skredvarsel.svar.vatOgVannmettetSno === true);
     addText('', Info.labels.snodekke.vindtransportertSno, Info.skredvarsel.svar.vindtransportertSno === true);
+
+    addText('Utsatte områder', Info.labels.utsatt.leomrader, Info.skredvarsel.svar.leomrader  === true);
+    addText('', Info.labels.utsatt.overgangFraLiteTilMyeSno, Info.skredvarsel.svar.overgangFraLiteTilMyeSno === true);
+    addText('', Info.labels.utsatt.terrengfeller, Info.skredvarsel.svar.terrengfeller === true);
+
+    addText('Tilleggsbelastning', {text: Info.labels.tilleggsbelastning[Info.skredvarsel.svar.tilleggsbelastning]});
+    addText('Forventet skredstørrelse', {text: Info.labels.skredstorrelse[Info.skredvarsel.svar.skredstorrelse]});
+    addText('Sannsynlighet for skred', {text: Info.labels.sannsynlighet[Info.skredvarsel.svar.sannsynlighet]});
+    addText('Utsatt høydenivå', {text: Info.skredvarsel.svar.hoydeniva, postfix:" meter"});
+
+
+    function generateEksposisjonString(skal_sjekkes){
+        var eksposisjon = [];
+        angular.forEach(skal_sjekkes, function (value, key) {
+            if(Info.skredvarsel.svar[key]){
+                eksposisjon.push(value);
+            }
+        });
+        var eksposisjon_str = '';
+        for (var i = 0; i < eksposisjon.length; i++) {
+            eksposisjon_str += eksposisjon[i];
+            if(i < eksposisjon.length - 1) {
+                eksposisjon_str += ', ';
+            }
+
+        }
+        return eksposisjon_str;
+    }
+    var eksposisjon_str = generateEksposisjonString({n:'N',no:'NØ',o:'Ø',so:'SØ',s:'S',sv:'SV',v:'V',nv:'NV'});
+
+    addText('Eksposisjon', {text: eksposisjon_str});
 
     $scope.showRegularButton = false;
 

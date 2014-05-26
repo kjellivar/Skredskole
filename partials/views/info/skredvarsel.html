@@ -44,9 +44,9 @@
     <div class="span3">
         <h5>Spesielt utsatte områder gitt i varselet</h5>
         <ul class="unstyled">
-            <li ng-repeat="item in utsatteOmraderLabels">
-                <label class="checkbox"><input type="checkbox" ng-model="info.skredvarsel.svar[item.key]">
-                    {{item.title}}</label>
+            <li ng-repeat="(key, label) in info.labels.utsatt">
+                <label class="checkbox"><input type="checkbox" ng-model="info.skredvarsel.svar[key]">
+                    {{label}}</label>
             </li>
         </ul>
     </div>

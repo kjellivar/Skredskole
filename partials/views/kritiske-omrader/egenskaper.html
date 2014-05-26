@@ -26,8 +26,8 @@
 <div class="row">
     <div class="span12" ng-if="showKritiskOmradeNr == -1">
 
-        <img src="http://farm6.staticflickr.com/5482/12431394663_6045dd32c3_o.jpg" ng-if="!showPoints">
-        <img src="http://farm4.staticflickr.com/3757/12497404423_156c08d33c_o.jpg" ng-if="showPoints">
+        <img ng-src="{{bilder.kartMedLosning}}" ng-if="!showPoints">
+        <img ng-src="{{bilder.kartMedKritiskeOmrader}}" ng-if="showPoints">
 
     </div>
 
@@ -52,7 +52,7 @@
             </div>
         </div>
         <div class="span7">
-            <img src="img/kritiskeOmrader/kyrkjebonosi/utsatt1_zoom3.jpg">
+            <img ng-src="{{bilder.kartKritiskOmrade1Zoom}}">
         </div>
     </div>
 
@@ -77,7 +77,7 @@
             </div>
         </div>
         <div class="span7">
-            <img src="img/kritiskeOmrader/kyrkjebonosi/utsatt2_zoom3.jpg">
+            <img ng-src="{{bilder.kartKritiskOmrade2Zoom}}">
         </div>
     </div>
 

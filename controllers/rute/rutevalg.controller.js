@@ -21,5 +21,6 @@ myapp.controller("ruteRutevalgCtrl", function($scope, AppData){
     $scope.neste = "rute.distanse";
 
     $scope.ruteTekst = AppData.ruteTekst;
+    $scope.bilder = AppData.bilder;
   
 });
