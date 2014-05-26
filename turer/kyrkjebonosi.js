@@ -51,11 +51,11 @@ myapp.config(function (InfoProvider, UtstyrProvider, RuteProvider, KritiskeOmrad
     });
 
     AppDataProvider.setBilder({
-        kart: "http://farm6.staticflickr.com/5523/12431642704_f07ef1fccf_o.jpg",
-        kartMedLosning: "http://farm6.staticflickr.com/5482/12431394663_6045dd32c3_o.jpg",
-        kartMedKritiskeOmrader: "http://farm4.staticflickr.com/3757/12497404423_156c08d33c_o.jpg",
-        kartKritiskOmrade1Zoom: "img/kritiskeOmrader/kyrkjebonosi/utsatt1_zoom3.jpg",
-        kartKritiskOmrade2Zoom: "img/kritiskeOmrader/kyrkjebonosi/utsatt2_zoom3.jpg"
+        kart: "img/turer/kyrkjebonosi/Kyrkjebønosi_kart.jpg",
+        kartMedLosning: "img/turer/kyrkjebonosi/Kyrkjebønosi_rute.jpg",
+        kartMedKritiskeOmrader: "",
+        kartKritiskOmrade1Zoom: "img/turer/kyrkjebonosi/Kyrkjebønosi_utsatt1_zoom3.jpg",
+        kartKritiskOmrade2Zoom: "img/turer/kyrkjebonosi/Kyrkjebønosi_utsatt2_zoom3.jpg"
     });
 
     AppDataProvider.setTurTittel('Kyrkjebønosi');

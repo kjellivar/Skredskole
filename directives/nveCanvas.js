@@ -14,7 +14,7 @@ myapp.directive('nveCanvas', function($log, $timeout) {
       $scope.canvasContext = {};
       $scope.canvasWidth = $element.parent().width();
       $scope.canvasHeight = $scope.canvasWidth * 0.7;
-      var scale = $scope.canvasWidth / 960;
+      var scale = $scope.canvasWidth / 1170;
  
       this.setTask = function(task) {
         $scope.task = task;

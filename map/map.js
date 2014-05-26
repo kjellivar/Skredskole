@@ -9,7 +9,7 @@
         {pos: [60.96893, 8.31810],
             text: "Svarthetta"},
         {pos: [62.882594, 8.882990],
-            text: "Blånebba"},
+            text: "<h1><a href='../blanebba.html'>Blånebba</a></h1>"},
         {pos: [62.60741, 7.60178],
             text: "Skarven"},
         {pos: [69.676, 18.443],
