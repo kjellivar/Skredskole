@@ -4,10 +4,8 @@ myapp.controller("ruteRutevalgCtrl", function($scope, AppData){
         "Tegn inn rute!": ['rutevalg']
     };
 
-
-    $scope.colors = [{color: "#ff0000", name: "red"}];
     $scope.settings = {
-            color: $scope.colors[0].color,
+            color: "#0000FF",
             lineWidth: 3
         };
 

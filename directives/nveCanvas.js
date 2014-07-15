@@ -1,172 +1,90 @@
-myapp.directive('nveCanvas', function($log, $timeout) {
-  return {
-    restrict: 'E',
-    templateUrl: 'partials/directives/nveCanvas.html',
-    scope: {
-        settings: '=',
-        colors: '='
-      },
-    transclude: true,
-    controller: function($scope, $element, $attrs, $transclude, $window) {
-
-      $scope.task = {};
-      $scope.canvas = {};
-      $scope.canvasContext = {};
-      $scope.canvasWidth = $element.parent().width();
-      $scope.canvasHeight = $scope.canvasWidth * 0.7;
-      var scale = $scope.canvasWidth / 1170;
- 
-      this.setTask = function(task) {
-        $scope.task = task;
-      };
-      
-      this.setCanvas = function(canvas) {
-
-        $scope.canvas = canvas;
-      };
-      
-      this.setCanvasContext = function(context) {
-        $scope.canvasContext = context;
-        //Hack for displaying after load
-        $timeout(function () {
-            $scope.canvasContext.lineWidth = $scope.settings.lineWidth;
-            $scope.clearCanvas();
-        }, 500);
-      };
-      
-      $scope.clearCanvas = function () {
-        $log.info("Clearing canvas");
-        $scope.canvasContext.save();
-        $scope.canvasContext.scale(scale, scale);
-        $scope.canvasContext.drawImage($scope.task.questionImg,0,0);
-        $scope.canvasContext.restore();
-      };
-      
-      $scope.showSolution = function () {
-        $log.info("Showing solution");
-        $scope.canvasContext.save();
-        $scope.canvasContext.scale(scale, scale);
-        $scope.canvasContext.drawImage($scope.task.solutionImg,0,0);
-        $scope.canvasContext.restore();
-      };
-      
-      $scope.changeColor = function(color) {
-        $scope.settings.color = color;
-      };
-    }
-  };
-})
-.directive('nveTask', function($log) {
-  return {
-    require: '^nveCanvas',
-    restrict: 'E',
-    templateUrl: 'partials/directives/nveTask.html',
-    scope: {
-        question: '@',
-        solution: '@'
-      },
-    link: function($scope, $element, $attrs, $nveCanvasCtrl) {
-      $scope.questionImg = $element.find('img')[0];
-      $scope.solutionImg = $element.find('img')[1];
-      
-      $log.log("Setting task");
-      $nveCanvasCtrl.setTask($scope);
-    }
-  };
-})
-.directive('nveDrawableCanvas', function($document, $log) {
+myapp.directive('nveCanvas', function () {
     return {
-      require: '^nveCanvas',
-      link: function(scope, element, attrs, nveCanvasCtrl) {
-        var cb_ctx = null,
-            cb_lastPoints = [],
-            cb_canvas = element[0];
-        
-        $log.log("Setting canvas");
-        nveCanvasCtrl.setCanvas(cb_canvas);
-  
-        // Draw a line on the canvas from (s)tart to (e)nd
-        function drawLine(sX, sY, eX, eY) {
-            cb_ctx.moveTo(sX, sY);
-            cb_ctx.lineTo(eX, eY);
-            return { x: eX, y: eY };
-        }
-  
-        // Get the coordinates for a mouse or touch event
-        function getCoords(e) {
-            var returnValue;
-            if (e.offsetX) {
-                returnValue = { x: e.offsetX, y: e.offsetY };
-            } else if (e.layerX) {
-                returnValue = { x: e.layerX, y: e.layerY };
-            } else {
-                returnValue = { x: e.pageX - cb_canvas.offsetLeft, y: e.pageY - cb_canvas.offsetTop };
-            }
-            return returnValue;
-        }
-  
-        function drawMouse(e) {
-            var i, p;
-            if (e.touches) {
-                // Touch Enabled
-                for (i = 1; i <= e.touches.length; i += 1) {
-                    p = getCoords(e.touches[i - 1]); // Get info for finger i
-                    cb_lastPoints[i] = drawLine(cb_lastPoints[i].x, cb_lastPoints[i].y, p.x, p.y);
+        restrict: 'E',
+        templateUrl: 'partials/directives/nveCanvas.html',
+        scope: {
+            settings: '=',
+            question: '=',
+            solution: '='
+        },
+        link: function ($scope, $element) {
+
+            var canvas = $element[0].children[2],
+                solutionState = false;
+
+            var canvasBg = {
+                question: { 'background-image': 'url(' + $scope.question + ')' },
+                solution: { 'background-image': 'url(' + $scope.solution + ')' }
+            };
+
+            // Init settings
+            $scope.canvasWidth = $element.parent().width();
+            $scope.canvasHeight = $scope.canvasWidth * 0.7;
+            $scope.toggleSolutionText = "Vis løsning";
+            $scope.canvasbg = canvasBg.question;
+
+            // Toggle visibility of solution
+            $scope.toggleSolution = function () {
+                solutionState = !solutionState;
+                if(solutionState) {
+                    $scope.toggleSolutionText = "Skjul løsning";
+                    $scope.canvasbg = canvasBg.solution;
+                } else {
+                    $scope.toggleSolutionText = "Vis løsning";
+                    $scope.canvasbg = canvasBg.question;
                 }
-            } else {
-                // Not touch enabled
-                p = getCoords(e);
-                cb_lastPoints[0] = drawLine(cb_lastPoints[0].x, cb_lastPoints[0].y, p.x, p.y);
-            }
-            cb_ctx.stroke();
-            cb_ctx.closePath();
-            cb_ctx.beginPath();
-  
-            return false;
-        }
-  
-        function startDraw(e) {
-            var i;
-            cb_ctx.strokeStyle = scope.settings.color;
-            if (e.touches) {
-                // Touch event
-                for (i = 1; i <= e.touches.length; i += 1) {
-                    cb_lastPoints[i] = getCoords(e.touches[i - 1]); // Get info for finger #1
+            };
+
+            var ctx     = canvas.getContext('2d'),  // Set canvas context
+                drawing = false,                    // variable that decides if something should be drawn on mousemove
+                lastX, lastY;                       // the last coordinates before the current move
+
+            angular.element(canvas).bind('mousedown', function(event) {
+                if(event.offsetX!==undefined){
+                    lastX = event.offsetX;
+                    lastY = event.offsetY;
+                } else {
+                    lastX = event.layerX - event.currentTarget.offsetLeft;
+                    lastY = event.layerY - event.currentTarget.offsetTop;
                 }
-            } else {
-                // Mouse event
-                cb_lastPoints[0] = getCoords(e);
-                cb_canvas.onmousemove = drawMouse;
+
+                ctx.beginPath();    // begins new line
+                drawing = true;     // Now we're drawing
+            });
+            angular.element(canvas).bind('mousemove', function(event) {
+                if(drawing){
+                    // get current mouse position
+                    if(event.offsetX!==undefined){
+                        currentX = event.offsetX;
+                        currentY = event.offsetY;
+                    } else {
+                        currentX = event.layerX - event.currentTarget.offsetLeft;
+                        currentY = event.layerY - event.currentTarget.offsetTop;
+                    }
+
+                    draw(lastX, lastY, currentX, currentY);
+
+                    // set current coordinates to last one
+                    lastX = currentX;
+                    lastY = currentY;
+                }
+            });
+            angular.element(canvas).bind('mouseup', function(event) {
+                drawing = false; // stop drawing
+            });
+
+            function draw(lX, lY, cX, cY){
+                ctx.moveTo(lX,lY);  // line from
+                ctx.lineTo(cX,cY);  // to
+                ctx.strokeStyle = $scope.settings.color; // with these settings
+                ctx.lineWidth = $scope.settings.lineWidth;
+                ctx.stroke();       // draw it
             }
-  
-            return false;
+
+            // Clear Canvas
+            $scope.clearCanvas = function () {
+                ctx.clearRect(0, 0, $scope.canvasWidth, $scope.canvasHeight);
+            };
         }
-  
-        // Called whenever cursor position changes after drawing has started
-        function stopDraw(e) {
-            e.preventDefault();
-            cb_canvas.onmousemove = null;
-        }
-  
-        function init() {
-  
-            if (cb_canvas.getContext) {
-                cb_ctx = cb_canvas.getContext('2d');
-                cb_ctx.lineWidth = scope.settings.lineWidth;
-                cb_ctx.strokeStyle = scope.settings.color;
-                cb_ctx.beginPath();
-                $log.log("Setting context");
-                nveCanvasCtrl.setCanvasContext(cb_ctx);
-  
-                cb_canvas.onmousedown = startDraw;
-                cb_canvas.onmouseup = stopDraw;
-                cb_canvas.ontouchstart = startDraw;
-                cb_canvas.ontouchstop = stopDraw;
-                cb_canvas.ontouchmove = drawMouse;
-                
-            }
-        }
-        init();
-      }
-    }
-  });
+    };
+});

@@ -1,6 +1,6 @@
 <p ng-bind="ruteTekst"></p>
-<nve-canvas settings="settings" colors="colors" ng-click="rutevalgDone()">
-  <nve-task question="{{bilder.kart}}" solution="{{bilder.kartMedLosning}}"></nve-task>
-</nve-canvas>
+<nve-canvas settings="settings"
+            question="bilder.kart"
+            solution="bilder.kartMedLosning"></nve-canvas>
 
 <nve-skred-footer alerts="alerts" forrige="forrige" neste="neste"></nve-skred-footer>
