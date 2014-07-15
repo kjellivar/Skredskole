@@ -1,5 +1,4 @@
-<div class="text-center" ng-transclude></div>
 <button class="btn" ng-click="clearCanvas()">Fjern</button>
-<button class="btn" ng-click="showSolution()">Vis løsning</button>
+<button class="btn" ng-click="toggleSolution()" ng-bind="toggleSolutionText"></button>
 
-<canvas style="cursor: crosshair; position: relative; display: block; border: 1px solid #ccc;" width="{{canvasWidth}}" height="{{canvasHeight}}" nve-drawable-canvas>Your browser can not show this example.</canvas>
+<canvas ng-style="canvasbg" width="{{canvasWidth}}" height="{{canvasHeight}}" >Your browser can not show this example.</canvas>

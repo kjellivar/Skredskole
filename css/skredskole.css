@@ -26,3 +26,13 @@
 .skredskoleCompass polygon.selected g {
     fill:#fff;
 }
+
+nve-canvas canvas {
+    cursor: crosshair;
+    position: relative;
+    display: block;
+    border: 1px solid #ccc;
+    background-size: contain;
+    background-repeat: no-repeat;
+    background-position: center;
+}
