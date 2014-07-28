@@ -20,17 +20,17 @@ myapp.directive('nveCanvas', function (BASE_URL) {
             // Init settings
             $scope.canvasWidth = $element.parent().width();
             $scope.canvasHeight = $scope.canvasWidth * 0.7;
-            $scope.toggleSolutionText = "Vis løsning";
+            $scope.toggleSolutionText = "Vis rute";
             $scope.canvasbg = canvasBg.question;
 
             // Toggle visibility of solution
             $scope.toggleSolution = function () {
                 solutionState = !solutionState;
                 if(solutionState) {
-                    $scope.toggleSolutionText = "Skjul løsning";
+                    $scope.toggleSolutionText = "Skjul rute";
                     $scope.canvasbg = canvasBg.solution;
                 } else {
-                    $scope.toggleSolutionText = "Vis løsning";
+                    $scope.toggleSolutionText = "Vis rute";
                     $scope.canvasbg = canvasBg.question;
                 }
             };

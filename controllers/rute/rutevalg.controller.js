@@ -1,4 +1,6 @@
-myapp.controller("ruteRutevalgCtrl", function($scope, AppData){
+myapp.controller("ruteRutevalgCtrl", function($scope, AppData, Rute){
+
+    $scope.rute = Rute;
 
     $scope.alerts = {
         "Tegn inn rute!": ['rutevalg']
