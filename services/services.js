@@ -1,4 +1,10 @@
-myapp.factory('MenuItem', function() {
+//prod
+myapp.constant('BASE_URL', '/Templates/Pages/Skredskole/');
+
+//test
+//myapp.constant('BASE_URL', '');
+
+myapp.factory('MenuItem', function () {
     return function(navn, link, fasit){
         return {
             item: {cleared: false, link: link, navn: navn},
@@ -29,45 +35,46 @@ myapp.factory('korrekteSvar', ['runProgressbarAnimation', 'AlertObject', 'sjekkF
 
 
 myapp.factory('sjekkFasit', function(CurrentPageObject) {
-    return function() {
-        var newAnswers = CurrentPageObject().svar;
-        if(CurrentPageObject().antallFasitSvar === undefined){
-            CurrentPageObject().antallFasitSvar = 0.0;
-            angular.forEach(CurrentPageObject().fasit, function (val) {
+    return function () {
+        var pageObject = CurrentPageObject();
+        var newAnswers = pageObject.svar;
+        if (pageObject.antallFasitSvar === undefined) {
+            pageObject.antallFasitSvar = 0.0;
+            angular.forEach(pageObject.fasit, function (val) {
                 if(val !== undefined){
-                    CurrentPageObject().antallFasitSvar = CurrentPageObject().antallFasitSvar + 1;
+                    pageObject.antallFasitSvar = pageObject.antallFasitSvar + 1;
                 }
             });
         }
 
-        var totaltRiktigeSvar = CurrentPageObject().antallFasitSvar;
+        var totaltRiktigeSvar = pageObject.antallFasitSvar;
         var antallRiktigeSvar = 0.0;
-        CurrentPageObject().barClass = "";
+        pageObject.barClass = "";
 
         if(angular.isObject(newAnswers)){
             angular.forEach(newAnswers, function(val, key){
-                if(val == CurrentPageObject().fasit[key] || (CurrentPageObject().fasit[key] === "required" && val)){
+                if (val == pageObject.fasit[key] || (pageObject.fasit[key] === "required" && val)) {
                     antallRiktigeSvar = antallRiktigeSvar + 1;
                 } else if(val !== false) {
                     antallRiktigeSvar = antallRiktigeSvar > 0 ? antallRiktigeSvar - 1 : 0;
-                    CurrentPageObject().barClass = "bar-warning";
+                    pageObject.barClass = "bar-warning";
                 }
             });
         }
 
-        CurrentPageObject().antallRiktigeSvar = antallRiktigeSvar;
+        pageObject.antallRiktigeSvar = antallRiktigeSvar;
 
         var width = (antallRiktigeSvar / totaltRiktigeSvar) * 100;
-        CurrentPageObject().progressbarStyle.width = width + '%';
+        pageObject.progressbarStyle.width = width + '%';
 
         if(antallRiktigeSvar === totaltRiktigeSvar){
-            CurrentPageObject().barClass = "bar-success";
-            if(CurrentPageObject().item.cleared !== true){
-                CurrentPageObject().item.cleared = true;
+            pageObject.barClass = "bar-success";
+            if (pageObject.item.cleared !== true) {
+                pageObject.item.cleared = true;
             }
         } else {
-            if(CurrentPageObject().item.cleared !== false){
-                CurrentPageObject().item.cleared = false;
+            if (pageObject.item.cleared !== false) {
+                pageObject.item.cleared = false;
             }
         }
 
