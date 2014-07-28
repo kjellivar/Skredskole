@@ -1,7 +1,7 @@
-myapp.directive('nveCanvas', function () {
+myapp.directive('nveCanvas', function (BASE_URL) {
     return {
         restrict: 'E',
-        templateUrl: 'partials/directives/nveCanvas.html',
+        templateUrl: BASE_URL + 'partials/directives/nveCanvas.html',
         scope: {
             settings: '=',
             question: '=',

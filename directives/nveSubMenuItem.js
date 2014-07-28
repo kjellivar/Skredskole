@@ -1,13 +1,13 @@
-myapp.directive('nveSubMenuItem', function() {
+myapp.directive('nveSubMenuItem', function(BASE_URL) {
   return {
-    templateUrl: 'partials/directives/nveSubMenuItem.html',
+    templateUrl: BASE_URL + 'partials/directives/nveSubMenuItem.html',
     transclude: true,
     scope: {
       nveSubMenuItem: '='
     }
   };
 })
-.directive('nveSkredFooter', function() {
+.directive('nveSkredFooter', function(BASE_URL) {
     return {
         restrict: "AE",
         scope: {
@@ -16,7 +16,7 @@ myapp.directive('nveSubMenuItem', function() {
             forrige: '=',
             neste: '='
         },
-        templateUrl: 'partials/directives/nveSkredFooter.html',
+        templateUrl: BASE_URL + 'partials/directives/nveSkredFooter.html',
         controller: function($scope, CurrentPageObject, sjekkFasit, korrekteSvar, filterFilter) {
             $scope.containerObject = CurrentPageObject();
 
@@ -60,23 +60,23 @@ myapp.directive('nveSubMenuItem', function() {
         }
     };
 })
-.directive('nveCheckboxButton', function() {
+.directive('nveCheckboxButton', function(BASE_URL) {
     return {
         scope: {
             nveCheckboxButton: '='
         },
         transclude: true,
-        templateUrl: 'partials/directives/nveCheckboxButton.html'
+        templateUrl: BASE_URL + 'partials/directives/nveCheckboxButton.html'
     };
 })
-.directive('nveSkredproblemBoks', function() {
+.directive('nveSkredproblemBoks', function(BASE_URL) {
     return {
         scope: {
             boks: '=nveSkredproblemBoks',
             nveModel: '='
         },
         transclude: false,
-        templateUrl: 'partials/directives/nveSkredproblemBoks.html',
+        templateUrl: BASE_URL + 'partials/directives/nveSkredproblemBoks.html',
         link: function(scope){
             scope.changeModel = function(val){
                 scope.nveModel = val;
@@ -84,7 +84,7 @@ myapp.directive('nveSubMenuItem', function() {
         }
     };
 })
-.directive('nveCompass', function() {
+.directive('nveCompass', function(BASE_URL) {
     return {
         scope: {
             nveCompass: '='
@@ -96,6 +96,6 @@ myapp.directive('nveSubMenuItem', function() {
             scope.model = scope.nveCompass.model;
             scope.keys = scope.nveCompass.keys;
         },
-        templateUrl: 'partials/directives/nveCompass.html'
+        templateUrl: BASE_URL + 'partials/directives/nveCompass.html'
     };
 });
