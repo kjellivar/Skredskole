@@ -10,6 +10,7 @@ var uglify = require('gulp-uglify');
 var ngMin = require('gulp-ng-annotate');
 var concat = require('gulp-concat');
 var rename = require('gulp-rename');
+var gutil = require('gulp-util');
 
 var paths = {
     scripts: ['./app.js','./controllers/**/*.js','./services/*.js','./directives/*.js']
@@ -24,7 +25,8 @@ gulp.task('bundle-scripts', function() {
         .pipe(ngMin())
         .pipe(uglify())
         .pipe(rename({ suffix: '.min' }))
-        .pipe(gulp.dest(jsPath.jsDest));
+        .pipe(gulp.dest(jsPath.jsDest))
+        .on('error', gutil.log);
 });
 
 gulp.task('default', function () {
