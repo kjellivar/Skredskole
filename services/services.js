@@ -1,8 +1,8 @@
 //prod
-myapp.constant('BASE_URL', '/Templates/Pages/Skredskole/');
+//myapp.constant('BASE_URL', '/Templates/Pages/Skredskole/');
 
 //test
-//myapp.constant('BASE_URL', '');
+myapp.constant('BASE_URL', '');
 
 myapp.factory('MenuItem', function () {
     return function(navn, link, fasit){

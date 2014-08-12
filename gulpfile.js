@@ -21,7 +21,7 @@ gulp.task('bundle-scripts', function() {
     var jsPath = {jsSrc:paths.scripts, jsDest:'./appbuild'};
     gulp.src(jsPath.jsSrc)
         .pipe(concat('turplanlegger.js'))
-        .pipe(stripDebug())
+        //.pipe(stripDebug())
         .pipe(ngMin())
         .pipe(uglify())
         .pipe(rename({ suffix: '.min' }))

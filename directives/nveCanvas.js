@@ -9,7 +9,7 @@ myapp.directive('nveCanvas', function (BASE_URL) {
         },
         link: function ($scope, $element) {
 
-            var canvas = $element[0].children[2],
+            var canvas = $element.find("canvas")[0],
                 solutionState = false;
 
             var canvasBg = {
