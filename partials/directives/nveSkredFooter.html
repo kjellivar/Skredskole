@@ -21,7 +21,7 @@
     </div>
     <div class="modal-footer">
         {{containerObject.antallRiktigeSvar}} / {{containerObject.antallFasitSvar}}
-        <button type="button" class="btn" data-dismiss="modal" aria-hidden="true">Close</button>
+        <a class="btn" data-dismiss="modal" aria-hidden="true">Close</a>
     </div>
 </div>
 
@@ -32,15 +32,15 @@
     <div class="offset3 span4 ">
         <div class="row">
             <div class="span4">
-                <button type="button" class="nve-btn blue" data-target="#myModal" data-toggle="modal" class="btn btn-primary btn-large" ng-click="visAntallKorrekteSvar()">Sjekk svar</button>
+                <a class="nve-btn blue" data-target="#myModal" data-toggle="modal" class="btn btn-primary btn-large" ng-click="visAntallKorrekteSvar()">Sjekk svar</a>
             </div>
         </div>
         <div class="row">
             <div class="span2">
-                <button type="button" class="nve-btn" ng-click="toggleFasit()" ng-bind="fasitKnappTekst"></button>
+                <a class="nve-btn" ng-click="toggleFasit()" ng-bind="fasitKnappTekst"></a>
             </div>
             <div class="span2">
-                <button type="button" class="nve-btn" ng-click="emptyAnswers()">Tøm skjema</button>
+                <a class="nve-btn" ng-click="emptyAnswers()">Tøm skjema</a>
             </div>
         </div>
     </div>
