@@ -3,7 +3,16 @@ myapp.controller("ruteRutevalgCtrl", function($scope, AppData, Rute){
     $scope.rute = Rute;
 
     $scope.alerts = {
-        "Tegn inn rute!": ['rutevalg']
+        "Tegn inn rute.": ['rutevalg']
+    };
+
+    $scope.customAlerts = function () {
+        return [
+            {
+                text: "Husk å undersøk om du har tegnet inn riktig rute.",
+                show: Rute.rutevalg.svar.rutevalg
+            }
+        ];
     };
 
     $scope.settings = {

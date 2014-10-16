@@ -1,4 +1,4 @@
-myapp.controller("planleggingsskjemaCtrl", function($scope, $window, Cleared, Info, Rute, Utstyr, KritiskeOmrader, AppData){
+myapp.controller("planleggingsskjemaCtrl", function($scope, $window, Cleared, Info, Rute, Utstyr, KritiskeOmrader, Nedkjoring, AppData){
 
     function createPdf(empty) {
 
@@ -114,8 +114,8 @@ myapp.controller("planleggingsskjemaCtrl", function($scope, $window, Cleared, In
             {prefix: ' Starttid: Kl. ', text: Rute.tidsplan.svar.startTid}]);
         drawLine();
 
-        addText('Nedfartsrute', 'Samme som oppturen', KritiskeOmrader.nedkjoring.svar.sammeRute === true);
-        addText('', 'Annen nedfartsrute', KritiskeOmrader.nedkjoring.svar.sammeRute === false);
+        addText('Nedfartsrute', 'Samme som oppturen', Nedkjoring.nedkjoring.svar.sammeRute === true);
+        addText('', 'Annen nedfartsrute', Nedkjoring.nedkjoring.svar.sammeRute === false);
         drawLine();
 
         //Deltakere

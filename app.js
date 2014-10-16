@@ -94,10 +94,18 @@ myapp.config(function ($stateProvider, $urlRouterProvider, BASE_URL) {
             templateUrl: BASE_URL + "partials/views/kritiske-omrader/egenskaper.html",
             controller: "kritiskeOmraderEgenskaperCtrl"
         })
-        .state('kritiskeOmrader.nedkjoring', {
+        .state('nedkjoring', {
             url: "/nedkjoring",
-            templateUrl: BASE_URL + "partials/views/kritiske-omrader/nedkjoring.html",
-            controller: "kritiskeOmraderNedkjoringCtrl"
+            templateUrl: BASE_URL + "partials/views/nedkjoring/nedkjoring.meny.html",
+            controller: function ($scope, Nedkjoring) {
+                $scope.kritiskeOmrader = Nedkjoring;
+                console.log(Nedkjoring);
+            }
+        })
+        .state('nedkjoring.nedkjoring', {
+            url: "/nedkjoring",
+            templateUrl: BASE_URL + "partials/views/nedkjoring/nedkjoring.html",
+            controller: "nedkjoringCtrl"
         })
 
         .state('planleggingsskjema', {

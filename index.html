@@ -23,7 +23,7 @@
                <a class="brand" ui-sref="start"><strong ng-bind="turTittel"></strong></a>
            </li>
           <li ng-class="{active: infoActive()}">
-              <a ui-sref="info.info">
+              <a ui-sref="info.skredvarsel">
                   Forberedelse <span class="text-success" ng-show="cleared.info()">&#x2713;</span>
               </a>
           </li>
@@ -42,6 +42,11 @@
                   Kritiske områder <span class="text-success" ng-show="cleared.kritiskeOmrader()">&#x2713;</span>
               </a>
           </li>
+            <li ng-class="{active: nedkjoringActive()}">
+                <a ui-sref="nedkjoring.nedkjoring">
+                    Nedkjøring <span class="text-success" ng-show="cleared.nedkjoring()">&#x2713;</span>
+                </a>
+            </li>
           <li ui-sref-active="active">
               <a ui-sref="planleggingsskjema">
                   Planleggingsskjema

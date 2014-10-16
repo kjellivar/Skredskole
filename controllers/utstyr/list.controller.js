@@ -15,7 +15,7 @@ myapp.controller("utstyrListCtrl", function($scope){
       {title: "Søkestang", key: "sokestang"}];
 
     $scope.tilleggsUtstyrLabels =
-      [{title: "Ballongsekk, avalung, skredball", key: "ballongsekkAvalungSkredball"}];
+      [{title: "Ballongsekk, avalung", key: "ballongsekkAvalungSkredball"}];
 
     $scope.annetLabels =
       [{title: "Kart, kompass", key: "kartKompass"},

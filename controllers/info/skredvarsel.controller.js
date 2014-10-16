@@ -4,7 +4,7 @@ myapp.controller("infoSkredvarselCtrl", function($scope, AppData){
             "Hva er varslet faregrad?": ['faregrad'],
             "Hva slags type skredproblem kan man møte?": ['skredproblem'],
             "Hva er mest utsatt himmelretning?": ['n','no','o','so','s','sv','v','nv'],
-            "Hvordan er snødekket?": ['nySno','vindtransportertSno','svakeLagISnopakken','vatOgVannmettetSno'],
+            "Årsak til skredfare?": ['nySno','vindtransportertSno','svakeLagISnopakken','vatOgVannmettetSno'],
             "Hva er de mest utsatte områdene?": ['bratteHeng','leomrader','terrengfeller','overgangFraLiteTilMyeSno'],
             "Hva er mest utsatt høydenivå?": ['hoydeniva'],
             "Hva er varslet sannsynlighet for skred?": ['sannsynlighet'],
@@ -29,7 +29,7 @@ myapp.controller("infoSkredvarselCtrl", function($scope, AppData){
     $scope.tilleggsbelastning = {values: [{v:"naturlig", t: "Naturlig utløst"}, {v: "liten", t: "Liten"}, {v: "stor", t: "Stor"}],
         name:"Tilleggsbelastning", vertical: true};
 
-    $scope.forrige = "info.info";
+    $scope.forrige = "start";
     $scope.neste = "info.vaer";
 
     $scope.infoVarslingsOmrade = AppData.infoVarslingsOmrade;

@@ -12,7 +12,7 @@ myapp.controller("utstyrDeltakereCtrl", function($scope){
             show: true
         },
         {
-            text:"Er dere mer enn 7 personer blir koordinasjon og tidsstyring innad i gruppen vanskeligere!",
+            text:"Er dere mer enn 7 personer blir koordinasjon og tidsstyring innad i gruppen vanskeligere.",
             show: $scope.utstyr.deltakere.svar.gruppeStorrelse > 7
         },
         {
@@ -21,13 +21,13 @@ myapp.controller("utstyrDeltakereCtrl", function($scope){
                 ($scope.utstyr.deltakere.svar.erfaring == 3 && $scope.utstyr.deltakere.svar.motivasjon == 1)
         },
         {
-            text:"Det er en god strategi å gå sakte fram og tilegne deg så mye erfaring som mulig.",
+            text:"Det anbefales å velge terrenget etter skredforholdene og din turgruppes kunnskapsnivå. Et terreng med mange mulige utløsningsområder (over 30°) og utløpsområder krever at dere må gjøre mange vurderinger og har en god evne til å ferdes på en tryggest mulig måte.",
             show: ($scope.utstyr.deltakere.svar.erfaring == 1 && ($scope.utstyr.deltakere.svar.motivasjon == 1 || $scope.utstyr.deltakere.svar.motivasjon == 2)) ||
                 ($scope.utstyr.deltakere.svar.erfaring == 2 && $scope.utstyr.deltakere.svar.motivasjon == 2) ||
                 ($scope.utstyr.deltakere.svar.erfaring == 3 && $scope.utstyr.deltakere.svar.motivasjon == 2)
         },
         {
-            text:"Warning: Wrong ambition often makes us enter into a high risk. Remember. Werner Munter one coined the expression - be careful expert, the avalanche does not know that you're an expert!",
+            text:"Høye ambisjoner gjør at vi gjerne velger å ta høyere risiko enn hva vi egentlig ønsker. Husk at snøskredet ikke bryr seg om ditt kunnskapsnivå.",
             show: $scope.utstyr.deltakere.svar.motivasjon == 3
         }];
     };

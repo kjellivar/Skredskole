@@ -4,8 +4,8 @@ myapp.controller("ruteDistanseCtrl", function($scope, AppData){
     $scope.neste = "rute.tidsplan";
 
     $scope.alerts = {
-        "Skriv inn en horisontal distanse!": ['lengde'],
-        "Prøv og finn ut høydeforskjellen!": ['hoyde']
+        "Har du fylt inn rett horisontal distanse?": ['lengde'],
+        "Prøv å finn ut høydeforskjellen.": ['hoyde']
     };
 
     $scope.bilder = AppData.bilder;

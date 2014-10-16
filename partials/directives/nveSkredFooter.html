@@ -20,14 +20,13 @@
         </div>
     </div>
     <div class="modal-footer">
-        {{containerObject.antallRiktigeSvar}} / {{containerObject.antallFasitSvar}}
-        <a class="btn" data-dismiss="modal" aria-hidden="true">Close</a>
+        <a class="btn" data-dismiss="modal" aria-hidden="true">Lukk</a>
     </div>
 </div>
 
 <div class="row">
     <div class="span1" ng-class="{disabled: !forrige}">
-        <a class="nve-btn arrow-left" ui-sref="{{forrige}}"></a>
+        <a class="nve-btn blue arrow-left" ui-sref="{{forrige}}"></a>
     </div>
     <div class="offset3 span4 ">
         <div class="row">
@@ -36,15 +35,12 @@
             </div>
         </div>
         <div class="row">
-            <div class="span2">
+            <div class="span4">
                 <a class="nve-btn" ng-click="toggleFasit()" ng-bind="fasitKnappTekst"></a>
-            </div>
-            <div class="span2">
-                <a class="nve-btn" ng-click="emptyAnswers()">Tøm skjema</a>
             </div>
         </div>
     </div>
     <div class="offset3 span1"  ng-class="{disabled: !neste}">
-        <a class="nve-btn arrow-right" ui-sref="{{neste}}"></a>
+        <a class="nve-btn blue arrow-right" ui-sref="{{neste}}"></a>
     </div>
 </div>

@@ -1,6 +1,7 @@
 <div ui-view>
 <div class="hero-unit ">
-  <h1>Skredskolen</h1>
+  <h1 ng-bind="turTittel"></h1>
+  <p ng-repeat="paragraf in infoVarslingsOmrade" ng-bind="paragraf" ng-class="{lead: $index == 0}"></p>
   <p class="lead">Prøv deg på turplanlegging for {{turTittel}}. <br>
   Dette verktøyet gir deg muligheten til å planlegge en tur før du skal ut i fjellet.</p>
   <p>Når du har fylt inn all nødvendig informasjon kan du printe ut et planleggingsskjema som du kan benytte senere.
@@ -9,7 +10,7 @@
     valgfri rekkefølge ved å bruke navigasjonen på toppen av siden.
   </p>
   
-  <a class="btn btn-large btn-primary pull-right" ui-sref="info.info">God tur! <i class="icon-arrow-right icon-white"></i></a>
+  <a class="btn btn-large btn-primary pull-right" ui-sref="info.skredvarsel">God tur! <i class="icon-arrow-right icon-white"></i></a>
   <div class="clearfix"></div>
   
 </div>

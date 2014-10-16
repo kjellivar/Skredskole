@@ -110,7 +110,7 @@ myapp.factory('AlertObject', function(CurrentPageObject) {
     };
 });
 
-myapp.factory('Cleared', ['Info', 'Utstyr', 'Rute', 'KritiskeOmrader', function(Info, Utstyr, Rute, KritiskeOmrader) {
+myapp.factory('Cleared', function(Info, Utstyr, Rute, KritiskeOmrader, Nedkjoring) {
     var infoCleared = function () {
         return (Info.skredvarsel.item.cleared && Info.vaer.item.cleared && Info.alpineFarer.item.cleared);
     };
@@ -121,33 +121,41 @@ myapp.factory('Cleared', ['Info', 'Utstyr', 'Rute', 'KritiskeOmrader', function(
         return (Rute.rutevalg.item.cleared && Rute.distanse.item.cleared && Rute.tidsplan.item.cleared);
     };
     var kritiskeOmraderCleared = function () {
-        return (KritiskeOmrader.egenskaper.item.cleared && KritiskeOmrader.nedkjoring.item.cleared);
+        return (KritiskeOmrader.egenskaper.item.cleared);
+    };
+
+    var nedkjoringCleared = function () {
+        return (Nedkjoring.nedkjoring.item.cleared);
     };
     return {
         info: infoCleared,
         utstyr: utstyrCleared,
         rute: ruteCleared,
-        kritiskeOmrader: kritiskeOmraderCleared
+        kritiskeOmrader: kritiskeOmraderCleared,
+        nedkjoring: nedkjoringCleared
 
     };
-}]);
+});
 
-myapp.factory('CurrentPageObject', ['Info', 'Utstyr', 'Rute', 'KritiskeOmrader', '$state',
-    function(Info, Utstyr, Rute, KritiskeOmrader, $state) {
+myapp.factory('CurrentPageObject', function(Info, Utstyr, Rute, KritiskeOmrader, Nedkjoring,$state) {
 
         return function () {
             var states = $state.current.name.split(".");
+            var pageVar = states.length > 1 ? states[1] : states[0];
             if(states[0] === "info"){
-                return Info[states[1]];
+                return Info[pageVar];
             } else if(states[0] === "utstyr"){
-                return Utstyr[states[1]];
+                return Utstyr[pageVar];
             } else if(states[0] === "rute"){
-                return Rute[states[1]];
+                return Rute[pageVar];
             } else if(states[0] === "kritiskeOmrader"){
-                return KritiskeOmrader[states[1]];
+                return KritiskeOmrader[pageVar];
+            } else if(states[0] === "nedkjoring"){
+                return Nedkjoring[pageVar];
             }
+
         }
-    }]);
+    });
 
 
 myapp.provider('Info', function () {
@@ -206,8 +214,7 @@ myapp.provider('Info', function () {
                     torreLossnoskred: "Tørre løssnøskred",
                     vateLossnoskred: "Våte løssnøskred",
                     torreFlakskred: "Tørre flakskred",
-                    vateFlakskred: "Våte flakskred",
-                    skavl: "Skavl"
+                    vateFlakskred: "Våte flakskred"
                 },
                 snodekke: {
                     nySno:"Nysnø",
@@ -278,9 +285,7 @@ myapp.provider('Rute', function () {
         tidsplan: {
             oppstigning: undefined,
             nedfart: undefined,
-            pause: undefined,
-            spesifikkStart: undefined,
-            startTid: undefined
+            spesifikkStart: undefined
         },
         rutevalg: {rutevalg: undefined},
         distanse: {lengde: undefined, hoyde: undefined}
@@ -300,13 +305,26 @@ myapp.provider('Rute', function () {
 myapp.provider('KritiskeOmrader', function () {
     var fasit = {
         egenskaper: {},
+    };
+    this.$get = ["MenuItem", function (MenuItem) {
+        return {
+            egenskaper: MenuItem("Detaljer", ".egenskaper", fasit.egenskaper)
+        };
+    }];
+    this.setFasit = function (newFasit) {
+        fasit = newFasit;
+    }
+});
+
+myapp.provider('Nedkjoring', function () {
+    var fasit = {
         nedkjoring: {
-            sammeRute: undefined
+            sammeRute: undefined,
+            spesifikkStart: undefined
         }
     };
     this.$get = ["MenuItem", function (MenuItem) {
         return {
-            egenskaper: MenuItem("Detaljer", ".egenskaper", fasit.egenskaper),
             nedkjoring: MenuItem("Nedkjøring", ".nedkjoring", fasit.nedkjoring)
         };
     }];

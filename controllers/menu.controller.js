@@ -19,5 +19,8 @@ myapp.controller("menuCtrl", function($scope, Cleared, $state, AppData){
         $scope.kritiskeOmraderActive = function () {
             return state === "kritiskeOmrader";
         };
+        $scope.nedkjoringActive = function () {
+            return state === "nedkjoring";
+        };
     });
 });

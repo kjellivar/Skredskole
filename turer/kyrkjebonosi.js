@@ -1,4 +1,4 @@
-myapp.config(function (InfoProvider, UtstyrProvider, RuteProvider, KritiskeOmraderProvider, AppDataProvider) {
+myapp.config(function (InfoProvider, UtstyrProvider, RuteProvider, KritiskeOmraderProvider, AppDataProvider, NedkjoringProvider) {
     InfoProvider.setFasit({
         skredvarsel: {
             faregrad: 2,
@@ -23,13 +23,15 @@ myapp.config(function (InfoProvider, UtstyrProvider, RuteProvider, KritiskeOmrad
         }
     });
 
+    NedkjoringProvider.setFasit({
+        nedkjoring: {sammeRute: "required"}
+    });
+
     RuteProvider.setFasit({
         tidsplan: {
             oppstigning: 3,
             nedfart: 1,
-            pause: 0.5,
-            spesifikkStart: "required",
-            startTid: "required"
+            spesifikkStart: true
         },
         rutevalg: {rutevalg: true},
         distanse: {lengde: 4000, hoyde: 900}
