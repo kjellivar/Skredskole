@@ -41,9 +41,9 @@ myapp.factory('sjekkFasit', function(CurrentPageObject) {
         if (pageObject.antallFasitSvar === undefined) {
             pageObject.antallFasitSvar = 0.0;
             angular.forEach(pageObject.fasit, function (val) {
-                if(val !== undefined){
+               // if(val !== undefined){
                     pageObject.antallFasitSvar = pageObject.antallFasitSvar + 1;
-                }
+                //}
             });
         }
 
@@ -304,7 +304,7 @@ myapp.provider('Rute', function () {
 
 myapp.provider('KritiskeOmrader', function () {
     var fasit = {
-        egenskaper: {},
+        egenskaper: {}
     };
     this.$get = ["MenuItem", function (MenuItem) {
         return {
