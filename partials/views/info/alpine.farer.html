@@ -1,19 +1,18 @@
 
-<p class="lead">Ut i fra forholdene gitt i eksempelvarselet, hvilke andre alpine farer må man også passe seg for når man er på tur på
-    {{turTittel}}, er det for eksempel meldt mye vind i kombinasjon med lave temperaturer?</p>
+<p class="lead">Ut i fra forholdene gitt i eksempelvarselet og annen info gjennom kart og rutebeskrivelser, hvilke andre alpine farer må man passe seg for når man er på tur på <span ng-bind="turTittel"></span>? Er det for eksempel meldt mye vind i kombinasjon med lave temperaturer eller er det terrengformasjoner som kan være ekstra farlige?</p>
 
 <div class="row">
   <div class="span6">
     <label class="checkbox"><input type="checkbox" ng-model="info.alpineFarer.svar.fall"> Fall ned bratte fjellskrenter</label>
   </div>
   <div class="span6">
-    <label class="checkbox"><input type="checkbox" ng-model="info.alpineFarer.svar.bresprekker"> bresprekker</label>
+    <label class="checkbox"><input type="checkbox" ng-model="info.alpineFarer.svar.bresprekker"> Bresprekker</label>
   </div>
 </div>
 
 <div class="row">
   <div class="span6">
-    <label class="checkbox"><input type="checkbox" ng-model="info.alpineFarer.svar.skalver"> Skalver</label>
+    <label class="checkbox"><input type="checkbox" ng-model="info.alpineFarer.svar.skalver"> Skavler</label>
   </div>
   <div class="span6">
     <label class="checkbox"><input type="checkbox" ng-model="info.alpineFarer.svar.klipper"> Klipper, steiner</label>

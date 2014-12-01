@@ -1,7 +1,7 @@
-var myapp = angular.module('myapp', ["ui.router"]);
+var skredskoleAngularApp = angular.module('skredskoleAngularApp', ["ui.router"]);
 
 
-myapp.config(function ($stateProvider, $urlRouterProvider, BASE_URL) {
+skredskoleAngularApp.config(function ($stateProvider, $urlRouterProvider, BASE_URL) {
 
     // For any unmatched url, send to /route1
     $urlRouterProvider.otherwise("/start");

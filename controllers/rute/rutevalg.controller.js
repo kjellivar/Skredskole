@@ -1,4 +1,4 @@
-myapp.controller("ruteRutevalgCtrl", function($scope, AppData, Rute){
+skredskoleAngularApp.controller("ruteRutevalgCtrl", function($scope, AppData, Rute){
 
     $scope.rute = Rute;
 

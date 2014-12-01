@@ -1,4 +1,4 @@
-myapp.controller("planleggingsskjemaCtrl", function($scope, $window, Cleared, Info, Rute, Utstyr, KritiskeOmrader, Nedkjoring, AppData){
+skredskoleAngularApp.controller("planleggingsskjemaCtrl", function($scope, $window, Cleared, Info, Rute, Utstyr, KritiskeOmrader, Nedkjoring, AppData){
 
     function createPdf(empty) {
 
@@ -141,7 +141,7 @@ myapp.controller("planleggingsskjemaCtrl", function($scope, $window, Cleared, In
         addText('', 'Lett til frisk bris', Info.vaer.svar.lettTilFriskBris === true);
         addText('', 'Kuling, storm', Info.vaer.svar.kulingStorm === true);
 
-        addText('Nullgradersgrense', {text: Info.vaer.svar.nullisoterm, postfix: " m"});
+        //addText('Nullgradersgrense', {text: Info.vaer.svar.nullisoterm, postfix: " m"});
         drawLine();
 
         //Skredvarsel
@@ -156,9 +156,9 @@ myapp.controller("planleggingsskjemaCtrl", function($scope, $window, Cleared, In
         addText('', Info.labels.snodekke.vatOgVannmettetSno, Info.skredvarsel.svar.vatOgVannmettetSno === true);
         addText('', Info.labels.snodekke.vindtransportertSno, Info.skredvarsel.svar.vindtransportertSno === true);
 
-        addText('Utsatte områder', Info.labels.utsatt.leomrader, Info.skredvarsel.svar.leomrader  === true);
+        /*addText('Utsatte områder', Info.labels.utsatt.leomrader, Info.skredvarsel.svar.leomrader  === true);
         addText('', Info.labels.utsatt.overgangFraLiteTilMyeSno, Info.skredvarsel.svar.overgangFraLiteTilMyeSno === true);
-        addText('', Info.labels.utsatt.terrengfeller, Info.skredvarsel.svar.terrengfeller === true);
+        addText('', Info.labels.utsatt.terrengfeller, Info.skredvarsel.svar.terrengfeller === true);*/
 
         addText('Tilleggsbelastning', {text: Info.labels.tilleggsbelastning[Info.skredvarsel.svar.tilleggsbelastning]});
         addText('Forventet skredstørrelse', {text: Info.labels.skredstorrelse[Info.skredvarsel.svar.skredstorrelse]});

@@ -1,4 +1,4 @@
-myapp.controller("nedkjoringCtrl", function($scope){
+skredskoleAngularApp.controller("nedkjoringCtrl", function($scope){
 
     $scope.forrige = "kritiskeOmrader.egenskaper";
     $scope.neste = "planleggingsskjema";

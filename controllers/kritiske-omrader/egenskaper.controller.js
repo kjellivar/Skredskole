@@ -1,4 +1,4 @@
-myapp.controller("kritiskeOmraderEgenskaperCtrl", function($scope, AppData){
+skredskoleAngularApp.controller("kritiskeOmraderEgenskaperCtrl", function($scope, AppData){
 
 
 

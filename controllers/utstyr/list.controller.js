@@ -1,5 +1,5 @@
 
-myapp.controller("utstyrListCtrl", function($scope){
+skredskoleAngularApp.controller("utstyrListCtrl", function($scope){
 
     $scope.alerts = {
             "Sender/mottaker, spade og søkestang er nødvendig for å kunne ferdes i snøskredterreng!": ['skredsoker','spade','sokestang'],

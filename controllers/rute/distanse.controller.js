@@ -1,4 +1,4 @@
-myapp.controller("ruteDistanseCtrl", function($scope, AppData){
+skredskoleAngularApp.controller("ruteDistanseCtrl", function($scope, AppData){
 
     $scope.forrige = "rute.rutevalg";
     $scope.neste = "rute.tidsplan";

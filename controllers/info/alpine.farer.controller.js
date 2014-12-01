@@ -1,4 +1,4 @@
-myapp.controller("infoAlpineFarerCtrl", ["$scope", "AppData", function($scope, AppData){
+skredskoleAngularApp.controller("infoAlpineFarerCtrl", ["$scope", "AppData", function($scope, AppData){
 
     $scope.alerts = {"Hvilke alpine farer kan det være på turen?": ['fall','bresprekker','skalver','klipper','vindavkjoling']};
 

@@ -1,4 +1,4 @@
-myapp.controller("infoInfoCtrl", function($scope, AppData){
+skredskoleAngularApp.controller("infoInfoCtrl", function($scope, AppData){
 
     $scope.infoVarslingsOmrade = AppData.infoVarslingsOmrade;
     $scope.info.info.item.cleared = true;

@@ -1,4 +1,4 @@
-myapp.controller("utstyrDeltakereCtrl", function($scope){
+skredskoleAngularApp.controller("utstyrDeltakereCtrl", function($scope){
 
     $scope.alerts = {
             "Hvor stor er gruppen som skal på tur?": ['gruppeStorrelse'],

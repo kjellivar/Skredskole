@@ -1,4 +1,4 @@
-myapp.controller("infoSkredvarselCtrl", function($scope, AppData){
+skredskoleAngularApp.controller("infoSkredvarselCtrl", function($scope, AppData){
 
     $scope.alerts = {
             "Hva er varslet faregrad?": ['faregrad'],

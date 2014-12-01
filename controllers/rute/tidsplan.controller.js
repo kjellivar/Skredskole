@@ -1,4 +1,4 @@
-myapp.controller("ruteTidsplanCtrl", function($scope, AppData, Rute){
+skredskoleAngularApp.controller("ruteTidsplanCtrl", function($scope, AppData, Rute){
 
     $scope.alerts = {
         "Fyll inn alle tider.": ['oppstigning', 'nedfart', 'pause'],

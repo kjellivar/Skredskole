@@ -1,7 +1,6 @@
 <div ui-view>
-<div class="hero-unit">
+<div class="hero-unit ">
   <h1 ng-bind="turTittel" style="margin-bottom: 20px;"></h1>
-
   <p ng-repeat="paragraf in infoVarslingsOmrade" ng-bind="paragraf" ng-class="{lead: $index == 0}"></p>
   <p class="lead">Prøv deg på turplanlegging for {{turTittel}}. <br>
   Dette verktøyet gir deg muligheten til å planlegge en tur før du skal ut i fjellet.</p>

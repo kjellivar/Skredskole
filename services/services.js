@@ -1,10 +1,10 @@
 //prod
-//myapp.constant('BASE_URL', '/Templates/Pages/Skredskole/');
+//skredskoleAngularApp.constant('BASE_URL', '/Templates/Pages/Skredskole/');
 
 //test
-myapp.constant('BASE_URL', '');
+skredskoleAngularApp.constant('BASE_URL', '');
 
-myapp.factory('MenuItem', function () {
+skredskoleAngularApp.factory('MenuItem', function () {
     return function(navn, link, fasit){
         return {
             item: {cleared: false, link: link, navn: navn},
@@ -16,7 +16,7 @@ myapp.factory('MenuItem', function () {
     };
 });
 
-myapp.factory('runProgressbarAnimation', ['$timeout', 'CurrentPageObject', function($timeout, CurrentPageObject) {
+skredskoleAngularApp.factory('runProgressbarAnimation', ['$timeout', 'CurrentPageObject', function($timeout, CurrentPageObject) {
     return function(){
         var endWidth = CurrentPageObject().progressbarStyle.width;
         CurrentPageObject().progressbarStyle.width = '0%';
@@ -24,7 +24,7 @@ myapp.factory('runProgressbarAnimation', ['$timeout', 'CurrentPageObject', funct
     };
 }]);
 
-myapp.factory('korrekteSvar', ['runProgressbarAnimation', 'AlertObject', 'sjekkFasit', function(runProgressbarAnimation, AlertObject, sjekkFasit) {
+skredskoleAngularApp.factory('korrekteSvar', ['runProgressbarAnimation', 'AlertObject', 'sjekkFasit', function(runProgressbarAnimation, AlertObject, sjekkFasit) {
     return function(alerts) {
         sjekkFasit();
         runProgressbarAnimation();
@@ -34,16 +34,16 @@ myapp.factory('korrekteSvar', ['runProgressbarAnimation', 'AlertObject', 'sjekkF
 
 
 
-myapp.factory('sjekkFasit', function(CurrentPageObject) {
+skredskoleAngularApp.factory('sjekkFasit', function(CurrentPageObject) {
     return function () {
         var pageObject = CurrentPageObject();
         var newAnswers = pageObject.svar;
         if (pageObject.antallFasitSvar === undefined) {
             pageObject.antallFasitSvar = 0.0;
             angular.forEach(pageObject.fasit, function (val) {
-               // if(val !== undefined){
+               if(val !== undefined){
                     pageObject.antallFasitSvar = pageObject.antallFasitSvar + 1;
-                //}
+                }
             });
         }
 
@@ -81,7 +81,7 @@ myapp.factory('sjekkFasit', function(CurrentPageObject) {
     };
 });
 
-myapp.factory('AlertObject', function(CurrentPageObject) {
+skredskoleAngularApp.factory('AlertObject', function(CurrentPageObject) {
     return function (dataIn){
         var newAnswers = CurrentPageObject().svar,
             fasit = CurrentPageObject().fasit;
@@ -110,7 +110,7 @@ myapp.factory('AlertObject', function(CurrentPageObject) {
     };
 });
 
-myapp.factory('Cleared', function(Info, Utstyr, Rute, KritiskeOmrader, Nedkjoring) {
+skredskoleAngularApp.factory('Cleared', function(Info, Utstyr, Rute, KritiskeOmrader, Nedkjoring) {
     var infoCleared = function () {
         return (Info.skredvarsel.item.cleared && Info.vaer.item.cleared && Info.alpineFarer.item.cleared);
     };
@@ -137,7 +137,7 @@ myapp.factory('Cleared', function(Info, Utstyr, Rute, KritiskeOmrader, Nedkjorin
     };
 });
 
-myapp.factory('CurrentPageObject', function(Info, Utstyr, Rute, KritiskeOmrader, Nedkjoring,$state) {
+skredskoleAngularApp.factory('CurrentPageObject', function(Info, Utstyr, Rute, KritiskeOmrader, Nedkjoring,$state) {
 
         return function () {
             var states = $state.current.name.split(".");
@@ -158,18 +158,15 @@ myapp.factory('CurrentPageObject', function(Info, Utstyr, Rute, KritiskeOmrader,
     });
 
 
-myapp.provider('Info', function () {
+skredskoleAngularApp.provider('Info', function () {
     var fasit = {
         skredvarsel: {
-            faregrad: undefined,
+            /*faregrad: undefined,
             skredproblem: undefined,
             tilleggsbelastning: undefined,
             skredstorrelse: undefined,  //1:små 2:middels 3:store 4:svært store
             sannsynlighet: undefined,  //1:lite sannsynlig 2:mulig 3:sannsynlig 4:svært sannsynlig
 
-            leomrader: undefined,
-            terrengfeller: undefined,
-            overgangFraLiteTilMyeSno: undefined,
 
             nySno: undefined,
             vindtransportertSno: undefined,
@@ -177,10 +174,10 @@ myapp.provider('Info', function () {
             vatOgVannmettetSno: undefined,
 
             n: undefined, no: undefined, o: undefined, so: undefined, s: undefined, sv: undefined, v: undefined, nv: undefined,
-            hoydeniva: undefined
+            hoydeniva: undefined*/
         },
         vaer: {
-            ingenNedbor: undefined,
+            /*ingenNedbor: undefined,
             sno: undefined,
             regn: undefined,
 
@@ -192,14 +189,14 @@ myapp.provider('Info', function () {
             begrensetSikt: undefined,
             darligSikt: undefined,
 
-            nullisoterm: undefined
+            nullisoterm: undefined*/
         },
         alpineFarer: {
-            fall: undefined,
+           /* fall: undefined,
             bresprekker: undefined,
             skalver: undefined,
             klipper: undefined,
-            vindavkjoling: undefined
+            vindavkjoling: undefined*/
         }
     };
 
@@ -221,11 +218,6 @@ myapp.provider('Info', function () {
                     vindtransportertSno:"Vindtransportert snø",
                     svakeLagISnopakken:"Svake lag i snøpakken",
                     vatOgVannmettetSno:"Våt og vannmettet snø"
-                },
-                utsatt: {
-                    leomrader: "Leområder",
-                    terrengfeller: "Terrengfeller",
-                    overgangFraLiteTilMyeSno: "Overgang fra lite til mye snø"
                 },
                 tilleggsbelastning : {
                     naturlig: "Naturlig utløst",
@@ -251,7 +243,7 @@ myapp.provider('Info', function () {
         fasit = newFasit;
     }
 });
-myapp.provider('Utstyr', function () {
+skredskoleAngularApp.provider('Utstyr', function () {
     var fasit = {
         list: {
             skredsoker: true,
@@ -280,15 +272,20 @@ myapp.provider('Utstyr', function () {
         fasit = newFasit;
     }
 });
-myapp.provider('Rute', function () {
+skredskoleAngularApp.provider('Rute', function () {
     var fasit = {
         tidsplan: {
-            oppstigning: undefined,
-            nedfart: undefined,
-            spesifikkStart: undefined
+          //  oppstigning: undefined,
+           // nedfart: undefined,
+           // spesifikkStart: undefined
         },
-        rutevalg: {rutevalg: undefined},
-        distanse: {lengde: undefined, hoyde: undefined}
+        rutevalg: {
+            //rutevalg: undefined
+        },
+        distanse: {
+           // lengde: undefined,
+           // hoyde: undefined
+        }
     };
     this.$get = ["MenuItem", function (MenuItem) {
         return {
@@ -302,7 +299,7 @@ myapp.provider('Rute', function () {
     }
 });
 
-myapp.provider('KritiskeOmrader', function () {
+skredskoleAngularApp.provider('KritiskeOmrader', function () {
     var fasit = {
         egenskaper: {}
     };
@@ -316,11 +313,11 @@ myapp.provider('KritiskeOmrader', function () {
     }
 });
 
-myapp.provider('Nedkjoring', function () {
+skredskoleAngularApp.provider('Nedkjoring', function () {
     var fasit = {
         nedkjoring: {
-            sammeRute: undefined,
-            spesifikkStart: undefined
+            //sammeRute: undefined,
+            //spesifikkStart: undefined
         }
     };
     this.$get = ["MenuItem", function (MenuItem) {
@@ -333,7 +330,7 @@ myapp.provider('Nedkjoring', function () {
     }
 });
 
-myapp.provider('AppData', function () {
+skredskoleAngularApp.provider('AppData', function () {
     var turTittel = "turTittel";
     var hoydeMeter = 'Høydemeter';
     var infoVarslingsOmrade = ['paragraf1', 'paragraf2'];

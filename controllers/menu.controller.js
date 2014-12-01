@@ -1,4 +1,4 @@
-myapp.controller("menuCtrl", function($scope, Cleared, $state, AppData){
+skredskoleAngularApp.controller("menuCtrl", function($scope, Cleared, $state, AppData){
 
     $scope.cleared = Cleared;
     $scope.turTittel = AppData.turTittel;

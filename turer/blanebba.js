@@ -1,4 +1,4 @@
-myapp.config(function (InfoProvider, UtstyrProvider, RuteProvider, KritiskeOmraderProvider, AppDataProvider) {
+skredskoleAngularApp.config(function (InfoProvider, UtstyrProvider, RuteProvider, KritiskeOmraderProvider, AppDataProvider) {
     InfoProvider.setFasit({
         skredvarsel: {
             faregrad: 2,

@@ -1,4 +1,4 @@
-myapp.controller("infoVaerCtrl", function($scope){
+skredskoleAngularApp.controller("infoVaerCtrl", function($scope){
 
 
 

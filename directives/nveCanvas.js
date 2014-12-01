@@ -1,4 +1,4 @@
-myapp.directive('nveCanvas', function (BASE_URL) {
+skredskoleAngularApp.directive('nveCanvas', function (BASE_URL) {
     return {
         restrict: 'E',
         templateUrl: BASE_URL + 'partials/directives/nveCanvas.html',
