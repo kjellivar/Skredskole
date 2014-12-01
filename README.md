@@ -3,11 +3,13 @@ Skredskole
 AngularJS app.
 
 Requirements for local testing:
-nodejs
-gulp
+- nodejs
+- gulp
 
 Installation:
-npm install
-gulp
+    
+    npm install
+    
+    gulp
 
 Run index.html
