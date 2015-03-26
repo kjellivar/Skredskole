@@ -48,6 +48,14 @@ skredskoleAngularApp.directive('nveSkredFooter', function(BASE_URL) {
                 showFasit = false;
                 $scope.fasitKnappTekst = visFasitTekst;
             };
+
+            $scope.$on('$stateChangeStart',
+                function(event, toState, toParams, fromState, fromParams){
+                    if(showFasit){
+                        $scope.toggleFasit();
+                        $scope.$apply();
+                    }
+                });
         }
     };
 });

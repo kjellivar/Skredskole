@@ -19,7 +19,7 @@ var paths = {
     partials: ['./partials/**/*.html']
 };
 
-gulp.task('bundle-templates', function() {
+gulp.task('bundle-templates', function(cb) {
     gulp.src(paths.partials)
         .pipe(minifyHTML({collapseWhitespace: true, keepClosingSlash:true}))
         .pipe(templateCache('templates.js', {root:'partials',module:'skredskoleAngularApp'}))
@@ -33,7 +33,7 @@ gulp.task('bundle-scripts', function() {
         .pipe(concat('turplanlegger.js'))
         .pipe(stripDebug())
         .pipe(ngMin())
-        //.pipe(uglify())
+        .pipe(uglify())
         .pipe(rename({ suffix: '.min' }))
         .pipe(gulp.dest(jsPath.jsDest))
         .on('error', gutil.log);

@@ -40,15 +40,18 @@ skredskoleAngularApp.directive('nveCanvas', function (BASE_URL) {
                 lastX, lastY;                       // the last coordinates before the current move
 
             angular.element(canvas).bind('mousedown', function(event) {
+
                 if(event.offsetX!==undefined){
                     lastX = event.offsetX;
                     lastY = event.offsetY;
                 } else {
-                    lastX = event.layerX - event.currentTarget.offsetLeft;
-                    lastY = event.layerY - event.currentTarget.offsetTop;
+                    lastX = event.originalEvent.layerX;
+                    lastY = event.originalEvent.layerY;
                 }
 
-                ctx.beginPath();    // begins new line
+                console.log('Drawing like a boss', lastX, lastY, event, ctx);
+
+
                 drawing = true;     // Now we're drawing
             });
             angular.element(canvas).bind('mousemove', function(event) {
@@ -58,8 +61,8 @@ skredskoleAngularApp.directive('nveCanvas', function (BASE_URL) {
                         currentX = event.offsetX;
                         currentY = event.offsetY;
                     } else {
-                        currentX = event.layerX - event.currentTarget.offsetLeft;
-                        currentY = event.layerY - event.currentTarget.offsetTop;
+                        currentX = event.originalEvent.layerX;
+                        currentY = event.originalEvent.layerY;
                     }
 
                     draw(lastX, lastY, currentX, currentY);
@@ -74,10 +77,12 @@ skredskoleAngularApp.directive('nveCanvas', function (BASE_URL) {
             });
 
             function draw(lX, lY, cX, cY){
+                ctx.beginPath();    // begins new line
                 ctx.moveTo(lX,lY);  // line from
                 ctx.lineTo(cX,cY);  // to
                 ctx.strokeStyle = $scope.settings.color; // with these settings
                 ctx.lineWidth = $scope.settings.lineWidth;
+                ctx.closePath();
                 ctx.stroke();       // draw it
             }
 

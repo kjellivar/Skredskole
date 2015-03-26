@@ -16,7 +16,7 @@ skredskoleAngularApp.controller("utstyrDeltakereCtrl", function($scope){
             show: $scope.utstyr.deltakere.svar.gruppeStorrelse > 7
         },
         {
-            text:"You already have a good know-how and can achieve a lot. Compensates for your decisions against each other, to remain aware of the risks and enjoy your tours!",
+            text:"Det anbefales å velge terrenget etter skredforholdene og din turgruppes kunnskapsnivå. Et terreng med mange mulige utløsningsområder (over 30°) og utløpsområder krever at dere må gjøre mange vurderinger og har en god evne til å ferdes på en tryggest mulig måte.",
             show: ($scope.utstyr.deltakere.svar.erfaring == 2 && $scope.utstyr.deltakere.svar.motivasjon == 1) ||
                 ($scope.utstyr.deltakere.svar.erfaring == 3 && $scope.utstyr.deltakere.svar.motivasjon == 1)
         },

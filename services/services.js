@@ -53,11 +53,13 @@ skredskoleAngularApp.factory('sjekkFasit', function(CurrentPageObject) {
 
         if(angular.isObject(newAnswers)){
             angular.forEach(newAnswers, function(val, key){
-                if (val == pageObject.fasit[key] || (pageObject.fasit[key] === "required" && val)) {
-                    antallRiktigeSvar = antallRiktigeSvar + 1;
-                } else if(val !== false) {
-                    antallRiktigeSvar = antallRiktigeSvar > 0 ? antallRiktigeSvar - 1 : 0;
-                    pageObject.barClass = "bar-warning";
+                if(pageObject.fasit[key] !== undefined){
+                    if (val == pageObject.fasit[key] || (pageObject.fasit[key] === "required" && val !== undefined)) {
+                        antallRiktigeSvar = antallRiktigeSvar + 1;
+                    } else {
+                        antallRiktigeSvar = antallRiktigeSvar > 0 ? antallRiktigeSvar - 1 : 0;
+                        pageObject.barClass = "bar-warning";
+                    }
                 }
             });
         }

@@ -26,15 +26,12 @@ skredskoleAngularApp.config(function(InfoProvider, UtstyrProvider, RuteProvider,
             hoydeniva: 500
         },
         vaer: {
-            ingenNedbor: undefined,
+
             sno: true,
-            regn: undefined,
-            svakVind: undefined,
-            lettTilFriskBris: undefined,
+
             kulingStorm: true,
-            godSikt: true,
-            begrensetSikt: undefined,
-            darligSikt: undefined,
+            godSikt: true
+
         },
         alpineFarer: {
             fall: true,
@@ -90,6 +87,7 @@ skredskoleAngularApp.config(function(InfoProvider, UtstyrProvider, RuteProvider,
             omraderMedMyeSteiner2: undefined
         }
     });
+
     NedkjoringProvider.setFasit({
         nedkjoring: {
             sammeRute: 'required'
