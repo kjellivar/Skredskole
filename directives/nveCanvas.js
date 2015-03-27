@@ -41,35 +41,24 @@ skredskoleAngularApp.directive('nveCanvas', function (BASE_URL) {
 
             angular.element(canvas).bind('mousedown', function(event) {
 
-                if(event.offsetX!==undefined){
-                    lastX = event.offsetX;
-                    lastY = event.offsetY;
-                } else {
-                    lastX = event.originalEvent.layerX;
-                    lastY = event.originalEvent.layerY;
-                }
+                var pos = getPointerCoordinates(event);
+                lastX = pos.x;
+                lastY = pos.y;
 
-                console.log('Drawing like a boss', lastX, lastY, event, ctx);
-
+                //console.log('Drawing like a boss', lastX, lastY, event, ctx);
 
                 drawing = true;     // Now we're drawing
             });
             angular.element(canvas).bind('mousemove', function(event) {
                 if(drawing){
                     // get current mouse position
-                    if(event.offsetX!==undefined){
-                        currentX = event.offsetX;
-                        currentY = event.offsetY;
-                    } else {
-                        currentX = event.originalEvent.layerX;
-                        currentY = event.originalEvent.layerY;
-                    }
+                    var newPos = getPointerCoordinates(event);
 
-                    draw(lastX, lastY, currentX, currentY);
+                    draw(lastX, lastY, newPos.x, newPos.y);
 
                     // set current coordinates to last one
-                    lastX = currentX;
-                    lastY = currentY;
+                    lastX = newPos.x;
+                    lastY = newPos.y;
                 }
             });
             angular.element(canvas).bind('mouseup', function(event) {
@@ -84,6 +73,18 @@ skredskoleAngularApp.directive('nveCanvas', function (BASE_URL) {
                 ctx.lineWidth = $scope.settings.lineWidth;
                 ctx.closePath();
                 ctx.stroke();       // draw it
+            }
+
+            function getPointerCoordinates(event){
+                var coords = {};
+                if(event.offsetX!==undefined){
+                    coords.x = event.offsetX;
+                    coords.y = event.offsetY;
+                } else {
+                    coords.x = event.originalEvent.layerX;
+                    coords.y = event.originalEvent.layerY;
+                }
+                return coords;
             }
 
             // Clear Canvas
